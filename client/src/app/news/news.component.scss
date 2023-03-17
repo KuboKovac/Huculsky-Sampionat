@@ -1,0 +1,77 @@
+body {
+    height: 1000px;
+
+    display: grid;
+    grid-template: "main topics";
+    grid-template-columns: auto 30%;
+    grid-template-rows: auto auto;
+
+
+    .topics {
+        max-height: 350px;
+        width: 500px;
+        grid-area: topics;
+        background-color: #eff3ed;
+        max-width: 60%;
+        margin: 25px auto;
+        box-shadow: 3px 3px 5px gray;
+
+        ul {
+            list-style-type: circle;
+            font-size: 17px;
+            color: gray;
+        }
+
+        h1 {
+            margin: 10px 20px;
+            font-size: 20px;
+            border-bottom: gray 1px solid;
+        }
+    }
+
+    .articles {
+        grid-area: main;
+
+        .article-body {
+            float: right;
+            margin: 25px auto;
+            max-width: 70%;
+            height: auto;
+            background-color: #eff3ed;
+            padding: 20px;
+            box-shadow: 3px 3px 5px gray;
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    display: inline;
+                    margin: 0 10px;
+                    color: gray;
+                }
+            }
+
+            .article-title {
+                font-size: 17px;
+
+                h1 {
+                    margin: 5px 0;
+                }
+            }
+
+            .article-text {
+                color: gray;
+                padding-bottom: 20px;
+
+                a {
+                    color: #4fb84f;
+                }
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+nav {
+    font-size: 20px;
+    background-color: #4fb84f;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    ul {
+        width: 80%;
+        margin: auto;
+        list-style-type: none;
+        padding: 0;
+        overflow: hidden;
+
+        img {
+            height: 64px;
+        }
+
+        li {
+            float: left;
+        }
+
+
+        li a {
+            font-family: 'Lato', sans-serif;
+            font-style: 300;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: linear .1s;
+        }
+
+        li a:hover {
+            color: brown;
+        }
+
+        .right {
+            float: right;
+        }
+    }
+}
+
+.active {
+    color: brown !important;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 500px) {
+    li a {
+        font-size: 11px;
+        padding: 5px;
+    }
+
+}
