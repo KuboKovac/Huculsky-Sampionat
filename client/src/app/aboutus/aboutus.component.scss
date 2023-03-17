@@ -1,0 +1,18 @@
+body {
+    main {
+        max-width: 70%;
+        margin: auto;
+
+        .article {
+            text-align: justify;
+            background-color: #eff3ed;
+            margin: 50px 0;
+            box-shadow: 3px 3px 5px gray;
+            padding: 20px;
+
+            h1 {
+                text-align: center;
+            }
+        }
+    }
+}

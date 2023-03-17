@@ -1,4 +1,6 @@
 .slider-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
     position: relative;
     overflow: hidden;
     width: 100%;
@@ -12,7 +14,7 @@
     display: flex;
     width: calc(100% * 1);
     height: 100%;
-    animation: slide 25s infinite;
+    animation: slide 20s infinite;
 }
 
 .slide {

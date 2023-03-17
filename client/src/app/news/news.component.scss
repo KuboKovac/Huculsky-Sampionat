@@ -11,9 +11,10 @@ body {
         max-height: 350px;
         width: 500px;
         grid-area: topics;
-        background-color: #c9d6c2;
+        background-color: #eff3ed;
         max-width: 60%;
         margin: 25px auto;
+        box-shadow: 3px 3px 5px gray;
 
         ul {
             list-style-type: circle;
@@ -36,8 +37,9 @@ body {
             margin: 25px auto;
             max-width: 70%;
             height: auto;
-            background-color: #c9d6c2;
+            background-color: #eff3ed;
             padding: 20px;
+            box-shadow: 3px 3px 5px gray;
 
             ul {
                 list-style-type: none;

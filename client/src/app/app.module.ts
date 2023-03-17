@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HeroHeaderComponent } from './hero-header/hero-header.component';
 import { NewsComponent } from './news/news.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { NewsComponent } from './news/news.component';
     HeaderComponent,
     HeroHeaderComponent,
     NewsComponent,
+    AboutusComponent,
+    GalleryComponent,
   ],
   imports: [
     BrowserModule,
