@@ -1,0 +1,44 @@
+body {
+    height: 1000px;
+
+
+    .article-body {
+        margin: 25px auto;
+        max-width: 60%;
+        height: auto;
+        background-color: #c9d6c2;
+        padding: 20px;
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+
+            li {
+                display: inline;
+                margin: 0 10px;
+                color: gray;
+            }
+        }
+
+        .article-title {
+            font-size: 17px;
+
+            h1 {
+                margin: 5px 0;
+            }
+        }
+
+        .article-text {
+            color: gray;
+            padding-bottom: 20px;
+
+            a {
+                color: #4fb84f;
+            }
+        }
+    }
+
+    img {
+        width: 100%;
+    }
+}
