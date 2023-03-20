@@ -1,0 +1,6 @@
+<div class="slider-container">
+    <div class="slider" [style.transform]="'translateX(-' + currentIndex * (100 / (imageUrls.length - 2)) + '%)'">
+        <div class="slide" *ngFor="let imageUrl of imageUrls; let i = index"
+            [ngStyle]="{'background-image': 'url(' + imageUrl + ')'}"></div>
+    </div>
+</div>
