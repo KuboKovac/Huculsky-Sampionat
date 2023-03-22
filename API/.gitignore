@@ -9,6 +9,8 @@
 *.user
 *.userosscache
 *.sln.docstates
+*.idea
+.idea
 *database.db
 *database.db-shm
 *database.db-wal
