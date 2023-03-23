@@ -12,6 +12,7 @@ import {NewsComponent} from './news/news.component';
 import {AboutusComponent} from './aboutus/aboutus.component';
 import {GalleryComponent} from './gallery/gallery.component';
 import {AdministrationModule} from "./modules/administration/administration.module";
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
     declarations: [
@@ -26,10 +27,11 @@ import {AdministrationModule} from "./modules/administration/administration.modu
         GalleryComponent,
     ],
     imports: [
-        AdministrationModule,
         BrowserModule,
-        AppRoutingModule,
         NoopAnimationsModule,
+        AdministrationModule,
+        AuthModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
