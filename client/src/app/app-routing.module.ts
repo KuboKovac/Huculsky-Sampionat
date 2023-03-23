@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: "aboutus", component: AboutusComponent },
   { path: "news", component: NewsComponent },
   { path: "gallery", component: GalleryComponent },
-  { path: "login", component: LoginComponent }
+  { path: "login", component: LoginComponent },
+  { path: 'administration', loadChildren: () => import('src/app/modules/administration/administration.module').then(m => m.AdministrationModule), pathMatch: 'full'}
 ];
 
 @NgModule({
