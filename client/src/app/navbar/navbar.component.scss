@@ -11,6 +11,12 @@ nav {
 
         img {
             height: 64px;
+            cursor: pointer;
+            transition: linear .1s;
+        }
+
+        img:hover {
+            transform: scale(1.2);
         }
 
         li {
