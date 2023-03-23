@@ -4,6 +4,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { AdminPanelComponent } from './modules/administration/admin-panel/admin-panel.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 import { NewsComponent } from './news/news.component';
 
 const routes: Routes = [
@@ -11,7 +13,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "aboutus", component: AboutusComponent },
   { path: "news", component: NewsComponent },
-  { path: "gallery", component: GalleryComponent }
+  { path: "gallery", component: GalleryComponent },
+  { path: "login", component: LoginComponent }
 ];
 
 @NgModule({
