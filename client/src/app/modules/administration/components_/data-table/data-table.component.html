@@ -2,19 +2,19 @@
     <div class="table">
         <div class="table-header">
             <div class="table-data">
-                <div>
+                <div class="table-column">
                     <h4>Číslo Jazdca</h4>
                 </div>
-                <div>
+                <div class="table-column">
                     <h4>Meno</h4>
                 </div>
-                <div>
+                <div class="table-column">
                     <h4>Priezvisko</h4>
                 </div>
-                <div>
+                <div class="table-column">
                     <h4>Dátum Narodenia</h4>
                 </div>
-                <div>
+                <div class="table-column">
                     <h4>Kategória</h4>
                 </div>
             </div>
@@ -29,19 +29,19 @@
         </div>
         <div class="table-row" *ngFor="let rider of riders">
             <div class="table-data">
-                <div>
+                <div class="table-column">
                     <h4>{{rider.riderNum}}</h4>
                 </div>
-                <div>
+                <div class="table-column">
                     <p>{{rider.fName}}</p>
                 </div>
-                <div>
+                <div class="table-column">
                     <p>{{rider.lName}}</p>
                 </div>
-                <div>
+                <div class="table-column">
                     <p>{{rider.dob}}</p>
                 </div>
-                <div>
+                <div class="table-column">
                     <p>{{rider.category}}</p>
                 </div>
             </div>
