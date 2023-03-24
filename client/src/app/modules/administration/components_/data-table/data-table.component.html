@@ -1,0 +1,58 @@
+<div class="container-panel">
+    <div class="table">
+        <div class="table-header">
+            <div class="table-data">
+                <div>
+                    <h4>Číslo Jazdca</h4>
+                </div>
+                <div>
+                    <h4>Meno</h4>
+                </div>
+                <div>
+                    <h4>Priezvisko</h4>
+                </div>
+                <div>
+                    <h4>Dátum Narodenia</h4>
+                </div>
+                <div>
+                    <h4>Kategória</h4>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <p>Zmazať</p>
+                </div>
+                <div>
+                    <p>Upraviť</p>
+                </div>
+            </div>
+        </div>
+        <div class="table-row" *ngFor="let rider of riders">
+            <div class="table-data">
+                <div>
+                    <h4>{{rider.riderNum}}</h4>
+                </div>
+                <div>
+                    <p>{{rider.fName}}</p>
+                </div>
+                <div>
+                    <p>{{rider.lName}}</p>
+                </div>
+                <div>
+                    <p>{{rider.dob}}</p>
+                </div>
+                <div>
+                    <p>{{rider.category}}</p>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <button mat-button><mat-icon>delete</mat-icon></button>
+                </div>
+                <div>
+                    <button mat-button><mat-icon>settings</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

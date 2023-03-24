@@ -14,6 +14,8 @@ header {
     top: 0;
     z-index: 99999999;
     background: #b75060;
+    border-bottom:1px solid #a04956;
+    border-top:1px solid #a04956;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
     padding: 7px 20px;
     display: flex;
@@ -33,13 +35,11 @@ header {
             li {
                 position: relative;
                 float: left;
-
-
-
                 a {
                     font-size: 15px;
                     padding: 15px;
                     display: block;
+                    transition: ease-in-out 200ms;
                 }
 
                 a:hover {
