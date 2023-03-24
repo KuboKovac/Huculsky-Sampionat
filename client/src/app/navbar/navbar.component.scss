@@ -1,63 +1,35 @@
-nav {
-    font-size: 15px;
-    background-color: rgb(219, 219, 219);
-
-    ul {
-        width: 95%;
-        margin: auto;
-        list-style-type: none;
-        padding: 0;
-        overflow: hidden;
-
-        img {
-            height: 64px;
-            cursor: pointer;
-            transition: linear .1s;
-        }
-
-        img:hover {
-            transform: scale(1.2);
-        }
-
-        li {
-            float: left;
-        }
-
-
-        li a {
-            font-family: 'Lato', sans-serif;
-            font-style: 300;
-            display: block;
-            color: black;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            transition: linear .1s;
-        }
-
-        li a:hover {
-            color: brown;
-        }
-
-        .right {
-            float: right;
-        }
-    }
+.header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.login-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+img{
+    width: 350px;
+    cursor: pointer;
+}
+button{
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B75060;
+    color: white;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}
+button:hover{
+    background-color: #ef697e;
+    cursor: pointer;
 }
 
-.active {
-    color: brown !important;
-}
-
-
-
-
-
-
-@media only screen and (max-width: 500px) {
-    li a {
-        font-size: 11px;
-        padding: 5px;
+@media only screen and (max-width: 550px){
+    .header-container{
+        flex-direction: column;
+        align-items: center;
     }
 
 }

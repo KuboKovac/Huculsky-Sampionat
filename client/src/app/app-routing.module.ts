@@ -14,11 +14,11 @@ const routes: Routes = [
   { path: "news", component: NewsComponent },
   { path: "gallery", component: GalleryComponent },
   { path: "login", component: LoginComponent },
-  { path: 'administration', loadChildren: () => import('src/app/modules/administration/administration.module').then(m => m.AdministrationModule), pathMatch: 'full'}
+  { path: "administration", loadChildren: () => import('src/app/modules/administration/administration.module').then(m => m.AdministrationModule), pathMatch: 'full'}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
