@@ -1,15 +1,17 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Database.DbModels;
 
-public class Competition
+public class Image
 {
     [Key]
     public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; } = String.Empty;
-    public Arbiter Arbiter { get; set; }
-    public List<Result> Results { get; set; }
+    public string Url { get; set; }
+    [JsonIgnore]
+    public List<Article> Articles { get; set; }
+    [JsonIgnore]
     public List<Rider> Riders { get; set; }
+    [JsonIgnore]
     public List<Horse> Horses { get; set; }
 }
