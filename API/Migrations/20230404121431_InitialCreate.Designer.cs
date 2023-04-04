@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DatabaseDbContext))]
-    [Migration("20230403171225_InitialCreate")]
+    [Migration("20230404121431_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -295,8 +295,9 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Username")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
