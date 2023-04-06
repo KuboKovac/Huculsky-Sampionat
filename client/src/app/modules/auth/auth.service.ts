@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from 'src/environments/environment';
 import { LoginDTO } from './models/LoginModel';
-import { Observable, catchError, map } from 'rxjs';
+import { Observable, Subject, catchError, map } from 'rxjs';
 import { TokenDTO } from './models/TokenModel';
 import { errorHandler } from 'src/shared/functions';
 import { MessageService } from 'src/shared/message.service';
@@ -17,6 +17,7 @@ export class AuthService {
   private url = environment.baseUrl
   public role: string = ''
   public username: string = ''
+  public loggedInSubject = new Subject<boolean>()
   private jwtParser = new JwtHelperService();
 
 
@@ -24,8 +25,11 @@ export class AuthService {
     private _http: HttpClient,
     private _messageService: MessageService,
     private _router: Router
-  ) { }
+  ) {}
 
+  public loginStatusChange(): Observable<boolean> {
+    return this.loggedInSubject.asObservable()
+  }
 
   set token(value: string | null) {
     if (value) {
@@ -43,7 +47,7 @@ export class AuthService {
     return this._http.post<TokenDTO>(this.url + 'Auth/Login', login).pipe(
       map(response => {
         this.token = response.jwt
-
+        this.loggedInSubject.next(true)
         //  Jwt decoding
         let DecodedToken = this.jwtParser.decodeToken(this.token)
 
@@ -60,6 +64,7 @@ export class AuthService {
   }
 
   public logout() {
+    this.loggedInSubject.next(false)
     this.token = ''
     this.role = ''
     this.username = ''
