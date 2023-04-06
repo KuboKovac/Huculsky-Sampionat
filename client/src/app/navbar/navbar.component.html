@@ -3,7 +3,13 @@
         <img src="../../assets/resources/logo.jpg" routerLink="home" alt="logo">
         <div class="login-container">
             <button routerLink='administration/riders/table'>Spravovať Web</button>
-            <button routerLink="login">Prihlasiť sa</button>
+            <div *ngIf="!loggedIn else elseBlock">
+                <button routerLink="login">Prihlasiť sa</button>
+            </div>
+
+            <ng-template #elseBlock>
+                <button (click)="onLogout()">Odhlásiť sa</button>
+            </ng-template>
         </div>
     </div>
 </nav>

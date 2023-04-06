@@ -1,5 +1,5 @@
-<form class="login">
-    <input type="text" placeholder="Zadajte meno">
-    <input type="password" placeholder="Zadajte heslo">
-    <button routerLink="administration">Prihlasiť sa</button>
+<form class="login" [formGroup]="loginForm">
+    <input type="text" placeholder="Zadajte meno" name="username" formControlName="username" [(ngModel)]="login.username">
+    <input type="password" placeholder="Zadajte heslo" name="password" formControlName="password" [(ngModel)]="login.password">
+    <button (click)="onClick()" [disabled]="loginForm.invalid">Prihlasiť sa</button>
 </form>

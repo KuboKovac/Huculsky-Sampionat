@@ -13,6 +13,7 @@ import {AboutusComponent} from './aboutus/aboutus.component';
 import {GalleryComponent} from './gallery/gallery.component';
 import {AdministrationModule} from "./modules/administration/administration.module";
 import { AuthModule } from './modules/auth/auth.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,10 @@ import { AuthModule } from './modules/auth/auth.module';
         NoopAnimationsModule,
         AdministrationModule,
         AuthModule,
+
+        MatSnackBarModule,
+
+
         AppRoutingModule,
     ],
     providers: [],

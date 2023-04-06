@@ -1,5 +1,8 @@
 global using API;
 global using Microsoft.EntityFrameworkCore;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +19,22 @@ builder.Services.AddDbContext<DatabaseDbContext>(options =>
     //DefaultConnection is defined in appsettings.development file
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
+                .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
+builder.Services.AddCors(p => p.AddPolicy("CorsPolicy", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
 var app = builder.Build();
 
 //Initial database migration on startup
@@ -41,6 +59,6 @@ app.MapControllers();
 
 app.UseStaticFiles();
 
-app.UseCors();
+app.UseCors("CorsPolicy");
 
 app.Run();
