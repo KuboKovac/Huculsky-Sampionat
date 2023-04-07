@@ -15,8 +15,8 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private url = environment.baseUrl
-  public role: string = ''
-  public username: string = ''
+  public role = new Subject<string>()
+  public username = new Subject<string>()
   public loggedInSubject = new Subject<boolean>()
   private jwtParser = new JwtHelperService();
 
@@ -25,12 +25,27 @@ export class AuthService {
     private _http: HttpClient,
     private _messageService: MessageService,
     private _router: Router
-  ) {}
+  ) { }
+
+
+
+  // Observable functions for account informations change
+
+  public roleChange(): Observable<string> {
+    return this.role.asObservable()
+  }
 
   public loginStatusChange(): Observable<boolean> {
     return this.loggedInSubject.asObservable()
   }
 
+  public usernameChange(): Observable<string> {
+    return this.username.asObservable()
+  }
+
+
+
+  // get and set for Jwt from LocalStorage
   set token(value: string | null) {
     if (value) {
       localStorage.setItem('Jwt', value)
@@ -43,17 +58,19 @@ export class AuthService {
     return localStorage.getItem('Jwt')
   }
 
+
+
   public login(login: LoginDTO): Observable<TokenDTO> {
     return this._http.post<TokenDTO>(this.url + 'Auth/Login', login).pipe(
       map(response => {
         this.token = response.jwt
         this.loggedInSubject.next(true)
         //  Jwt decoding
-        let DecodedToken = this.jwtParser.decodeToken(this.token)
+        let decodedToken = this.jwtParser.decodeToken(this.token)
 
         //  Takes username and role from JwT
-        this.username = DecodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-        this.role = DecodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role']
+        this.username.next(decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
+        this.role.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
 
         this._messageService.message('Prihlásenie prebehlo úspešne', 2000)
 
@@ -66,8 +83,8 @@ export class AuthService {
   public logout() {
     this.loggedInSubject.next(false)
     this.token = ''
-    this.role = ''
-    this.username = ''
+    this.role.next('')
+    this.username.next('')
     this._messageService.message('Odhlásenie prebehlo úspešne', 2000)
     this._router.navigateByUrl('/')
   }
