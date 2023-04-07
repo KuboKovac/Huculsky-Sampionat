@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   private url = environment.baseUrl
-  public role: string = ''
+  public role = new Subject<string>()
   public username: string = ''
   public loggedInSubject = new Subject<boolean>()
   private jwtParser = new JwtHelperService();
@@ -25,7 +25,11 @@ export class AuthService {
     private _http: HttpClient,
     private _messageService: MessageService,
     private _router: Router
-  ) {}
+  ) { }
+
+  public roleChange(): Observable<string> {
+    return this.role.asObservable()
+  }
 
   public loginStatusChange(): Observable<boolean> {
     return this.loggedInSubject.asObservable()
@@ -49,11 +53,11 @@ export class AuthService {
         this.token = response.jwt
         this.loggedInSubject.next(true)
         //  Jwt decoding
-        let DecodedToken = this.jwtParser.decodeToken(this.token)
+        let decodedToken = this.jwtParser.decodeToken(this.token)
 
         //  Takes username and role from JwT
-        this.username = DecodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
-        this.role = DecodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role']
+        this.username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        this.role.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
 
         this._messageService.message('Prihlásenie prebehlo úspešne', 2000)
 
@@ -66,7 +70,7 @@ export class AuthService {
   public logout() {
     this.loggedInSubject.next(false)
     this.token = ''
-    this.role = ''
+    this.role.next('')
     this.username = ''
     this._messageService.message('Odhlásenie prebehlo úspešne', 2000)
     this._router.navigateByUrl('/')
