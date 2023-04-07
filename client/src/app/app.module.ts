@@ -14,6 +14,8 @@ import {GalleryComponent} from './gallery/gallery.component';
 import {AdministrationModule} from "./modules/administration/administration.module";
 import { AuthModule } from './modules/auth/auth.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -34,6 +36,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         AuthModule,
 
         MatSnackBarModule,
+        MatButtonModule,
+        MatIconModule,
 
 
         AppRoutingModule,

@@ -16,7 +16,7 @@ export class AuthService {
 
   private url = environment.baseUrl
   public role = new Subject<string>()
-  public username: string = ''
+  public username = new Subject<string>()
   public loggedInSubject = new Subject<boolean>()
   private jwtParser = new JwtHelperService();
 
@@ -27,6 +27,10 @@ export class AuthService {
     private _router: Router
   ) { }
 
+
+
+  // Observable functions for account informations change
+
   public roleChange(): Observable<string> {
     return this.role.asObservable()
   }
@@ -35,6 +39,13 @@ export class AuthService {
     return this.loggedInSubject.asObservable()
   }
 
+  public usernameChange(): Observable<string> {
+    return this.username.asObservable()
+  }
+
+
+
+  // get and set for Jwt from LocalStorage
   set token(value: string | null) {
     if (value) {
       localStorage.setItem('Jwt', value)
@@ -47,6 +58,8 @@ export class AuthService {
     return localStorage.getItem('Jwt')
   }
 
+
+
   public login(login: LoginDTO): Observable<TokenDTO> {
     return this._http.post<TokenDTO>(this.url + 'Auth/Login', login).pipe(
       map(response => {
@@ -56,7 +69,7 @@ export class AuthService {
         let decodedToken = this.jwtParser.decodeToken(this.token)
 
         //  Takes username and role from JwT
-        this.username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
+        this.username.next(decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
         this.role.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
 
         this._messageService.message('Prihlásenie prebehlo úspešne', 2000)
@@ -71,7 +84,7 @@ export class AuthService {
     this.loggedInSubject.next(false)
     this.token = ''
     this.role.next('')
-    this.username = ''
+    this.username.next('')
     this._messageService.message('Odhlásenie prebehlo úspešne', 2000)
     this._router.navigateByUrl('/')
   }

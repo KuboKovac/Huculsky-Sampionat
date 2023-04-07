@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
 
   public loggedIn: boolean = true
   public userRole: string = ''
-
+  public username: string = ''
 
   constructor(
     private _authService: AuthService
@@ -42,6 +42,12 @@ export class NavbarComponent implements OnInit {
         console.log(role)
       }
     )
+    this._authService.usernameChange().subscribe(
+      username => {
+        this.username = username
+        console.log(username)
+      }
+    )
   }
 
   public onLogout(){
@@ -54,5 +60,6 @@ export class NavbarComponent implements OnInit {
     let jwtParser = new JwtHelperService();
     const decodedToken = jwtParser.decodeToken(token)
     this.userRole = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
+    this.username = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']
   }
 }
