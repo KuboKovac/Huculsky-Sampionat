@@ -23,30 +23,29 @@ public class AuthController : ControllerBase
         _dbContext = dbContext;
     }
 
+    
+    
     [HttpPost("Login")]
     public async Task<ActionResult<TokenDTO>> Login(LoginDTO loginDto)
     {
-        var registeredUsers = await _dbContext.Users.ToListAsync();
-        var user = new User();
+       // Finds user in database - if it's not found, returns null
+        var usr = await _dbContext.Users.Where(usr => usr.Username == loginDto.Username).FirstOrDefaultAsync();
 
-        foreach (var usr in registeredUsers)
-        {
-            if (usr.Username == loginDto.Username)
-            {
-                user.Username = loginDto.Username;
-                user.Role = usr.Role;
-                user.PasswordHash = usr.PasswordHash;
-                user.PasswordSalt = usr.PasswordSalt;
-                if (VerifyHash(loginDto.Password,user.PasswordHash,user.PasswordSalt))
-                {
-                    var jwt = GenerateJwt(user);
-                    return Ok(new TokenDTO{Jwt = jwt});
-                }
-            }
-        }
-        return BadRequest("Meno alebo heslo je nesprávne!");
+        //User not found case:
+        if (usr == null) 
+            return BadRequest("Meno alebo heslo je nesprávne!");
+        
+        //Verifies password, if incorrect return bad request, else return JWT
+        //Wrong password case:
+        if (!VerifyHash(loginDto.Password, usr.PasswordHash, usr.PasswordSalt))
+            return BadRequest("Meno alebo heslo je nesprávne!");
+        
+        var jwt = GenerateJwt(usr);
+        return Ok(new TokenDTO{Jwt = jwt});
     }
 
+    
+    
     [HttpPost("Register")]
     public async Task<ActionResult> Register(RegisterDTO registerDto)
     {
@@ -54,15 +53,13 @@ public class AuthController : ControllerBase
         HashPassword(registerDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
         
         //checks for Database conflicts
-        var databaseUsers = await _dbContext.Users.ToListAsync();
-        foreach (var usr in databaseUsers)
+        var dbUser = await _dbContext.Users.Where(usr => usr.Username == registerDto.Username).FirstOrDefaultAsync();
+        if (dbUser != null)
         {
-            if (registerDto.Username == usr.Username)
-            {
-                return BadRequest("Použivateľ s rovnakým menom existuje!");
-            }
+            return BadRequest("Použivateľ s rovnakým menom existuje!");
         }
 
+        //If no conflicts were found, adds user into DB and return 200
         _dbContext.Users.Add(new User()
         {
             Username = registerDto.Username,
@@ -70,9 +67,7 @@ public class AuthController : ControllerBase
             PasswordSalt = passwordSalt,
             Role = registerDto.Role
         });
-
         await _dbContext.SaveChangesAsync();
-        
         return Ok("Registrácia použivateľa " + registerDto.Username + " so statusom " + registerDto.Role + " prebehla úspešne!");
     }
 
