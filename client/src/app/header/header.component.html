@@ -1,93 +1,100 @@
-<header>
-    <!--<a class="logo" routerLink="/home" routerLinkActive="active">Hucolský šampionat</a> -->
-    <nav class="navbar">
-        <ul>
-            <li><a routerLink="/aboutus" routerLinkActive="active">O nás</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Historia</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Aktivity</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Organizačny vybor</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Stanovy</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Členstvo</a></li>
-                </ul>
-            </li>
-            <li><a routerLink="/news" routerLinkActive="active">Naše kluby</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Kráľovská lúka</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Ranč u Kosťa Pozdišovce</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Skalica</a></li>
-                </ul>
-            </li>
+<nav class="navigation">
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">O nás</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Aktivity</button>
+            <button mat-menu-item>Organizačný výbor</button>
+            <button mat-menu-item>Členstvo</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Huculská stezka</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">História</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Termíny pretekov</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Výsledky</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Naše kluby</button>
+        <mat-menu #menu1="matMenu">
+            <button mat-menu-item>Kráľovská Lúka</button>
+            <button mat-menu-item>Ranč u Kosťa Pozdišovce</button>
+            <button mat-menu-item>Skalica</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Huculský šampionat</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">História</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Termíny konania</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Výsledky</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Huculská stezka</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>História</button>
+            <button mat-menu-item>Termíny pretekov</button>
+            <button mat-menu-item>Výsledky</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Klinika</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Čo je to ?</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Termíny</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Huculský Šampionát</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>História</button>
+            <button mat-menu-item>Termíny pretekov</button>
+            <button mat-menu-item>Výsledky</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Kurzy jazdenia</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Technicky trening</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Vychádzky</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Klinika</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Čo je to?</button>
+            <button mat-menu-item>Termíny</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Preukaz jazdca</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Ako ho získať ?</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Kredity jazdcov</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Kurzy Jazdenia</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Technický tréning</button>
+            <button mat-menu-item>Vychádzky</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Licencia jazdca</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Ako ho získať ?</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Preukaz Jazdca</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Kredity Jazdcov</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Licencia trenera</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Ako ho získať ?</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Licencia Jazdca</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Ako ju získať ?</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/gallery" routerLinkActive="active">Fotogaléria</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Súťaže</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Tréningy</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Akcie</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Licencia Trénera</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Ako ju získať ?</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Odborná zóna</a>
-                <ul>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Vzdelávanie</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Odborné články</a></li>
-                    <li><a routerLink="/aboutus" routerLinkActive="active">Odborné publikácie</a></li>
-                </ul>
-            </li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Fotogaléria</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Súťaže</button>
+            <button mat-menu-item>Tréningy</button>
+            <button mat-menu-item>Akcie</button>
+        </mat-menu>
+    </div>
 
-            <li><a routerLink="/news" routerLinkActive="active">Kontakty</a></li>
+    <div class="dropdown">
+        <button mat-button [matMenuTriggerFor]="menu">Odborná zóna</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Vzdelávanie</button>
+            <button mat-menu-item>Odborné články</button>
+            <button mat-menu-item>Odborné publikácie</button>
+        </mat-menu>
+    </div>
 
-            <!--<li><a routerLink="/news" routerLinkActive="active">Novinky</a></li>-->
-
-        </ul>
-    </nav>
-</header>
+    <div>
+        <button mat-button>Kontakty</button>
+    </div>
+    
+    <div>
+        <button mat-button>Novinky</button>
+    </div>
+</nav>

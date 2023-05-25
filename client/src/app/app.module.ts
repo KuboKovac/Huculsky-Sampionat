@@ -16,6 +16,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu'
+
 
 @NgModule({
     declarations: [
@@ -38,6 +40,8 @@ import { MatIconModule } from '@angular/material/icon';
         MatSnackBarModule,
         MatButtonModule,
         MatIconModule,
+        MatMenuModule,
+        
 
 
         AppRoutingModule,
