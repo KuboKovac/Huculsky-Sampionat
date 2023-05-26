@@ -8,8 +8,8 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class HeaderComponent {
 
-  @HostBinding('class.buger-menu-opened') navbarOpened: Boolean = false;
-
+  //@HostBinding('class.buger-menu-opened')  <--- kokocina dava mi to do app componentu nie do danej classi
+  navbarOpened: Boolean = false;
   constructor() { }
 
   navbarToggle() {

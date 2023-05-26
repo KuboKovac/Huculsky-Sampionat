@@ -7,6 +7,8 @@ import { AddRecordComponent } from './components_/add-record/add-record.componen
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { ArticlesComponent } from './components_/articles/articles.component';
+import { NewArticleComponent } from './components_/new-article/new-article.component';
+import { AdminHeaderComponent } from './components_/admin-header/admin-header.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +16,8 @@ import { ArticlesComponent } from './components_/articles/articles.component';
         DataTableComponent,
         AddRecordComponent,
         ArticlesComponent,
+        NewArticleComponent,
+        AdminHeaderComponent,
     ],
     exports: [
         AdminPanelComponent

@@ -5,6 +5,7 @@ import { AddRecordComponent } from "./components_/add-record/add-record.componen
 import { DataTableComponent } from "./components_/data-table/data-table.component";
 import { RoleGuard } from "../auth/guards/role.guard";
 import { ArticlesComponent } from "./components_/articles/articles.component";
+import { NewArticleComponent } from "./components_/new-article/new-article.component";
 
 
 const routes = [
@@ -13,7 +14,8 @@ const routes = [
             [
                 { path: ':id/table', component: DataTableComponent },
                 { path: ':id/add', component: AddRecordComponent },
-                { path: ':id/article', component: ArticlesComponent }
+                { path: ':id/article', component: ArticlesComponent },
+                { path: ':id/new/article', component: NewArticleComponent },
             ]
     }
 ]
