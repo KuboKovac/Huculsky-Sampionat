@@ -9,11 +9,11 @@ import { Article } from '../../models/Article';
 export class ArticlesComponent implements OnInit {
 
   articles: Article[] = [
-    new Article("Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", false),
-    new Article("Imhotep", new Date().toLocaleString(), "Egypt vyhlasil vojnu proti slovensku", "Ta čo viacej poviem tu len števo dačo skúša", false),
-    new Article("Stevo", new Date().toLocaleString(), "Števo pridal article", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sed provident eius suscipit, natus nihil consequatur harum obcaecati numquam enim et voluptate voluptates, debitis sapiente atque veniam odio illum aut. ", false),
-    new Article("Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", false),
-    new Article("Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", false),
+    new Article(0, "Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", null, false),
+    new Article(0, "Imhotep", new Date().toLocaleString(), "Egypt vyhlasil vojnu proti slovensku", "Ta čo viacej poviem tu len števo dačo skúša", null, false),
+    new Article(0, "Stevo", new Date().toLocaleString(), "Števo pridal article", "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sed provident eius suscipit, natus nihil consequatur harum obcaecati numquam enim et voluptate voluptates, debitis sapiente atque veniam odio illum aut. ", null, false),
+    new Article(0, "Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", null, false),
+    new Article(0, "Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", null, false),
   ];
 
   constructor() { }

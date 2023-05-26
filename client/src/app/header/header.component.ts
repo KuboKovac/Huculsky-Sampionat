@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostBinding, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
@@ -6,9 +6,14 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent{
+export class HeaderComponent {
+
+  @HostBinding('class.buger-menu-opened') navbarOpened: Boolean = false;
 
   constructor() { }
 
+  navbarToggle() {
+    this.navbarOpened = !this.navbarOpened;
+  }
 
 }

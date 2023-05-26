@@ -1,4 +1,13 @@
+<div class="main-container">
+    <div class="admin-top-nav">
+        <li><a>Nový článok</a></li>
+        <li><a>Články v čakani</a></li>
+        <li><a>Schvalene članky</a></li>
+        <li><a>Vyhľadať článok</a></li>
+    </div>
+</div>
 <div class="table">
+    <p class="info">Prave sa zobrazuju všetky články</p>
     <div class="article">
         <div class="section">
             <div class="article-head">
@@ -31,6 +40,7 @@
             </div>
             <div class="article-context">
                 <p class="article-name">{{item.articleName}}</p>
+                <img *ngIf="item.photoForArticle" src={{item.photoForArticle}} alt="">
                 <p class="context">{{item.articleContext}}</p>
             </div>
         </div>
