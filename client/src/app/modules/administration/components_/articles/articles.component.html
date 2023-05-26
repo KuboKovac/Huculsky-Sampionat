@@ -6,6 +6,9 @@
             <div class="article-head">
                 <p>USER</p>
                 <p>Date</p>
+                <p><mat-icon>remove_circle_outline</mat-icon></p>
+                <p><mat-icon>check_circle_outline</mat-icon></p>
+
             </div>
             <div class="article-context">
                 <p>article name</p>
@@ -30,6 +33,8 @@
             <div class="article-head">
                 <p class="username">{{item.username}}</p>
                 <p class="date">{{item.date}}</p>
+                <p><mat-icon>{{item.approvedArticle == true ?
+                        "check_circle_outline":"remove_circle_outline" }}</mat-icon></p>
             </div>
             <div class="article-context">
                 <p class="article-name">{{item.articleName}}</p>
