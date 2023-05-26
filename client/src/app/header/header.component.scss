@@ -1,4 +1,7 @@
-.navigation{
+/*
+--------------------------------------------------Computer section---------------------------------------------------------------------
+*/
+.navigation-pc {
     background-color: #B75060;
     display: flex;
     flex-direction: row;
@@ -8,6 +11,88 @@
     color: white;
     flex-wrap: wrap;
 }
-.dropdown-menu{
+
+::ng-deep .dropdown-menu {
+    background: #B75060;
+    border-top: 0;
+
+}
+
+.mat-menu-item {
+    color: white !important;
+    //font-family: Roboto, "Helvetica Neue", sans-serif; <-- original material font
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.mat-elevation-z4 {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.0), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+/*
+--------------------------------------------------Mobile section---------------------------------------------------------------------
+*/
+
+
+.navigation-mobile {
     background-color: #B75060;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
+    color: white;
+    flex-wrap: wrap;
+}
+
+.buger-menu-opened {
+    display: inline;
+}
+
+@media (max-width: 475px) {
+    .navigation-pc {
+        display: none;
+    }
+
+    .navigation-mobile {
+        display: block;
+        text-align: center;
+
+        .burgir {
+            float: right;
+            margin: 5px;
+            background-color: inherit;
+            color: white;
+            border: 0;
+            padding: 5px;
+            transition: 0.3 linear;
+        }
+
+        .burgir.activate {
+            transform: rotate(90deg);
+        }
+
+        .buger-menu {
+            text-align: center;
+            width: 100%;
+
+            .dropdown {
+                border-bottom: 1px solid #50232a;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+
+        .mat-menu-item {
+            color: white !important;
+            //font-family: Roboto, "Helvetica Neue", sans-serif; <-- original material font
+            font-family: 'Lato', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            width: 100%;
+        }
+    }
 }

@@ -1,7 +1,9 @@
-<nav class="navigation">
+<nav class="navigation-pc">
     <div class="dropdown">
         <button mat-button [matMenuTriggerFor]="menu">O nás</button>
-        <mat-menu #menu="matMenu">
+        <mat-menu #menu="matMenu" class="dropdown-menu">
+            <button mat-menu-item>Aktivity</button>
+            <button mat-menu-item>Aktivity</button>
             <button mat-menu-item>Aktivity</button>
             <button mat-menu-item>Organizačný výbor</button>
             <button mat-menu-item>Členstvo</button>
@@ -93,8 +95,117 @@
     <div>
         <button mat-button>Kontakty</button>
     </div>
-    
+
     <div>
         <button mat-button>Novinky</button>
+    </div>
+</nav>
+
+<nav class="navigation-mobile">
+    <button class="burgir" (click)="navbarToggle()">
+        <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
+    </button>
+    <div class="buger-menu" *ngIf="navbarOpened">
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">O nás</button>
+            <mat-menu #menu="matMenu" class="dropdown-menu">
+                <button mat-menu-item>Aktivity</button>
+                <button mat-menu-item>Aktivity</button>
+                <button mat-menu-item>Aktivity</button>
+                <button mat-menu-item>Organizačný výbor</button>
+                <button mat-menu-item>Členstvo</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Naše kluby</button>
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item>Kráľovská Lúka</button>
+                <button mat-menu-item>Ranč u Kosťa Pozdišovce</button>
+                <button mat-menu-item>Skalica</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Huculská stezka</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>História</button>
+                <button mat-menu-item>Termíny pretekov</button>
+                <button mat-menu-item>Výsledky</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Huculský Šampionát</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>História</button>
+                <button mat-menu-item>Termíny pretekov</button>
+                <button mat-menu-item>Výsledky</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Klinika</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Čo je to?</button>
+                <button mat-menu-item>Termíny</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Kurzy Jazdenia</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Technický tréning</button>
+                <button mat-menu-item>Vychádzky</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Preukaz Jazdca</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Kredity Jazdcov</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Licencia Jazdca</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Ako ju získať ?</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Licencia Trénera</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Ako ju získať ?</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Fotogaléria</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Súťaže</button>
+                <button mat-menu-item>Tréningy</button>
+                <button mat-menu-item>Akcie</button>
+            </mat-menu>
+        </div>
+
+        <div class="dropdown">
+            <button mat-button [matMenuTriggerFor]="menu">Odborná zóna</button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Vzdelávanie</button>
+                <button mat-menu-item>Odborné články</button>
+                <button mat-menu-item>Odborné publikácie</button>
+            </mat-menu>
+        </div>
+
+        <div>
+            <button mat-button>Kontakty</button>
+        </div>
+
+        <div>
+            <button mat-button>Novinky</button>
+        </div>
     </div>
 </nav>

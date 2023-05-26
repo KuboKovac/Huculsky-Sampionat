@@ -1,0 +1,113 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .admin-top-nav {
+        display: flex;
+        flex-direction: row;
+        background-color: #828282;
+        min-width: 100%;
+
+        li {
+            padding: 10px 0 10px;
+            transition: ease-in-out 200ms;
+            list-style: none;
+        }
+
+        a {
+            text-align: center;
+            margin: 15px;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        li:hover {
+            background-color: #7b3741;
+            cursor: pointer;
+        }
+    }
+
+}
+
+
+
+.table {
+    margin: auto;
+    max-width: 85%;
+
+    .info {
+        color: gray;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .left {
+        text-align: center;
+    }
+
+    .article {
+        margin: 10px;
+        border: 1px solid black;
+        border-radius: 5px;
+        padding: 0px 20px;
+        display: flex;
+
+        .article-head {
+            max-width: 98%;
+            display: flex;
+            margin: 20px 0;
+            border-bottom: 1px solid gray;
+
+            p {
+                margin: 0 5px 0 0;
+            }
+
+            .username {
+                font-size: 25px;
+                font-weight: 800;
+            }
+
+            .date {
+                font-style: italic;
+                font-size: 15px;
+                color: gray;
+            }
+        }
+
+        .article-context {
+            max-width: 97%;
+            background-color: rgb(233, 233, 233);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px 0;
+
+            .article-name {
+                font-size: 20px;
+                font-weight: 600;
+                margin: 16px 0;
+            }
+
+            .context {
+                text-align: justify;
+                margin: 10px 0;
+                font-size: 17px;
+            }
+        }
+
+        .article-modify {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            border-left: 1px solid gray;
+
+            button {
+                margin: 5px;
+                width: 100%;
+            }
+        }
+    }
+}
