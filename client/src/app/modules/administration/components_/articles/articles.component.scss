@@ -2,32 +2,73 @@
     margin: auto;
     max-width: 85%;
 
+    .right {
+        width: 100%;
+    }
+
+    .left {
+        text-align: center;
+    }
+
     .article {
-        margin: 5px;
+        margin: 10px;
         border: 1px solid black;
+        border-radius: 5px;
         padding: 0px 20px;
+        display: flex;
 
         .article-head {
+            max-width: 98%;
             display: flex;
             margin: 20px 0;
+            border-bottom: 1px solid gray;
 
             p {
                 margin: 0 5px 0 0;
             }
+
+            .username {
+                font-size: 25px;
+                font-weight: 800;
+            }
+
+            .date {
+                font-style: italic;
+                font-size: 15px;
+                color: gray;
+            }
         }
 
         .article-context {
-            max-width: 85%;
+            max-width: 97%;
+            background-color: rgb(233, 233, 233);
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px 0;
+
+            .article-name {
+                font-size: 20px;
+                font-weight: 600;
+                margin: 16px 0;
+            }
+
+            .context {
+                text-align: justify;
+                margin: 10px 0;
+                font-size: 17px;
+            }
         }
 
         .article-modify {
             display: flex;
-            justify-content: end;
-
-            margin: 5px;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            border-left: 1px solid gray;
 
             button {
-                margin: 0 5px;
+                margin: 5px;
+                width: 100%;
             }
         }
     }
