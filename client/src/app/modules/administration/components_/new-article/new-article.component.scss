@@ -1,0 +1,127 @@
+* {
+
+    input,
+    textarea {
+        border-radius: 5px;
+    }
+}
+
+.table {
+    margin: 25px auto;
+    max-width: 85%;
+    max-height: 100%;
+
+    .new-article {
+        height: 100%;
+        margin: 25px;
+        border: 1px solid gray;
+        border-radius: 5px;
+        background-color: rgb(222, 222, 222);
+
+        .article-section {
+            height: 100%;
+            display: grid;
+            grid-template-areas:
+                'article-header article-header'
+                'article-image article-text-area'
+                'article-footer article-footer';
+
+            grid-template-columns: minmax(0%, 30%) minmax(20%, 70%);
+
+            .article-head {
+                display: flex;
+                padding: 25px;
+                grid-area: article-header;
+                color: #b75060;
+                font-size: 25px;
+
+                p {
+                    margin: 0 15px 0 0;
+                }
+            }
+
+
+
+            .image-context {
+                grid-area: article-image;
+                margin: auto;
+                width: 100%;
+                height: 100%;
+
+
+
+                .selected-image {
+                    margin: auto;
+                    height: 92%;
+                    width: 90%;
+                    border: 4px dotted #b75060;
+                    transition: linear 0.2s;
+
+                    .file_upload {
+                        max-width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        color: #b75060;
+
+                        mat-icon {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 64px;
+                            width: 64px;
+                            font-size: 50px;
+                        }
+
+                        p {
+                            font-size: 25px;
+                        }
+                    }
+                }
+
+                .selected-image:hover {
+                    transform: scale(1.01);
+                    background-color: rgba($color: #000000, $alpha: 0.1);
+                }
+
+                .selectFile {
+                    display: none;
+                    visibility: hidden;
+                }
+
+
+            }
+
+            .context {
+                grid-area: article-text-area;
+                display: grid;
+                grid-template-areas:
+                    'article-name'
+                    'article-context';
+                gap: 5px;
+                color: #b75060;
+
+                padding: 20px;
+                font-size: 25px;
+                font-weight: 500;
+
+                input[type="text"] {
+                    width: 50%;
+                    height: 100%;
+                }
+
+                textarea {
+                    resize: none;
+                }
+            }
+
+
+            .article-footer {
+                grid-area: article-footer;
+                text-align: center;
+            }
+        }
+    }
+}

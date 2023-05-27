@@ -12,4 +12,7 @@ export class NewArticleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showPreview() {
+
+  }
 }

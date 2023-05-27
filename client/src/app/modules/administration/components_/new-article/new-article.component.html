@@ -1,2 +1,41 @@
 <app-admin-header></app-admin-header>
-<p>new-article works!</p>
+<div class="table">
+    <div class="new-article">
+        <div class="article-section">
+            <div class="article-head">
+                <p>USER</p>
+                <p>Date</p>
+                <!--<input type="checkbox"><span> Chcem prídať fotku</span>--->
+            </div>
+
+
+            <div class="image-context">
+
+                <label for="selectImage">
+                    <div class="selected-image" for="selectImage">
+                        <img src="" alt="">
+                        <div class="file_upload">
+                            <!--add_circle_outline-->
+                            <mat-icon>insert_photo</mat-icon>
+                            <p>Nahrajte fotku</p>
+                        </div>
+                    </div>
+                </label>
+                <!--Vďaka labelu nahore mam skrytý input, nešupať do toho-->
+                <input id="selectImage" class="selectFile" type="file" accept="image/*" (change)="showPreview()">
+
+            </div>
+            <div class="context">
+                <label for="input">Zadajte nazov článku:</label>
+                <input type="text" placeholder="Začnite pisať názov článku...">
+                <label for="textarea">Zadajte text:</label>
+                <textarea placeholder="Začnite pisať svoj článok..." name="" id="" cols="" rows="10"></textarea>
+            </div>
+
+
+            <div class="article-footer">
+                <button>SAVE</button>
+                <button>DISCARD</button>
+            </div>
+        </div>
+    </div>
