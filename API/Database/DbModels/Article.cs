@@ -9,6 +9,7 @@ public class Article
     public DateTime Date { get; set; }
     public string Name { get; set; }
     public string Content { get; set; }
-    public List<Comment> Comments { get; set; }
-    public List<Image> Images { get; set; }
+    public bool IsApproved { get; set; }
+    public List<Comment>? Comments { get; set; }
+    public List<Image>? Images { get; set; }
 }

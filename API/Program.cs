@@ -3,6 +3,8 @@ global using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,14 +13,37 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-// Adds database service
-builder.Services.AddDbContext<DatabaseDbContext>(options =>
+//adds Authorization into swagger
+builder.Services.AddSwaggerGen(opt =>
 {
-    //DefaultConnection is defined in appsettings.development file
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+    opt.SwaggerDoc("v1", new OpenApiInfo { Title = "MyAPI", Version = "v1" });
+    opt.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter token",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        BearerFormat = "JWT",
+        Scheme = "bearer"
+    });
+
+    opt.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type=ReferenceType.SecurityScheme,
+                    Id="Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
 });
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -31,10 +56,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateAudience = false
         };
     });
-builder.Services.AddCors(p => p.AddPolicy("CorsPolicy", builder =>
+builder.Services.AddCors(corsOptions =>
+    corsOptions.AddPolicy("CorsPolicy", policy => { policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader(); }));
+
+// Adds database service
+builder.Services.AddDbContext<DatabaseDbContext>(options =>
 {
-    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
-}));
+    //DefaultConnection is defined in appsettings.development file
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
 var app = builder.Build();
 
 //Initial database migration on startup
@@ -53,12 +84,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseStaticFiles();
-
 app.UseCors("CorsPolicy");
+
+app.UseStaticFiles();
 
 app.Run();
