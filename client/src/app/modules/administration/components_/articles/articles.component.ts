@@ -16,9 +16,19 @@ export class ArticlesComponent implements OnInit {
     new Article(0, "Stevo", new Date().toLocaleString(), "Števo pridal article", "Ta čo viacej poviem tu len števo dačo skúša", null, false),
   ];
 
+  onlyApproved: Boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  sortByApproved(): Article[] {
+    this.onlyApproved = !this.onlyApproved;
+    if (!this.onlyApproved) {
+      return this.articles
+    } else {
+      return this.articles.filter(value => value.approvedArticle == true);
+    }
+  }
 }
