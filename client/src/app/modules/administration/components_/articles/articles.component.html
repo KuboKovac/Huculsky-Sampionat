@@ -1,8 +1,9 @@
 <app-admin-header></app-admin-header>
 <div class="table">
     <p class="info">Prave sa zobrazuju všetky články</p>
-    <button (click)="sortByApproved()">Sort</button>
-    <div class="article">
+    <!--<button (click)="sortByApproved()">Sort</button>-->
+
+    <!--  <div class="article">
         <div class="section">
             <div class="article-head">
                 <p>USER</p>
@@ -28,8 +29,8 @@
             </div>
         </div>
 
-    </div>
-    <div class="article" *ngFor="let item of sortByApproved()">
+    </div> -->
+    <div class="article" *ngFor="let item of articleSliced">
         <div class="right">
             <div class="article-head">
                 <p class="username">{{item.username}}</p>
@@ -53,4 +54,7 @@
         </div>
 
     </div>
+    <mat-paginator [length]="articles.length" [pageSize]="5" [hidePageSize]="true" (page)="onClickChangePage($event)"
+        aria-label="Select page">
+    </mat-paginator>
 </div>
