@@ -18,7 +18,11 @@
 
 }
 
-.mat-menu-item {
+::ng-deep .mat-menu-content {
+    background: #B75060;
+}
+
+::ng-deep .mat-menu-item {
     color: white !important;
     //font-family: Roboto, "Helvetica Neue", sans-serif; <-- original material font
     font-family: 'Lato', sans-serif;
