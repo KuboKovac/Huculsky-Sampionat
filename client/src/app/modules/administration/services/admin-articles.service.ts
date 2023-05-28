@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map } from 'rxjs';
 import { Article } from '../models/Article';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MessageService } from 'src/shared/message.service';
 import { errorHandler } from 'src/shared/functions';
 
@@ -24,7 +24,9 @@ export class AdminArticlesService {
   }
 
   saveAdminArticle(article: Article): Observable<Article> {
-    return this.http.post<Article>(this.serverUrl + "Articles/CreateArticle", article).pipe(
+    const headers = new HttpHeaders().set("Authorization", "" + localStorage.getItem("Jwt"));
+
+    return this.http.post<Article>(this.serverUrl + "Articles/CreateArticle", article, { headers }).pipe(
       map(jsonArticle => Article.clone(jsonArticle)),
       catchError(error => errorHandler(error, 400, this.messageService))
     )

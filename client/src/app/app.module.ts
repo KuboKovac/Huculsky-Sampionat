@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatMenuModule,
         MatPaginatorModule,
         MatTabsModule,
+        FormsModule,
 
 
 

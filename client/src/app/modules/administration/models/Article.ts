@@ -1,6 +1,6 @@
 export class Article {
     public static clone(a: Article): Article {
-        return new Article(a.id, a.name, a.date, a.articleName, a.content, a.photoForArticle, a.approvedArticle)
+        return new Article(a.id, a.name, a.date, a.articleName, a.content, a.photoForArticle, a.isApproved)
     }
 
     constructor(
@@ -10,6 +10,6 @@ export class Article {
         public articleName: string = '',
         public content: string = '',
         public photoForArticle: String | null = null,
-        public approvedArticle: boolean = false,
+        public isApproved: boolean = false,
     ) { }
 }

@@ -26,10 +26,10 @@ export class ArticlesComponent implements OnInit {
       {
         next: ariclesArray => this.articles = ariclesArray,
         error: error => error.message = "Nepodarilo sa načitať články.",
-        complete: () => console.log(this.articles),
+        complete: () => this.articleSliced = this.articles.slice(0, 5),
       }
     )
-    this.articleSliced = this.articles.slice(0, 5)
+
   }
 
   sortByApproved(): Article[] {
@@ -37,7 +37,7 @@ export class ArticlesComponent implements OnInit {
     if (!this.onlyApproved) {
       return this.articles
     } else {
-      return this.articles.filter(value => value.approvedArticle == true);
+      return this.articles.filter(value => value.isApproved == true);
     }
   }
 

@@ -30,12 +30,12 @@
         </div>
 
     </div> -->
-    <div class="article" *ngFor="let item of articles">
+    <div class="article" *ngFor="let item of articleSliced">
         <div class="right">
             <div class="article-head">
                 <p class="username">{{item.name}}</p>
                 <p class="date">{{item.date}}</p>
-                <p><mat-icon>{{item.approvedArticle == true ?
+                <p><mat-icon>{{item.isApproved == true ?
                         "check_circle_outline":"remove_circle_outline" }}</mat-icon></p>
             </div>
             <div class="article-context">
