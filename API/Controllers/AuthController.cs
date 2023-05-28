@@ -103,6 +103,9 @@ public class AuthController : ControllerBase
             case "Admin":
                 claims.Add(new Claim(ClaimTypes.Role,"Admin"));
                 break;
+            case "Editor":
+                claims.Add(new Claim(ClaimTypes.Role,"Editor"));
+                break;
             case "Arbiter":
                 claims.Add(new Claim(ClaimTypes.Role,"Arbiter"));
                 break;
