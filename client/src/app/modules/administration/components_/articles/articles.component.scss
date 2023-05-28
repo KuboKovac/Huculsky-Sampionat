@@ -46,6 +46,7 @@
 
     .left {
         text-align: center;
+        background-color: #b75060;
     }
 
     .article {
@@ -54,6 +55,7 @@
         border-radius: 5px;
         padding: 0px 20px;
         display: flex;
+        background-color: rgb(222, 222, 222);
 
         .article-head {
             max-width: 98%;
@@ -79,7 +81,7 @@
 
         .article-context {
             max-width: 97%;
-            background-color: rgb(233, 233, 233);
+            background-color: white;
             border-radius: 5px;
             padding: 10px;
             margin: 20px 0;
@@ -106,8 +108,28 @@
 
             button {
                 margin: 5px;
-                width: 100%;
             }
         }
     }
+}
+
+//Angular material class
+
+::ng-deep .mat-paginator-outer-container {
+    background-color: #b75060;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+    margin: 25px 10px;
+    text-align: center;
+}
+
+::ng-deep .mat-paginator-container {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+}
+
+::ng-deep .mat-select-value-text {
+    color: white;
 }

@@ -1,7 +1,9 @@
 <app-admin-header></app-admin-header>
 <div class="table">
     <p class="info">Prave sa zobrazuju všetky články</p>
-    <div class="article">
+    <!--<button (click)="sortByApproved()">Sort</button>-->
+
+    <!--  <div class="article">
         <div class="section">
             <div class="article-head">
                 <p>USER</p>
@@ -27,19 +29,19 @@
             </div>
         </div>
 
-    </div>
-    <div class="article" *ngFor="let item of articles">
+    </div> -->
+    <div class="article" *ngFor="let item of articleSliced">
         <div class="right">
             <div class="article-head">
-                <p class="username">{{item.username}}</p>
+                <p class="username">{{item.name}}</p>
                 <p class="date">{{item.date}}</p>
-                <p><mat-icon>{{item.approvedArticle == true ?
+                <p><mat-icon>{{item.isApproved == true ?
                         "check_circle_outline":"remove_circle_outline" }}</mat-icon></p>
             </div>
             <div class="article-context">
-                <p class="article-name">{{item.articleName}}</p>
+                <p class="article-name">{{item.name}}</p> <!--Potom toto zmeniť na article name-->
                 <img *ngIf="item.photoForArticle" src={{item.photoForArticle}} alt="">
-                <p class="context">{{item.articleContext}}</p>
+                <p class="context">{{item.content}}</p>
             </div>
         </div>
         <div class="left">
@@ -52,4 +54,7 @@
         </div>
 
     </div>
+    <mat-paginator [length]="articles.length" [pageSize]="5" [hidePageSize]="true" (page)="onClickChangePage($event)"
+        aria-label="Select page">
+    </mat-paginator>
 </div>

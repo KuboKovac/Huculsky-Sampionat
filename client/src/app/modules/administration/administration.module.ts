@@ -9,6 +9,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { ArticlesComponent } from './components_/articles/articles.component';
 import { NewArticleComponent } from './components_/new-article/new-article.component';
 import { AdminHeaderComponent } from './components_/admin-header/admin-header.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -27,6 +30,9 @@ import { AdminHeaderComponent } from './components_/admin-header/admin-header.co
 
         MatIconModule,
         MatButtonModule,
+        MatPaginatorModule,
+        MatTabsModule,
+        FormsModule,
 
         AdministrationRoutingModule
     ]
