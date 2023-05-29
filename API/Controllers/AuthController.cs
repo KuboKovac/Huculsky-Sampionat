@@ -68,6 +68,7 @@ public class AuthController : ControllerBase
             Role = registerDto.Role
         });
         await _dbContext.SaveChangesAsync();
+        
         return Ok("Registrácia použivateľa " + registerDto.Username + " so statusom " + registerDto.Role + " prebehla úspešne!");
     }
 
