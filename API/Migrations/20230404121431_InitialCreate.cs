@@ -308,7 +308,6 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    StartingNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     Time = table.Column<string>(type: "TEXT", nullable: false),
                     PointsAtObstacles = table.Column<string>(type: "TEXT", nullable: false),
                     TotalPoints = table.Column<int>(type: "INTEGER", nullable: false),
