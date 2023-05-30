@@ -54,6 +54,9 @@ export class AuthService {
     }
   }
 
+
+  //Rolo je kokot
+
   get token(): string | null {
     return localStorage.getItem('Jwt')
   }
@@ -72,6 +75,8 @@ export class AuthService {
         this.username.next(decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
         this.role.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'])
 
+        localStorage.setItem("username", decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'])
+
         this._messageService.message('Prihlásenie prebehlo úspešne', 2000)
 
         return new TokenDTO(this.token)
@@ -87,6 +92,7 @@ export class AuthService {
     this.username.next('')
     this._messageService.message('Odhlásenie prebehlo úspešne', 2000)
     this._router.navigateByUrl('/')
+    localStorage.removeItem("username")
   }
 
   public register() {
