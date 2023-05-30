@@ -8,7 +8,7 @@ namespace API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CompetitionsController : ControllerBase
+public class CompetitionsResultsController : ControllerBase
 {
     [HttpGet("GetAllCompetitions")]
     public async Task<ActionResult> GetAllCompetitions()
