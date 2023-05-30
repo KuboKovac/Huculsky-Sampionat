@@ -23,11 +23,26 @@ export class AdminArticlesService {
     );
   }
 
-  saveAdminArticle(article: Article): Observable<Article> {
-    const headers = new HttpHeaders().set("Authorization", "" + localStorage.getItem("Jwt"));
+  saveAdminArticle(article: Article): Observable<void> {
 
-    return this.http.post<Article>(this.serverUrl + "Articles/CreateArticle", article, { headers }).pipe(
-      map(jsonArticle => Article.clone(jsonArticle)),
+    return this.http.post(this.serverUrl + "Articles/CreateArticle", article, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
+  approvedAdminArticle(id: number, article: Article): Observable<void> {
+
+    return this.http.put(this.serverUrl + "Articles/ApproveArticle/" + id, article, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
+  dissApprovedAdminArticle(id: number, article: Article): Observable<void> {
+
+    return this.http.put(this.serverUrl + "Articles/DisapproveArticle/" + id, article, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
       catchError(error => errorHandler(error, 400, this.messageService))
     )
   }
