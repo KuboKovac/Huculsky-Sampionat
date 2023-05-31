@@ -1,7 +1,5 @@
-<div class="admin-top-nav">
-    <li><a>Tabuľka</a></li>
-    <li><a>Pridať</a></li>
-</div>
+<app-admin-header-riders></app-admin-header-riders>
+
 <div class="container-panel">
     <div class="table">
         <div class="table-header">
@@ -34,16 +32,16 @@
         <div class="table-row" *ngFor="let rider of riders">
             <div class="table-data">
                 <div class="table-column">
-                    <h4>{{rider.riderNum}}</h4>
+                    <h4>{{rider.riderNumber}}</h4>
                 </div>
                 <div class="table-column">
-                    <p>{{rider.fName}}</p>
+                    <p>{{rider.firstName}}</p>
                 </div>
                 <div class="table-column">
-                    <p>{{rider.lName}}</p>
+                    <p>{{rider.lastName}}</p>
                 </div>
                 <div class="table-column">
-                    <p>{{rider.dob}}</p>
+                    <p>{{rider.dateOfbirth}}</p>
                 </div>
                 <div class="table-column">
                     <p>{{rider.category}}</p>
