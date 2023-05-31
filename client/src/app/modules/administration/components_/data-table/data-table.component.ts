@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Rider} from "../../models/Rider";
+import { Component, OnInit } from '@angular/core';
+import { Rider } from "../../models/Rider";
+import { AdminRidersService } from '../../services/admin-riders.service';
 
 @Component({
     selector: 'app-data-table',
@@ -16,10 +17,15 @@ export class DataTableComponent implements OnInit {
         new Rider("SVK4546", "Natália", "Morozova", "22.12.2001", "Dospelý"),
     ]
 
-    constructor() {
+    constructor(private ridersService: AdminRidersService) {
     }
 
     ngOnInit(): void {
+
+        this.ridersService.getAllRiders().subscribe(
+            ridersFromServer => this.riders = ridersFromServer
+        )
     }
+
 
 }

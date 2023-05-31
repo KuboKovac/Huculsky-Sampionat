@@ -1,9 +1,13 @@
 export class Rider {
+    public static clone(r: Rider): Rider {
+        return new Rider(r.riderNumber, r.firstName, r.lastName, r.dateOfbirth, r.category)
+    }
+
     constructor(
-        public riderNum: string = '',
-        public fName: string = '',
-        public lName: string = '',
-        public dob: string = '',
+        public riderNumber: string = '',
+        public firstName: string = '',
+        public lastName: string = '',
+        public dateOfbirth: string = '',
         public category: string = ''
     ) {
     }

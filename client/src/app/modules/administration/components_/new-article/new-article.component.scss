@@ -37,6 +37,7 @@
 
                 p {
                     margin: 0 15px 0 0;
+                    font-weight: bold;
                 }
             }
 
@@ -56,6 +57,7 @@
                     width: 90%;
                     border: 4px dotted #b75060;
                     transition: linear 0.2s;
+                    cursor: pointer;
 
                     .file_upload {
                         max-width: 100%;
