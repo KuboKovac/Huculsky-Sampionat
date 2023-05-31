@@ -13,6 +13,8 @@ public class Rider
     public string RiderNumber { get; set; }
     public string Category { get; set; }
     public string DateOfBirth { get; set; }
+
+    public List<Horse> Horses { get; set; }
     [JsonIgnore]
     public List<Result> Results { get; set; }
     public List<Competition> Competitions { get; set; }

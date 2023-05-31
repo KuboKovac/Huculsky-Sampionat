@@ -12,16 +12,60 @@ namespace API.Controllers;
 public class HorsesController : ControllerBase
 {
     private readonly DatabaseDbContext _dbContext;
+
     public HorsesController(DatabaseDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    [HttpPut("AssingRidersToHorse"), Authorize(Roles = "Admin")]
-    public async Task<ActionResult> AssignRidersToHorse(List<int> riders)
+    [HttpPut("AssingRidersToHorse/{id:int}"), Authorize(Roles = "Admin")]
+    public async Task<ActionResult> AssignRidersToHorse(int id, RidersListDTO ridersListDto)
     {
+        var horse = await _dbContext.Horses.FindAsync(id);
         
-        return Ok("");
+        if (horse == null)
+            return BadRequest("Kôň sa nenašiel!");
+
+        foreach (var Id in ridersListDto.RidersIds)
+        {
+            var rider = await _dbContext.Riders.Where(rider => rider.Id == Id)
+                .Include(h => h.Horses)
+                .FirstOrDefaultAsync();
+            
+            if (rider == null)
+                return  BadRequest("Jazdec s ID " + Id + " nebol nájdený!");
+
+            rider.Horses.Add(horse);
+            _dbContext.Riders.Update(rider);
+        }
+
+        await _dbContext.SaveChangesAsync();
+        return Ok("Kone boli úspešne priradené k jazdcom!");
+    }
+
+    [HttpPut("UnassingRidersToHorse/{id:int}"), Authorize(Roles = "Admin")]
+    public async Task<ActionResult> UnassignRidersToHorse(int id, RidersListDTO ridersListDto)
+    {
+        var horse = await _dbContext.Horses.FindAsync(id);   
+
+        if (horse == null)
+            return BadRequest("Kôň sa nenašiel!");
+
+        foreach (var Id in ridersListDto.RidersIds)
+        {
+            var rider = await _dbContext.Riders.Where(rider => rider.Id == Id)
+                .Include(h => h.Horses)
+                .FirstOrDefaultAsync();
+            
+            if (rider == null)
+                return  BadRequest("Jazdec s ID " + Id + " nebol nájdený!");
+
+            rider.Horses.Remove(horse);
+            _dbContext.Riders.Update(rider);
+        }
+
+        await _dbContext.SaveChangesAsync();
+        return Ok("Kone boli úspešne odstránené jazdcom!");
     }
 
 
@@ -37,7 +81,7 @@ public class HorsesController : ControllerBase
             FatherId = horse.FatherId,
             MotherId = horse.MotherId
         }).ToListAsync();
-        
+
         return Ok(horses);
     }
 
@@ -59,6 +103,52 @@ public class HorsesController : ControllerBase
         horseDto.MotherId = horse.MotherId;
 
         return Ok(horseDto);
+    }
+
+    [HttpGet("GetHorseParents/{id:int}"), Authorize]
+    public async Task<ActionResult<List<HorseDTO>>> GetHorseParents(int id)
+    {
+        var horse = await _dbContext.Horses.FindAsync(id);
+
+        if (horse == null)
+            return BadRequest("Kôň sa nenašiel v databáze!");
+
+        var father = await _dbContext.Horses.FindAsync(horse.FatherId);
+        var mother = await _dbContext.Horses.FindAsync(horse.MotherId);
+
+        if (father == null && mother == null)
+        {
+            return Ok("Kôň nemá definovaných rodičov!");
+        }
+
+        List<HorseDTO> parents = new List<HorseDTO>();
+        HorseDTO fatherDTO = new HorseDTO();
+        HorseDTO motherDTO = new HorseDTO();
+        
+        if (father != null)
+        {
+            fatherDTO.Name = father.Name;
+            fatherDTO.DateOfBirth = father.DateOfBirth;
+            fatherDTO.Male = father.Male;
+            fatherDTO.Number = father.Number;
+            fatherDTO.FatherId = father.FatherId;
+            fatherDTO.MotherId = father.MotherId;
+            
+            parents.Add(fatherDTO);
+        }
+        if (mother != null)
+        {
+            motherDTO.Name = mother.Name;
+            motherDTO.DateOfBirth = mother.DateOfBirth;
+            motherDTO.Male = mother.Male;
+            motherDTO.Number = mother.Number;
+            motherDTO.FatherId = mother.FatherId;
+            motherDTO.MotherId = mother.MotherId;
+            
+            parents.Add(motherDTO);
+        }
+
+        return Ok(parents);
     }
 
     [HttpPost("CreateNewHorse"), Authorize(Roles = "Admin")]
