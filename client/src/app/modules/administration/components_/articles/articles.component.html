@@ -50,7 +50,7 @@
                 <Button *ngIf="!item.isApproved; else elseBlock" (click)="approveArticle(item)">Schvaliť</Button>
                 <ng-template #elseBlock><Button (click)="dissApproveArticle(item)">Zrušiť</Button></ng-template>
                 <Button>Upraviť</Button>
-                <Button>Vymazať</Button>
+                <Button (click)="deleteArticle(item)">Vymazať</Button>
             </div>
         </div>
 

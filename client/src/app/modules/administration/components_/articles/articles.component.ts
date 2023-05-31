@@ -74,4 +74,12 @@ export class ArticlesComponent implements OnInit {
       () => this.getArticleFromServer()
     )
   }
+
+  deleteArticle(article: Article) {
+    if (confirm("Naozaj chceš zmazať článok " + article.name + " ?")) {
+      this.articleService.deleteAdminArticle(article.id).subscribe(
+        () => this.getArticleFromServer()
+      )
+    }
+  }
 }
