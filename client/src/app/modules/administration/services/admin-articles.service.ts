@@ -47,4 +47,11 @@ export class AdminArticlesService {
     )
   }
 
+  deleteAdminArticle(id: number): Observable<void> {
+    return this.http.delete(this.serverUrl + "Articles/DeleteArticle/" + id, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
 }
