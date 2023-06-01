@@ -7,15 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers;
 
 
-// Controller for Competitions and Competitions Results
-
-
 [ApiController]
 [Route("[controller]")]
-public class CompetitionsResultsController : ControllerBase
+public class CompetitionsController : ControllerBase
 {
     private readonly DatabaseDbContext _dbContext;
-    public CompetitionsResultsController(DatabaseDbContext dbContext)
+    public CompetitionsController(DatabaseDbContext dbContext)
     {
         _dbContext = dbContext;
     }
@@ -36,17 +33,11 @@ public class CompetitionsResultsController : ControllerBase
     [HttpPost("CreateCompetition"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateCompetition(CompetitionDTO competitionDto)
     {
-        // var arbiter = await _dbContext.Arbiter.FindAsync(competitionDto.ArbiterId);
-        //
-        // if (arbiter == null)
-        //     return BadRequest("Id rozhodcu neexistuje!");
-
         Competition newCompetition = new Competition();
 
         newCompetition.Name = competitionDto.Name;
         newCompetition.Description = competitionDto.Description;
         newCompetition.Date = competitionDto.Date;
-        //newCompetition.Arbiters.Add(arbiter);
 
         _dbContext.Competitions.Add(newCompetition);
         await _dbContext.SaveChangesAsync();
@@ -159,6 +150,5 @@ public class CompetitionsResultsController : ControllerBase
 
         return Ok("Rozhodca bol úspešne odstránený zo súťaže!");
     }
-
-
+    
 }

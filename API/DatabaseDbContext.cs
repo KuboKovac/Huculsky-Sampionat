@@ -15,6 +15,7 @@ public class DatabaseDbContext : DbContext
     public DbSet<CoachTask> CoachTasks => Set<CoachTask>();
     public DbSet<Arbiter> Arbiter => Set<Arbiter>();
     public DbSet<Competition> Competitions => Set<Competition>();
+    public DbSet<Obstacles> Obstacles => Set<Obstacles>();
     public DbSet<Result> Results => Set<Result>();
     public DbSet<Image> Images => Set<Image>();
     public DbSet<Comment> Comments => Set<Comment>();
