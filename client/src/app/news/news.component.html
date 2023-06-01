@@ -2,16 +2,26 @@
     <div class="topics">
         <h1>Najnovšie články</h1>
         <ul>
-            <li>Huculsky šampionat</li>
-            <li>Huculsky šampionat</li>
-            <li>Huculsky šampionat</li>
-            <li>Huculsky šampionat</li>
-            <li>Huculsky šampionat</li>
+            <li *ngFor="let item of articles">{{item.name}}</li>
         </ul>
     </div>
 
     <div class="articles">
-        <div class="article-body">
+        <div class="article-body" *ngFor="let item of articles">
+            <ul>
+                <li><i class="fas fa-user"></i> {{item.createdBy}}</li>
+                <li><i class="far fa-clock"></i> {{item.date}}</li>
+            </ul>
+            <div class="article-title">
+                <h1>{{item.name}}</h1>
+            </div>
+            <div class="article-text">
+                {{item.content}} <!--<a href="">Čitať viac</a>-->
+            </div>
+
+            <img src="https://vsetko-pre-zvierata.sk/wp-content/uploads/2019/11/188-hucul.jpg" alt="">
+        </div>
+        <!-- <div class="article-body">
             <ul>
                 <li><i class="fas fa-user"></i> Administrator</li>
                 <li><i class="far fa-clock"></i> 10.2.2023</li>
@@ -46,24 +56,6 @@
             </div>
 
             <img src="https://vsetko-pre-zvierata.sk/wp-content/uploads/2019/11/188-hucul.jpg" alt="">
-        </div>
-        <div class="article-body">
-            <ul>
-                <li><i class="fas fa-user"></i> Administrator</li>
-                <li><i class="far fa-clock"></i> 10.2.2023</li>
-                <li><i class="far fa-comments"></i> nekomentovane</li>
-            </ul>
-            <div class="article-title">
-                <h1>Huculsky šampionat</h1>
-            </div>
-            <div class="article-text">
-                Sme občianske združenie zastrešujúce a rozvíjajúce športové, chovateľské a vzdelávacie aktivity pre
-                Huculského koňa.
-                Organizácia jazdeckého športu je vždy komplexný jav, pretože okrem telovýchovného procesu
-                a manažmentu športových pod....<a href="">Čitať viac</a>
-            </div>
-
-            <img src="https://vsetko-pre-zvierata.sk/wp-content/uploads/2019/11/188-hucul.jpg" alt="">
-        </div>
+        </div> -->
     </div>
 </body>

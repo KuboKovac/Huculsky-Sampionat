@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -49,6 +50,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
+        RouterModule,
+
 
 
 

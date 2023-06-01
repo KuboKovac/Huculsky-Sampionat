@@ -1,5 +1,8 @@
 <form class="login" [formGroup]="loginForm">
-    <input type="text" placeholder="Zadajte meno" name="username" formControlName="username" [(ngModel)]="login.username">
-    <input type="password" placeholder="Zadajte heslo" name="password" formControlName="password" [(ngModel)]="login.password">
+    <img src="../../../../assets/resources/logo.jpg" alt="">
+    <input type="text" placeholder="Zadajte meno" name="username" formControlName="username"
+        [(ngModel)]="login.username">
+    <input type="password" placeholder="Zadajte heslo" name="password" formControlName="password"
+        [(ngModel)]="login.password">
     <button (click)="onClick()" [disabled]="loginForm.invalid">Prihlasiť sa</button>
 </form>

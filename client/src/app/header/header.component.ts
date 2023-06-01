@@ -1,5 +1,6 @@
-import { Component, HostBinding, ViewChild } from '@angular/core';
+import { Component, HostBinding, NgModule, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
+
 
 @Component({
   selector: 'app-header',
@@ -16,4 +17,7 @@ export class HeaderComponent {
     this.navbarOpened = !this.navbarOpened;
   }
 
+  test() {
+    console.log("funguje")
+  }
 }
