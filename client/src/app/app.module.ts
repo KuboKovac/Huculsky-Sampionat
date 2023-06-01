@@ -20,6 +20,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { FormsModule } from '@angular/forms';
         MatPaginatorModule,
         MatTabsModule,
         FormsModule,
+        MatSidenavModule,
 
 
 

@@ -41,7 +41,9 @@
             <div class="article-context">
                 <p class="article-name">{{item.name}}</p> <!--El kiko-->
                 <img *ngIf="item.photoForArticle" src={{item.photoForArticle}} alt="">
-                <p class="context">{{item.content}}</p>
+                <div class="context-radius">
+                    <p class="context">{{item.content}}</p>
+                </div>
             </div>
         </div>
         <div class="left">

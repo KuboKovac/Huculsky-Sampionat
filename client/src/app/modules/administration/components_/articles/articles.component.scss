@@ -41,7 +41,7 @@
     }
 
     .right {
-        width: 100%;
+        width: 94%;
     }
 
     .left {
@@ -55,11 +55,13 @@
         border-radius: 5px;
         padding: 0px 20px;
         display: flex;
+        justify-content: space-between;
         background-color: rgb(222, 222, 222);
 
         .article-head {
             max-width: 98%;
             display: flex;
+            align-items: center;
             margin: 20px 0;
             border-bottom: 1px solid gray;
 
@@ -100,10 +102,11 @@
                 margin: 16px 0;
             }
 
-            .context {
+            .con text {
                 text-align: justify;
                 margin: 10px 0;
                 font-size: 17px;
+                max-width: 100%;
             }
         }
 
@@ -140,4 +143,10 @@
 
 ::ng-deep .mat-select-value-text {
     color: white;
+}
+
+@media (max-width: 1207px) {
+    .article-context {
+        max-width: 90% !important;
+    }
 }

@@ -6,6 +6,12 @@ import { DataTableComponent } from "./components_/data-table/data-table.componen
 import { RoleGuard } from "../auth/guards/role.guard";
 import { ArticlesComponent } from "./components_/articles/articles.component";
 import { NewArticleComponent } from "./components_/articles/new-article/new-article.component";
+import { HorsesComponent } from "./components_/horses/horses.component";
+import { CompetitionsComponent } from "./components_/competitions/competitions.component";
+import { NewHorseComponent } from "./components_/horses/new-horse/new-horse.component";
+import { NewCompetitionsComponent } from "./components_/competitions/new-competitions/new-competitions.component";
+import { ArbiterComponent } from "./components_/arbiter/arbiter.component";
+import { NewArbiterComponent } from "./components_/arbiter/new-arbiter/new-arbiter.component";
 
 
 const routes = [
@@ -14,8 +20,20 @@ const routes = [
             [
                 { path: ':id/table', component: DataTableComponent },
                 { path: ':id/new/table', component: AddRecordComponent },
+
+                { path: ':id/horses', component: HorsesComponent },
+                { path: ':id/new/horse', component: NewHorseComponent },
+
+                { path: ':id/competitions', component: CompetitionsComponent },
+                { path: ':id/new/competition', component: NewCompetitionsComponent },
+
+
                 { path: ':id/article', component: ArticlesComponent },
                 { path: ':id/new/article', component: NewArticleComponent },
+
+                { path: ':id/arbiter', component: ArbiterComponent },
+                { path: ':id/new/arbiter', component: NewArbiterComponent },
+
             ]
     }
 ]

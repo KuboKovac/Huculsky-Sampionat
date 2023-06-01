@@ -11,6 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class ArticlesComponent implements OnInit {
 
+  startIndex: number = 0
+  endIndex: number = 5
+
   articles: Article[] = [];
   public articleSliced: Article[] = []
 
@@ -39,7 +42,7 @@ export class ArticlesComponent implements OnInit {
     this.articleService.getAdminArticle().subscribe(
       articles => {
         this.articles = articles
-        this.articleSliced = this.articles.slice(0, 5)
+        this.articleSliced = this.articles.slice(this.startIndex, this.endIndex)
       }
     )
   }
@@ -56,12 +59,12 @@ export class ArticlesComponent implements OnInit {
 
 
   onClickChangePage(event: PageEvent) {
-    const startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize;
-    if (endIndex > this.articles.length) {
-      endIndex = this.articles.length;
+    this.startIndex = event.pageIndex * event.pageSize;
+    this.endIndex = this.startIndex + event.pageSize;
+    if (this.endIndex > this.articles.length) {
+      this.endIndex = this.articles.length;
     }
-    this.articleSliced = this.articles.slice(startIndex, endIndex)
+    this.articleSliced = this.articles.slice(this.startIndex, this.endIndex)
   }
 
   approveArticle(article: Article) {

@@ -1,0 +1,21 @@
+<app-admin-headers-horses></app-admin-headers-horses>
+
+<form (ngSubmit)="onSubmit()">
+    <div class="main-container">
+        <label for="horseNumber">Čislo koňa: : </label>
+        <input [(ngModel)]='newHorse.number' name="horseNumber" type="Text" placeholder="Čislo koňa">
+        <label for="firstName">Meno: </label>
+        <input [(ngModel)]='newHorse.name' name="firstName" type="Text" placeholder="Meno koňa">
+        <label for="dateOfBirth">Dátum narodenia: </label>
+        <input [(ngModel)]='newHorse.dateOfBirth' name="dateOfBirth" type="text" placeholder="DD:MM:RRRR">
+        <div class="inline">
+            <label for="gender">Žrebec: </label>
+            <input [(ngModel)]='newHorse.male' name="gender" type="checkbox" placeholder="Datum Narodenia">
+        </div>
+        <label for="mother">Matka koňa: </label>
+        <input [(ngModel)]='newHorse.motherId' name="mother" type="text" placeholder="Matka">
+        <label for="father">Otec koňa: </label>
+        <input [(ngModel)]='newHorse.fatherId' name="father" type="text" placeholder="Otec">
+        <input type="submit" name="submit">
+    </div>
+</form>

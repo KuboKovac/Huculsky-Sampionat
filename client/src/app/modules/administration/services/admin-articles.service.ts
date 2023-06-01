@@ -24,7 +24,6 @@ export class AdminArticlesService {
   }
 
   saveAdminArticle(article: Article): Observable<void> {
-
     return this.http.post(this.serverUrl + "Articles/CreateArticle", article, { responseType: 'text' }).pipe(
       map(response => this.messageService.message(response, 5000)),
       catchError(error => errorHandler(error, 400, this.messageService))
