@@ -24,7 +24,6 @@ export class DataTableComponent implements OnInit {
     getAllRiders() {
         this.ridersService.getAllRiders().subscribe({
             next: ridersFromServer => this.riders = ridersFromServer,
-            complete: () => console.log(this.riders)
         }
         )
     }

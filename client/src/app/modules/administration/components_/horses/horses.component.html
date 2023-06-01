@@ -1,0 +1,65 @@
+<app-admin-headers-horses></app-admin-headers-horses>
+<div class="container-panel">
+    <div class="table">
+        <div class="table-header">
+            <div class="table-data">
+                <div class="table-column">
+                    <h4>Číslo koňa</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Meno koňa</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Dátum narodenia</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Žrebec</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Matka</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Otec</h4>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <p>Zmazať</p>
+                </div>
+                <div>
+                    <p>Upraviť</p>
+                </div>
+            </div>
+        </div>
+        <div class="table-row" *ngFor="let horse of horses">
+            <div class="table-data">
+                <div class="table-column">
+                    <p>{{horse.number}}</p>
+                </div>
+                <div class="table-column">
+                    <h4>{{horse.name}}</h4>
+                </div>
+                <div class="table-column">
+                    <p>{{horse.dateOfBirth}}</p>
+                </div>
+                <div class="table-column">
+                    <p>{{horse.male}}</p>
+                </div>
+                <div class="table-column">
+                    <p>{{horse.motherId}}</p>
+                </div>
+                <div class="table-column">
+                    <p>{{horse.fatherId}}</p>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <button mat-button><mat-icon>delete</mat-icon></button>
+                </div>
+                <div>
+                    <button mat-button><mat-icon>settings</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

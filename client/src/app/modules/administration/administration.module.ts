@@ -15,6 +15,11 @@ import { AdminHeaderArticlesComponent } from './components_/admin-headers/admin-
 import { AdminHeaderRidersComponent } from './components_/admin-headers/admin-header-riders/admin-header-riders.component';
 import { AdminHeadersCompetionComponent } from './components_/admin-headers/admin-headers-competion/admin-headers-competion.component';
 import { AdminHeadersHorsesComponent } from './components_/admin-headers/admin-headers-horses/admin-headers-horses.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { HorsesComponent } from './components_/horses/horses.component';
+import { CompetitionsComponent } from './components_/competitions/competitions.component';
+import { NewHorseComponent } from './components_/horses/new-horse/new-horse.component';
+import { NewCompetitionsComponent } from './components_/competitions/new-competitions/new-competitions.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +33,10 @@ import { AdminHeadersHorsesComponent } from './components_/admin-headers/admin-h
         AdminHeaderRidersComponent,
         AdminHeadersCompetionComponent,
         AdminHeadersHorsesComponent,
+        HorsesComponent,
+        CompetitionsComponent,
+        NewHorseComponent,
+        NewCompetitionsComponent,
     ],
     exports: [
         AdminPanelComponent
@@ -40,6 +49,7 @@ import { AdminHeadersHorsesComponent } from './components_/admin-headers/admin-h
         MatPaginatorModule,
         MatTabsModule,
         FormsModule,
+        MatSidenavModule,
 
         AdministrationRoutingModule
     ]

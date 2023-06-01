@@ -6,6 +6,10 @@ import { DataTableComponent } from "./components_/data-table/data-table.componen
 import { RoleGuard } from "../auth/guards/role.guard";
 import { ArticlesComponent } from "./components_/articles/articles.component";
 import { NewArticleComponent } from "./components_/articles/new-article/new-article.component";
+import { HorsesComponent } from "./components_/horses/horses.component";
+import { CompetitionsComponent } from "./components_/competitions/competitions.component";
+import { NewHorseComponent } from "./components_/horses/new-horse/new-horse.component";
+import { NewCompetitionsComponent } from "./components_/competitions/new-competitions/new-competitions.component";
 
 
 const routes = [
@@ -14,6 +18,14 @@ const routes = [
             [
                 { path: ':id/table', component: DataTableComponent },
                 { path: ':id/new/table', component: AddRecordComponent },
+
+                { path: ':id/horses', component: HorsesComponent },
+                { path: ':id/new/horse', component: NewHorseComponent },
+
+                { path: ':id/competitions', component: CompetitionsComponent },
+                { path: ':id/new/competition', component: NewCompetitionsComponent },
+
+
                 { path: ':id/article', component: ArticlesComponent },
                 { path: ':id/new/article', component: NewArticleComponent },
             ]
