@@ -24,4 +24,19 @@ export class AdminRidersService {
     );
   }
 
+  addNewRider(rider: Rider): Observable<void> {
+    return this.http.post(this.serverUrl + "Riders/CreateNewRider", rider, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
+
+  deleteRider(id: number): Observable<void> {
+    return this.http.delete(this.serverUrl + "Riders/DeleteRaider/" + id, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
 }

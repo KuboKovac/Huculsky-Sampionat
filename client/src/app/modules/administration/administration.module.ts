@@ -7,7 +7,7 @@ import { AddRecordComponent } from './components_/data-table/add-record/add-reco
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { ArticlesComponent } from './components_/articles/articles.component';
-import { NewArticleComponent } from './components_/new-article/new-article.component';
+import { NewArticleComponent } from './components_/articles/new-article/new-article.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';

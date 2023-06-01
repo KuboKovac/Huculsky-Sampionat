@@ -5,7 +5,7 @@ import { AddRecordComponent } from "./components_/data-table/add-record/add-reco
 import { DataTableComponent } from "./components_/data-table/data-table.component";
 import { RoleGuard } from "../auth/guards/role.guard";
 import { ArticlesComponent } from "./components_/articles/articles.component";
-import { NewArticleComponent } from "./components_/new-article/new-article.component";
+import { NewArticleComponent } from "./components_/articles/new-article/new-article.component";
 
 
 const routes = [
