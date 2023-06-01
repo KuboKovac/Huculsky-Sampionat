@@ -36,17 +36,17 @@ public class CompetitionsResultsController : ControllerBase
     [HttpPost("CreateCompetition"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateCompetition(CompetitionDTO competitionDto)
     {
-        var arbiter = await _dbContext.Arbiter.FindAsync(competitionDto.ArbiterId);
-
-        if (arbiter == null)
-            return BadRequest("Id rozhodcu neexistuje!");
+        // var arbiter = await _dbContext.Arbiter.FindAsync(competitionDto.ArbiterId);
+        //
+        // if (arbiter == null)
+        //     return BadRequest("Id rozhodcu neexistuje!");
 
         Competition newCompetition = new Competition();
 
         newCompetition.Name = competitionDto.Name;
         newCompetition.Description = competitionDto.Description;
         newCompetition.Date = competitionDto.Date;
-        newCompetition.Arbiters.Add(arbiter);
+        //newCompetition.Arbiters.Add(arbiter);
 
         _dbContext.Competitions.Add(newCompetition);
         await _dbContext.SaveChangesAsync();
