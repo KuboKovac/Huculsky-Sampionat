@@ -10,22 +10,32 @@ import { AdminRidersService } from '../../services/admin-riders.service';
 export class DataTableComponent implements OnInit {
 
     public riders: Rider[] = [
-        new Rider("SVK1455", "Eva", "Turská", "14.2.1998", "Dospelý"),
-        new Rider("SVK4550", "Filip", "Oravec", "1.2.2000", "Dospelý"),
-        new Rider("SVK0055", "Richard", "Lukačko", "12.4.1999", "Dospelý"),
-        new Rider("SVK0455", "John", "Doe", "17.7.2000", "Dospelý"),
-        new Rider("SVK4546", "Natália", "Morozova", "22.12.2001", "Dospelý"),
+        //new Rider("SVK1455", "Eva", "Turská", "14.2.1998", "Dospelý") <--- Template
     ]
 
     constructor(private ridersService: AdminRidersService) {
     }
 
     ngOnInit(): void {
+        this.getAllRiders()
 
-        this.ridersService.getAllRiders().subscribe(
-            ridersFromServer => this.riders = ridersFromServer
+    }
+
+    getAllRiders() {
+        this.ridersService.getAllRiders().subscribe({
+            next: ridersFromServer => this.riders = ridersFromServer,
+            complete: () => console.log(this.riders)
+        }
         )
     }
 
+    removeRider(rider: Rider) {
+        if (confirm("Naozaj chceš zmazať jazdca " + rider.firstName + " " + rider.lastName + " ?")) {
+            this.ridersService.deleteRider(rider.id).subscribe(
+                () => this.getAllRiders()
+            )
+        }
+
+    }
 
 }

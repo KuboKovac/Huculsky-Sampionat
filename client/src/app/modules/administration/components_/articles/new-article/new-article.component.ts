@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AdminArticlesService } from '../../services/admin-articles.service';
-import { Article } from '../../models/Article';
+import { AdminArticlesService } from '../../../services/admin-articles.service';
+import { Article } from '../../../models/Article';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
