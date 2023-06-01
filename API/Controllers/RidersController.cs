@@ -16,6 +16,7 @@ public class RidersController : ControllerBase
         _dbContext = dbContext;
     }
     
+    
     [HttpGet("GetAllRiders"), Authorize]
     public async Task<ActionResult<List<RiderDTO>>> GetAllRiders()
     {
