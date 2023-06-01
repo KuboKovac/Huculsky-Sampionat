@@ -43,8 +43,8 @@ public class HorsesController : ControllerBase
         return Ok("Kone boli úspešne priradené k jazdcom!");
     }
 
-    [HttpPut("UnassingRidersToHorse/{id:int}"), Authorize(Roles = "Admin")]
-    public async Task<ActionResult> UnassignRidersToHorse(int id, RidersListDTO ridersListDto)
+    [HttpPut("RemoveRidersFromHorse/{id:int}"), Authorize(Roles = "Admin")]
+    public async Task<ActionResult> RemoveRidersFromHorse(int id, RidersListDTO ridersListDto)
     {
         var horse = await _dbContext.Horses.FindAsync(id);   
 
@@ -74,6 +74,7 @@ public class HorsesController : ControllerBase
     {
         var horses = await _dbContext.Horses.Select(horse => new HorseDTO
         {
+            Id = horse.Id,
             Name = horse.Name,
             DateOfBirth = horse.DateOfBirth,
             Male = horse.Male,
@@ -127,6 +128,7 @@ public class HorsesController : ControllerBase
         
         if (father != null)
         {
+            fatherDTO.Id = father.Id;
             fatherDTO.Name = father.Name;
             fatherDTO.DateOfBirth = father.DateOfBirth;
             fatherDTO.Male = father.Male;
@@ -138,6 +140,7 @@ public class HorsesController : ControllerBase
         }
         if (mother != null)
         {
+            motherDTO.Id = mother.Id;
             motherDTO.Name = mother.Name;
             motherDTO.DateOfBirth = mother.DateOfBirth;
             motherDTO.Male = mother.Male;
