@@ -1,7 +1,8 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AdminArticlesService } from '../../services/admin-articles.service';
-import { Article } from '../../models/Article';
+import { AdminArticlesService } from '../../../services/admin-articles.service';
+import { Article } from '../../../models/Article';
+import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
   selector: 'app-new-article',
@@ -22,16 +23,14 @@ export class NewArticleComponent implements OnInit {
   }
 
   onSubmit() {
+
+    this.newArticle.createdBy = localStorage.getItem("username")
+
     // TODO: FIX later keď kubo opraví server ;_;
     this.articleService.saveAdminArticle(this.newArticle).subscribe(
       {
-        next: success => {
-          if (success) {
-            //this.router.navigateByUrl("/administration/rider/article")
-          }
-        },
+        next: success => this.router.navigateByUrl("/administration/rider/article"),
         error: errr => console.log(errr),
-        complete: () => this.router.navigateByUrl("/administration/rider/article")
       }
     )
   }

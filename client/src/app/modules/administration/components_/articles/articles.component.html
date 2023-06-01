@@ -1,4 +1,4 @@
-<app-admin-header></app-admin-header>
+<app-admin-header-articles></app-admin-header-articles>
 <div class="table">
     <p class="info">Prave sa zobrazuju všetky články</p>
     <!--<button (click)="sortByApproved()">Sort</button>-->
@@ -33,13 +33,13 @@
     <div class="article" *ngFor="let item of articleSliced">
         <div class="right">
             <div class="article-head">
-                <p class="username">{{item.name}}</p>
+                <p class="username">{{item.createdBy}}</p>
                 <p class="date">{{item.date}}</p>
-                <p><mat-icon>{{item.isApproved == true ?
+                <p><mat-icon [ngClass]="item.isApproved == true ? 'green':'red'">{{item.isApproved == true ?
                         "check_circle_outline":"remove_circle_outline" }}</mat-icon></p>
             </div>
             <div class="article-context">
-                <p class="article-name">{{item.name}}</p> <!--Potom toto zmeniť na article name-->
+                <p class="article-name">{{item.name}}</p> <!--El kiko-->
                 <img *ngIf="item.photoForArticle" src={{item.photoForArticle}} alt="">
                 <p class="context">{{item.content}}</p>
             </div>
@@ -47,9 +47,10 @@
         <div class="left">
 
             <div class="article-modify">
-                <Button>APPROVE</Button>
-                <Button>EDIT</Button>
-                <Button>DELETE</Button>
+                <Button *ngIf="!item.isApproved; else elseBlock" (click)="approveArticle(item)">Schvaliť</Button>
+                <ng-template #elseBlock><Button (click)="dissApproveArticle(item)">Zrušiť</Button></ng-template>
+                <Button>Upraviť</Button>
+                <Button (click)="deleteArticle(item)">Vymazať</Button>
             </div>
         </div>
 

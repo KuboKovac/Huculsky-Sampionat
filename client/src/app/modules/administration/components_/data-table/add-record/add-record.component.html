@@ -1,0 +1,19 @@
+<app-admin-header-riders></app-admin-header-riders>
+
+<form (ngSubmit)="onSubmit()">
+    <label for="riderNumber">Čislo jazdca: </label>
+    <input [(ngModel)]='newRider.riderNumber' name="riderNumber" type="Text" placeholder="Čislo jazdca">
+    <label for="firstName">Meno: </label>
+    <input [(ngModel)]='newRider.firstName' name="firstName" type="Text" placeholder="Meno">
+    <label for="lastName">Priezvisko: </label>
+    <input [(ngModel)]='newRider.lastName' name="lastName" type="Text" placeholder="Priezvisko">
+    <label for="dateOfBirth">Vyberte dátum narodenia: </label>
+    <input [(ngModel)]='newRider.dateOfbirth' name="dateOfBirth" type="date" placeholder="Datum Narodenia">
+    <label for="category">Vyberte kategoriu jazdca: </label>
+    <select [(ngModel)]='newRider.category' name="category">
+        <option value="" disabled selected>Vyberte z možnosti</option>
+        <option value="Junior">Junior</option>
+        <option value="Senior">Senior</option>
+    </select>
+    <input type="submit" name="submit">
+</form>

@@ -20,6 +20,8 @@ export class ArticlesComponent implements OnInit {
   constructor(private articleService: AdminArticlesService,) { }
 
   ngOnInit(): void {
+
+    /*
     const pipeEnd: Observable<Article[]> = this.articleService.getAdminArticle()
 
     pipeEnd.subscribe(
@@ -29,8 +31,19 @@ export class ArticlesComponent implements OnInit {
         complete: () => this.articleSliced = this.articles.slice(0, 5),
       }
     )
-
+    */
+    this.getArticleFromServer();
   }
+
+  getArticleFromServer() {
+    this.articleService.getAdminArticle().subscribe(
+      articles => {
+        this.articles = articles
+        this.articleSliced = this.articles.slice(0, 5)
+      }
+    )
+  }
+
 
   sortByApproved(): Article[] {
     this.onlyApproved = !this.onlyApproved;
@@ -49,5 +62,24 @@ export class ArticlesComponent implements OnInit {
       endIndex = this.articles.length;
     }
     this.articleSliced = this.articles.slice(startIndex, endIndex)
+  }
+
+  approveArticle(article: Article) {
+    this.articleService.approvedAdminArticle(article.id, article).subscribe(
+      () => this.getArticleFromServer()
+    )
+  }
+  dissApproveArticle(article: Article) {
+    this.articleService.dissApprovedAdminArticle(article.id, article).subscribe(
+      () => this.getArticleFromServer()
+    )
+  }
+
+  deleteArticle(article: Article) {
+    if (confirm("Naozaj chceš zmazať článok " + article.name + " ?")) {
+      this.articleService.deleteAdminArticle(article.id).subscribe(
+        () => this.getArticleFromServer()
+      )
+    }
   }
 }
