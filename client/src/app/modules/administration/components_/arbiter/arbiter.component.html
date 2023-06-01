@@ -1,2 +1,41 @@
 <app-admin-header-arbiter></app-admin-header-arbiter>
-<p>arbiter works!</p>
+<div class="container-panel">
+    <div class="table">
+        <div class="table-header">
+            <div class="table-data">
+                <div class="table-column">
+                    <h4>Meno</h4>
+                </div>
+                <div class="table-column">
+                    <h4>Priezvisko</h4>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <p>Zmazať</p>
+                </div>
+                <div>
+                    <p>Upraviť</p>
+                </div>
+            </div>
+        </div>
+        <div class="table-row" *ngFor="let arbiter of arbiters">
+            <div class="table-data">
+                <div class="table-column">
+                    <h4>{{arbiter.firstName}}</h4>
+                </div>
+                <div class="table-column">
+                    <p>{{arbiter.lastName}}</p>
+                </div>
+            </div>
+            <div class="table-control">
+                <div>
+                    <button mat-button (click)="removeArbiter(arbiter)"><mat-icon>delete</mat-icon></button>
+                </div>
+                <div>
+                    <button mat-button><mat-icon>settings</mat-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,4 +28,10 @@ export class AdminHorsesService {
     )
   }
 
+  deleteHorse(id: number): Observable<void> {
+    return this.http.delete(this.serverUrl + "Horses/DeleteHorse/" + id, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
 }

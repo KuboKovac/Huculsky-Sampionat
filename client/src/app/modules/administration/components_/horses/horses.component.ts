@@ -23,4 +23,12 @@ export class HorsesComponent implements OnInit {
 
     )
   }
+
+  deleteHorse(horse: Horse) {
+    if (confirm("Naozaj chceš vymazať koňa " + horse.name + " ?")) {
+      this.horsesService.deleteHorse(horse.id).subscribe(
+        () => this.getAllHorses()
+      )
+    }
+  }
 }
