@@ -6,5 +6,5 @@ public class CompetitionDTO
     public string Name { get; set; }
     public string Description { get; set; }
     public string Date { get; set; }
-    public int ArbiterId { get; set; }
+    // public int ArbiterId { get; set; }
 }
