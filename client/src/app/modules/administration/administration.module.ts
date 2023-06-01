@@ -20,6 +20,9 @@ import { HorsesComponent } from './components_/horses/horses.component';
 import { CompetitionsComponent } from './components_/competitions/competitions.component';
 import { NewHorseComponent } from './components_/horses/new-horse/new-horse.component';
 import { NewCompetitionsComponent } from './components_/competitions/new-competitions/new-competitions.component';
+import { ArbiterComponent } from './components_/arbiter/arbiter.component';
+import { NewArbiterComponent } from './components_/arbiter/new-arbiter/new-arbiter.component';
+import { AdminHeaderArbiterComponent } from './components_/admin-headers/admin-header-arbiter/admin-header-arbiter.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +40,9 @@ import { NewCompetitionsComponent } from './components_/competitions/new-competi
         CompetitionsComponent,
         NewHorseComponent,
         NewCompetitionsComponent,
+        ArbiterComponent,
+        NewArbiterComponent,
+        AdminHeaderArbiterComponent,
     ],
     exports: [
         AdminPanelComponent

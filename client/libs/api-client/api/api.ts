@@ -1,0 +1,15 @@
+export * from './arbiters.service';
+import { ArbitersService } from './arbiters.service';
+export * from './articles.service';
+import { ArticlesService } from './articles.service';
+export * from './auth.service';
+import { AuthService } from './auth.service';
+export * from './competitionsResults.service';
+import { CompetitionsResultsService } from './competitionsResults.service';
+export * from './horses.service';
+import { HorsesService } from './horses.service';
+export * from './images.service';
+import { ImagesService } from './images.service';
+export * from './riders.service';
+import { RidersService } from './riders.service';
+export const APIS = [ArbitersService, ArticlesService, AuthService, CompetitionsResultsService, HorsesService, ImagesService, RidersService];

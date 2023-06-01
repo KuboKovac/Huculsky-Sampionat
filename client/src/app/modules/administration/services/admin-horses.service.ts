@@ -21,4 +21,11 @@ export class AdminHorsesService {
     );
   }
 
+  addHorse(horse: Horse): Observable<void> {
+    return this.http.post(this.serverUrl + "Horses/CreateNewHorse", horse, { responseType: 'text' }).pipe(
+      map(response => this.messageService.message(response, 5000)),
+      catchError(error => errorHandler(error, 400, this.messageService))
+    )
+  }
+
 }
