@@ -22,6 +22,7 @@ public class RidersController : ControllerBase
         var riders = await _dbContext.Riders
             .Select(rider => new RiderDTO
             {
+                Id = rider.Id,
                 FirstName = rider.FirstName,
                 LastName = rider.LastName,
                 Category = rider.Category,
