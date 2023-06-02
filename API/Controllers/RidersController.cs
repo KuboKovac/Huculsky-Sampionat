@@ -18,17 +18,27 @@ public class RidersController : ControllerBase
     
     
     [HttpGet("GetAllRiders"), Authorize]
-    public async Task<ActionResult<List<RiderDTO>>> GetAllRiders()
+    public async Task<ActionResult<List<RiderHorseDTO>>> GetAllRiders()
     {
         var riders = await _dbContext.Riders
-            .Select(rider => new RiderDTO
+            .Select(rider => new
             {
                 Id = rider.Id,
                 FirstName = rider.FirstName,
                 LastName = rider.LastName,
                 Category = rider.Category,
                 RiderNumber = rider.RiderNumber,
-                DateOfbirth = rider.DateOfBirth
+                DateOfbirth = rider.DateOfBirth,
+                Horses = rider.Horses.Select(horse => new
+                {
+                    Id = horse.Id,
+                    Name = horse.Name,
+                    Number = horse.Name,
+                    DateOfBirth = horse.DateOfBirth,
+                    Male = horse.Male,
+                    FatherId = horse.FatherId,
+                    MotherId = horse.MotherId
+                })
             }).ToListAsync();
         
         return Ok(riders);
