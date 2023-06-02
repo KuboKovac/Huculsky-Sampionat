@@ -213,6 +213,89 @@ namespace API.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("API.Database.DbModels.Obstacles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Cuvanie_Medzi_Kavaletami")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Fit_Lopta")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Kavalety_4_ks")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Koliska")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Košík_Preniesť_Krčah")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("L")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Labyrint")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Lano_Bránička")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Lavička_Vyššia")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Mostík_Najazdova_Rampa")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Nízky_Podjazd")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Paleta_Státie")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Plachta")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Skok")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Skok_50cm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Slalom")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Stužky")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Sud_Kavaleta")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Technický_Prekrok")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Uzka_Ulička_Zvonec")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Z")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Zastavenie_Cúvanie_Pri_Kužeľke")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Štvorec")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Ťah_Vreca")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Obstacles");
+                });
+
             modelBuilder.Entity("API.Database.DbModels.Result", b =>
                 {
                     b.Property<int>("Id")
@@ -225,14 +308,17 @@ namespace API.Migrations
                     b.Property<int?>("HorseId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("PointsAtObstacles")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PointsAtObstaclesId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int?>("RiderId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TimeLimit")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -244,6 +330,8 @@ namespace API.Migrations
                     b.HasIndex("CompetitionId");
 
                     b.HasIndex("HorseId");
+
+                    b.HasIndex("PointsAtObstaclesId");
 
                     b.HasIndex("RiderId");
 
@@ -437,9 +525,17 @@ namespace API.Migrations
                         .WithMany("Results")
                         .HasForeignKey("HorseId");
 
+                    b.HasOne("API.Database.DbModels.Obstacles", "PointsAtObstacles")
+                        .WithMany("Results")
+                        .HasForeignKey("PointsAtObstaclesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("API.Database.DbModels.Rider", null)
                         .WithMany("Results")
                         .HasForeignKey("RiderId");
+
+                    b.Navigation("PointsAtObstacles");
                 });
 
             modelBuilder.Entity("ArbiterCompetition", b =>
@@ -563,6 +659,11 @@ namespace API.Migrations
                 });
 
             modelBuilder.Entity("API.Database.DbModels.Horse", b =>
+                {
+                    b.Navigation("Results");
+                });
+
+            modelBuilder.Entity("API.Database.DbModels.Obstacles", b =>
                 {
                     b.Navigation("Results");
                 });

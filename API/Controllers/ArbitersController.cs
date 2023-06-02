@@ -36,7 +36,7 @@ public class ArbitersController : ControllerBase
         _dbContext.Arbiter.Add(newArbiter);
         await _dbContext.SaveChangesAsync();
         
-        return Ok(newArbiter);
+        return Ok("Rozhodca bol vytvoreý úspešne!");
     }
 
     [HttpPut("UpdateArbiter/{id:int}"), Authorize(Roles = "Admin")]
