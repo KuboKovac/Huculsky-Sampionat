@@ -24,6 +24,7 @@ import { ArbiterComponent } from './components_/arbiter/arbiter.component';
 import { NewArbiterComponent } from './components_/arbiter/new-arbiter/new-arbiter.component';
 import { AdminHeaderArbiterComponent } from './components_/admin-headers/admin-header-arbiter/admin-header-arbiter.component';
 import { MatTableModule } from '@angular/material/table';
+import { AddRiderToHorseComponent } from './components_/horses/add-rider-to-horse/add-rider-to-horse.component';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import { MatTableModule } from '@angular/material/table';
         ArbiterComponent,
         NewArbiterComponent,
         AdminHeaderArbiterComponent,
+        AddRiderToHorseComponent,
     ],
     exports: [
         AdminPanelComponent

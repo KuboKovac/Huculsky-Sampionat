@@ -12,6 +12,7 @@ import { NewHorseComponent } from "./components_/horses/new-horse/new-horse.comp
 import { NewCompetitionsComponent } from "./components_/competitions/new-competitions/new-competitions.component";
 import { ArbiterComponent } from "./components_/arbiter/arbiter.component";
 import { NewArbiterComponent } from "./components_/arbiter/new-arbiter/new-arbiter.component";
+import { AddRiderToHorseComponent } from "./components_/horses/add-rider-to-horse/add-rider-to-horse.component";
 
 
 const routes = [
@@ -23,6 +24,7 @@ const routes = [
 
                 { path: ':id/horses', component: HorsesComponent },
                 { path: ':id/new/horse', component: NewHorseComponent },
+                { path: ':id/merge/horse', component: AddRiderToHorseComponent },
 
                 { path: ':id/competitions', component: CompetitionsComponent },
                 { path: ':id/new/competition', component: NewCompetitionsComponent },
