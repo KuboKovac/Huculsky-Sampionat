@@ -70,9 +70,9 @@ public class HorsesController : ControllerBase
 
 
     [HttpGet("GetAllHorses"), Authorize]
-    public async Task<ActionResult<List<HorseDTO>>> GetAllHorses()
+    public async Task<ActionResult<List<HorseWithRidersDTO>>> GetAllHorses()
     {
-        var horses = await _dbContext.Horses.Select(horse => new HorseDTO
+        var horses = _dbContext.Horses.Select(horse => new 
         {
             Id = horse.Id,
             Name = horse.Name,
@@ -80,8 +80,17 @@ public class HorsesController : ControllerBase
             Male = horse.Male,
             Number = horse.Number,
             FatherId = horse.FatherId,
-            MotherId = horse.MotherId
-        }).ToListAsync();
+            MotherId = horse.MotherId,
+            Riders = horse.Riders.Select(rider => new 
+            {
+                rider.Id,
+                rider.FirstName,
+                rider.LastName,
+                rider.DateOfBirth,
+                rider.RiderNumber,
+                rider.Category
+            })
+        });
 
         return Ok(horses);
     }
