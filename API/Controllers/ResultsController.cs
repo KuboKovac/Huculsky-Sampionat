@@ -16,7 +16,6 @@ public class ResultsController : ControllerBase
         _dbContext = dbContext;       
     }
     
-    
     [HttpPost("CreateResult/{raiderId:int}"), Authorize(Roles = "Admin,Arbiter")]
     public async Task<ActionResult> CreateResult(ResultsDTO resultsDto,int raiderId)
     {
@@ -24,8 +23,24 @@ public class ResultsController : ControllerBase
             .Include(result => result.Results)
             .FirstOrDefaultAsync();
         
+        var horse = await _dbContext.Horses.Where(horse => horse.Id == resultsDto.HorseID)
+            .Include(r => r.Results)
+            .FirstOrDefaultAsync();
+
+        var competition = await _dbContext.Competitions.Where(comp => comp.Id == resultsDto.CompetitionID)
+            .Include(result => result.Results)
+            .FirstOrDefaultAsync();
+        
+        
         if (rider == null)
             return BadRequest("Jazdec sa nenašiel!");
+
+        if (horse == null)
+            return BadRequest("Kôň sa v databáze nenašiel!");
+
+        if (competition == null)
+            return BadRequest("Súťaž sa v databáze nenašla!");
+        
         
         Result newResult = new Result();
         Obstacles newObstacles = new Obstacles();
@@ -56,7 +71,6 @@ public class ResultsController : ControllerBase
         newObstacles.Paleta_Státie = resultsDto.Paleta_Státie;
 
         _dbContext.Obstacles.Add(newObstacles);
-        
 
         newResult.Time = resultsDto.Time;
         newResult.TotalPoints = resultsDto.TotalPoints;
@@ -64,7 +78,11 @@ public class ResultsController : ControllerBase
         newResult.TimeLimit = resultsDto.TimeLimit;
         
         _dbContext.Results.Add(newResult);
+        
+        // Creates relation to other tables 
         rider.Results.Add(newResult);
+        horse.Results.Add(newResult);
+        competition.Results.Add(newResult);
         
         
         await _dbContext.SaveChangesAsync();

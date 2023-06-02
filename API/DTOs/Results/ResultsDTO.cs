@@ -2,6 +2,8 @@ namespace API.DTOs.Results;
 
 public class ResultsDTO
 {
+    public int CompetitionID { get; set; }
+    public int HorseID { get; set; }
     public string Time { get; set; }
     public int TotalPoints { get; set; }
 
