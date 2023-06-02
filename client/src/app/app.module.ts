@@ -24,6 +24,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -50,7 +51,6 @@ import { RouterModule } from '@angular/router';
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
-        RouterModule,
 
 
 

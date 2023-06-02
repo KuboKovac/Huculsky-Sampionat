@@ -23,6 +23,7 @@ import { NewCompetitionsComponent } from './components_/competitions/new-competi
 import { ArbiterComponent } from './components_/arbiter/arbiter.component';
 import { NewArbiterComponent } from './components_/arbiter/new-arbiter/new-arbiter.component';
 import { AdminHeaderArbiterComponent } from './components_/admin-headers/admin-header-arbiter/admin-header-arbiter.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
     declarations: [
@@ -56,6 +57,7 @@ import { AdminHeaderArbiterComponent } from './components_/admin-headers/admin-h
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
+        MatTableModule,
 
         AdministrationRoutingModule
     ]
