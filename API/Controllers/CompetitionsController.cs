@@ -22,6 +22,7 @@ public class CompetitionsController : ControllerBase
     {
         var competitions = await _dbContext.Competitions.Select(competition => new CompetitionDTO
         {
+            Id = competition.Id,
             Name = competition.Name,
             Description = competition.Description,
             Date = competition.Date
