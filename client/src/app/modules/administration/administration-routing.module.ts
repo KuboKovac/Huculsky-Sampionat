@@ -13,6 +13,8 @@ import { NewCompetitionsComponent } from "./components_/competitions/new-competi
 import { ArbiterComponent } from "./components_/arbiter/arbiter.component";
 import { NewArbiterComponent } from "./components_/arbiter/new-arbiter/new-arbiter.component";
 import { AddRiderToHorseComponent } from "./components_/horses/add-rider-to-horse/add-rider-to-horse.component";
+import { AddHorseToRiderComponent } from "./components_/data-table/add-horse-to-rider/add-horse-to-rider.component";
+import { RemoveHorseToRiderComponent } from "./components_/data-table/remove-horse-to-rider/remove-horse-to-rider.component";
 
 
 const routes = [
@@ -21,6 +23,8 @@ const routes = [
             [
                 { path: ':id/table', component: DataTableComponent },
                 { path: ':id/new/table', component: AddRecordComponent },
+                { path: ':id/merge/table', component: AddHorseToRiderComponent },
+                { path: ':id/remove/table', component: RemoveHorseToRiderComponent },
 
                 { path: ':id/horses', component: HorsesComponent },
                 { path: ':id/new/horse', component: NewHorseComponent },
