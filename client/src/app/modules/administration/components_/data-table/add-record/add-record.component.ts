@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Rider } from '../../../models/Rider';
 import { AdminRidersService } from '../../../services/admin-riders.service';
 import { Router } from '@angular/router';
+import { Horse } from '../../../models/Horse';
 
 @Component({
   selector: 'app-add-record',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddRecordComponent implements OnInit {
 
-  newRider: Rider = new Rider;
+  newRider: Rider = new Rider(0, "", "", "", "", "", []);
 
   constructor(private ridersService: AdminRidersService, private router: Router) { }
 

@@ -1,0 +1,18 @@
+<app-admin-header-riders></app-admin-header-riders>
+
+<form (ngSubmit)="onSubmit()">
+    <div class="main-container">
+        <label for="horse">Vybrať koňa:</label>
+        <select [(ngModel)]='selectedHorse' name="horse">
+            <option value="" disabled selected>Vyberte z možnosti</option>
+            <option [ngValue]="horse" *ngFor="let horse of horses">{{horse.name}} </option>
+        </select>
+        <label for="rider">Vybrať jazdca</label>
+        <select [(ngModel)]='selectedRider' name="rider">
+            <option value="" disabled selected>Vyberte z možnosti</option>
+            <option [ngValue]="rider" *ngFor="let rider of riders">{{rider.firstName}}</option>
+        </select>
+        <input type="submit" name="submit">
+        <a routerLink="/administration/riders/table">Vratiť sa na ukažku koní</a>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+<app-admin-headers-horses></app-admin-headers-horses>
+
+<form (ngSubmit)="onSubmit()">
+    <div class="main-container">
+        <label for="horseNumber">Vybrať koňa:</label>
+        <input [(ngModel)]='newHorse.number' name="horseNumber" type="Text" placeholder="Čislo koňa">
+        <label for="firstName">Vybrať jazdca</label>
+        <input [(ngModel)]='newHorse.name' name="firstName" type="Text" placeholder="Meno koňa">
+        <input type="submit" name="submit">
+    </div>
+</form>

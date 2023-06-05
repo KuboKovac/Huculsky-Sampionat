@@ -19,6 +19,9 @@
                 <div class="table-column">
                     <h4>Kategória</h4>
                 </div>
+                <div class="table-column">
+                    <h4>Kôň</h4>
+                </div>
             </div>
             <div class="table-control">
                 <div>
@@ -45,6 +48,9 @@
                 </div>
                 <div class="table-column">
                     <p>{{rider.category}}</p>
+                </div>
+                <div class="table-column">
+                    <p *ngFor="let horse of rider.horses">{{horse.name}}</p>
                 </div>
             </div>
             <div class="table-control">

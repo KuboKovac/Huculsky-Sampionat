@@ -1,0 +1,22 @@
+<app-admin-header-riders></app-admin-header-riders>
+
+<!--Mne je z tohto kodu pekne kokotno, ale funguje to :D-->
+
+<form (ngSubmit)="onSubmit()">
+    <div class="main-container">
+        <label for="horse">Vybrať koňa:</label>
+        <!--Kone sa načitaju až potom čo si vyberieš jazdca-->
+        <select [(ngModel)]='selectedHorse' name="horse" (ngModelChange)="onSelectHorse(selectedHorse)">
+            <option *ngIf="horses.length ==0 " value="" disabled selected>Vyberte najskôr jazdca</option>
+            <option *ngIf="horses.length >=1 " value="" selected>Vyberte koňa</option>
+            <option [ngValue]="horse" *ngFor="let horse of horses">{{horse.name}} </option>
+        </select>
+        <label for="rider">Vybrať jazdca</label>
+        <!--Keď si vyberieš jazdca načitaju sa jeho kone-->
+        <select [(ngModel)]='selectedRider' name="rider" (ngModelChange)="onSelectRider(selectedRider)">
+            <option [ngValue]="rider" *ngFor="let rider of riders">{{rider.firstName}}</option>
+        </select>
+        <input type="submit" name="submit">
+        <a routerLink="/administration/riders/table">Vratiť sa na ukažku koní</a>
+    </div>
+</form>
