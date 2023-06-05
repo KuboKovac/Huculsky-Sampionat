@@ -38,5 +38,4 @@ export class AdminRidersService {
       catchError(error => errorHandler(error, 400, this.messageService))
     )
   }
-
 }

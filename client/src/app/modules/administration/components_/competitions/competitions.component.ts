@@ -35,4 +35,5 @@ export class CompetitionsComponent implements OnInit {
     )
   }
 
+  //testujem commit
 }
