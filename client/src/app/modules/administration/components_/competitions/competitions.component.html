@@ -41,12 +41,52 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                 <div class="example-element-diagram">
-                    <div class="example-element-position"> {{element.id}} </div>
                     <div class="example-element-symbol"> {{element.name}} </div>
-                    <select name="" id="">
-                        <option>Jožko z nižneho kinca</option>
-                        <option value="">Feri z koňuša</option>
-                    </select>
+                    <div class="riders" *ngFor="let item of ridersToCompetition">
+                        <div class="collumn">
+                            <p class="label">Jazdec :</p>
+                            <p>{{item.riderNumber}}</p>
+                            <p>{{item.firstName}}</p>
+                            <p>{{item.lastName}}</p>
+                            <p>{{item.dateOfbirth}}</p>
+                            <p>{{item.category}}</p>
+                            <p class="label"> Jazdcov kôň: </p>
+                            <div *ngFor="let horse of item.horses" class="rider_horse">
+                                <p>{{horse.name}}</p>
+                                <p>{{horse.number}}</p>
+                            </div>
+                            <button>Pridať hodnotenie</button>
+                        </div>
+                        Hodnotenie pre {{item.firstName}} :
+                        <div class="collumn">
+                            <input [(ngModel)]="item.result[0].l" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].z" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result[0].koliska" type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                            <input type="text" maxlength="1">
+                        </div>
+                    </div>
+                    <button>Uzatvoriť pretek</button>
                 </div>
             </div>
         </td>
