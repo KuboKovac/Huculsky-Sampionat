@@ -10,7 +10,7 @@ import { ArticlesComponent } from './components_/articles/articles.component';
 import { NewArticleComponent } from './components_/articles/new-article/new-article.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AdminHeaderArticlesComponent } from './components_/admin-headers/admin-header-articles/admin-header-articles.component';
 import { AdminHeaderRidersComponent } from './components_/admin-headers/admin-header-riders/admin-header-riders.component';
 import { AdminHeadersCompetionComponent } from './components_/admin-headers/admin-headers-competion/admin-headers-competion.component';
@@ -29,7 +29,7 @@ import { AddHorseToRiderComponent } from './components_/data-table/add-horse-to-
 import { RemoveHorseToRiderComponent } from './components_/data-table/remove-horse-to-rider/remove-horse-to-rider.component';
 import { UsersComponent } from './components_/users/users.component';
 import { NewUserComponent } from './components_/users/new-user/new-user.component';
-
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
     declarations: [
         AdminPanelComponent,
@@ -60,7 +60,8 @@ import { NewUserComponent } from './components_/users/new-user/new-user.componen
     ],
     imports: [
         CommonModule,
-
+        ReactiveFormsModule,
+        
         MatIconModule,
         MatButtonModule,
         MatPaginatorModule,
@@ -68,6 +69,7 @@ import { NewUserComponent } from './components_/users/new-user/new-user.componen
         FormsModule,
         MatSidenavModule,
         MatTableModule,
+        MatStepperModule,
 
         AdministrationRoutingModule
     ]

@@ -1,2 +1,116 @@
 <app-admin-headers-competion></app-admin-headers-competion>
-<p>new-competitions works!</p>
+
+
+<div class="container-panel">
+    <mat-stepper [linear]="false">
+
+        <!--         STEP #1         -->
+
+        <mat-step>
+            <h2>Informácie o súťaži</h2>
+            <form (ngSubmit)="firstStepSubmit()" [formGroup]="competitionForm">
+                <ng-template matStepLabel>Informácie o súťaži</ng-template>
+                <div class="inner-container">
+                    <div class="formCol">
+                        <label>Názov Súťaže</label>
+                        <input class="input" placeholder="Názov" name="name" formControlName="name"
+                            [(ngModel)]="competition.name">
+                        <label>Dátum Súťaže</label>
+                        <input class="input" type="date" name="date" formControlName="date"
+                            [(ngModel)]="competition.date">
+                    </div>
+
+                    <div class="formCol">
+                        <label>Popis súťaže</label>
+                        <textarea class="text-area" type="text" placeholder="Informácie o súťaži"
+                            formControlName="description" [(ngModel)]="competition.description"></textarea>
+                    </div>
+                </div>
+
+                <div class="buttons">
+                    <button matStepperNext [disabled]="competitionForm.invalid">Ďalej</button>
+                </div>
+            </form>
+
+
+        </mat-step>
+
+        <!--         STEP #2         -->
+
+        <mat-step>
+            <h2>Vyberte rozhodcov</h2>
+            <ng-template matStepLabel>Rozhodca</ng-template>
+            <div class="table">
+                <div class="list" *ngFor="let arbiter of arbiters">
+                    <div class="col">
+                        <h3>{{arbiter.firstName}}</h3>
+                    </div>
+                    <div class="col">
+                        <h3>{{arbiter.lastName}}</h3>
+                    </div>
+                    <div class="col">
+                        <div *ngIf="!selectedArbiters.includes(arbiter); else elseBlock">
+                            <button (click)="addArbiterToCompetition(arbiter)" class="button-green">Pridať</button>
+                        </div>
+
+                        <ng-template #elseBlock>
+                            <button (click)="removeArbiterFromCompetition(arbiter)"class="button-red">Odobrať</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button matStepperPrevious>Späť</button>
+                <button matStepperNext>Ďalej</button>
+            </div>
+        </mat-step>
+
+        <!--         STEP #3         -->
+
+        <mat-step>
+            <h2>Vyberte súťažiacich</h2>
+            <ng-template matStepLabel>Jazdci</ng-template>
+            <div class="table">
+                <div class="list" *ngFor="let rider of riders">
+                    <div class="col">
+                        <h3>{{rider.firstName}}</h3>
+                    </div>
+                    <div class="col">
+                        <h3>{{rider.lastName}}</h3>
+                    </div>
+                    <div class="col">
+                        <h3>{{rider.riderNumber}}</h3>
+                    </div>
+                    <div class="col">
+                        <div *ngIf="!selectedRiders.includes(rider); else elseBlock">
+                            <button (click)="addRiderToCompetition(rider)" class="button-green">Pridať</button>
+                        </div>
+
+                        <ng-template #elseBlock>
+                            <button (click)="removeRiderFromCompetition(rider)"class="button-red">Odobrať</button>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button matStepperPrevious>Späť</button>
+                <button matStepperNext>Ďalej</button>
+            </div>
+        </mat-step>
+
+        <!--         STEP #4         -->
+        <mat-step>
+            <ng-template matStepLabel>Potvrdiť výber</ng-template>
+
+            <h2 class="confirmation-h2">Ak si ste istý zadanými parametrami, stlačte dokončiť pre potvrdenie a vytvorenie pretekov.</h2>
+
+            <div class="buttons">
+                <button matStepperPrevious>Späť</button>
+                <button (click)="createNewCompetition()">Dokončiť</button>
+            </div>
+
+        </mat-step>
+    </mat-stepper>
+</div>

@@ -22,7 +22,13 @@ export class AdminCompetitionsService {
       map(competitions => competitions.map(competition => Competition.clone(competition)))
     )
   }
-  addNewCompetition() {
+  addNewCompetition(competition: Competition): Observable<void> {
+    return this.http.post(this.serverUrl + "Competitions/CreateCompetition", competition, {responseType:"text"})
+    .pipe(
+      map(response => {
+        this.messageService.message(response)
+      }),catchError(err => errorHandler(err,5000,this.messageService))
+    )
 
   }
   deleteCompetition(/*ID*/) {

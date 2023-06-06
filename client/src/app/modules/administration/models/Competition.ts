@@ -8,6 +8,8 @@ export class Competition {
         public id: number,
         public name: string,
         public description: string,
-        public date: string,
+        public date: any,
+        public ridersIds?: number[],
+        public arbitersIds?: number[]
     ) { }
 }
