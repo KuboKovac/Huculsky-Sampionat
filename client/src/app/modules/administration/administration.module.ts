@@ -27,6 +27,8 @@ import { MatTableModule } from '@angular/material/table';
 import { AddRiderToHorseComponent } from './components_/horses/add-rider-to-horse/add-rider-to-horse.component';
 import { AddHorseToRiderComponent } from './components_/data-table/add-horse-to-rider/add-horse-to-rider.component';
 import { RemoveHorseToRiderComponent } from './components_/data-table/remove-horse-to-rider/remove-horse-to-rider.component';
+import { UsersComponent } from './components_/users/users.component';
+import { NewUserComponent } from './components_/users/new-user/new-user.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +52,8 @@ import { RemoveHorseToRiderComponent } from './components_/data-table/remove-hor
         AddRiderToHorseComponent,
         AddHorseToRiderComponent,
         RemoveHorseToRiderComponent,
+        UsersComponent,
+        NewUserComponent,
     ],
     exports: [
         AdminPanelComponent
