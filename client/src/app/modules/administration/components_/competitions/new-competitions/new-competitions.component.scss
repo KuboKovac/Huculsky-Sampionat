@@ -1,0 +1,85 @@
+h2{
+    text-align: center;
+}
+.confirmation-h2{
+    max-width: 25vw;
+    margin: 35px auto 35px;
+}
+.input{
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+}
+.formCol{
+    margin: 5px;
+}
+.inner-container{
+    margin: 25px auto 25px;
+    width: min-content;
+    display: flex;
+    flex-direction: row;
+}
+.table{
+    border: 1px solid gray;
+    border-radius: 4px;
+    max-height: 45vh;
+    width: 70%;
+    margin: 25px auto 25px;
+    overflow-y: scroll;
+}
+.list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    h3{
+        width: min-content;  
+        margin: 0;
+    }
+    input{
+        scale: 105%;
+    }
+    input:hover{
+        cursor: pointer;
+    }
+}
+.col{
+    max-height: min-content;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
+}
+.input{
+    width: 8vw;
+}
+.text-area{
+    min-width: 20vw;
+    min-height: 8vh;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+button{
+    width: 4vw;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B75060;
+    color: white;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}
+button:hover{
+    background-color: #ef697e;
+    cursor: pointer;
+}
+.button-red{
+    background-color: red;
+}
+.button-green{
+    background-color: green;
+}
