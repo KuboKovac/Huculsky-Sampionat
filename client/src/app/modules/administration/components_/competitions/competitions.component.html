@@ -43,7 +43,6 @@
                 <div class="example-element-diagram">
                     <div class="example-element-symbol"> {{element.name}} </div>
                     <div class="riders" *ngFor="let item of ridersToCompetition">
-                        <div></div>
                         <div class="collumn">
                             <p class="label">Jazdec :</p>
                             <p>{{item.riderNumber}}</p>
@@ -58,21 +57,22 @@
                             </div>
                             <button>Pridať hodnotenie</button>
                         </div>
+                        Hodnotenie pre {{item.firstName}} :
                         <div class="collumn">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
-                            <input type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.l" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.z" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
+                            <input [(ngModel)]="item.result.koliska" type="text" maxlength="1">
                             <input type="text" maxlength="1">
                             <input type="text" maxlength="1">
                             <input type="text" maxlength="1">
@@ -86,6 +86,7 @@
                             <input type="text" maxlength="1">
                         </div>
                     </div>
+                    <button>Uzatvoriť pretek</button>
                 </div>
             </div>
         </td>

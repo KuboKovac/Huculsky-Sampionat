@@ -4,8 +4,8 @@ import { Competition } from '../../models/Competition';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Result } from '../../models/Result';
 import { AdminRidersService } from '../../services/admin-riders.service';
-import { Rider } from '../../models/Rider';
 import { Horse } from '../../models/Horse';
+import { RidersCompetetion } from '../../models/RidersCompetition';
 
 @Component({
   selector: 'app-competitions',
@@ -27,11 +27,12 @@ export class CompetitionsComponent implements OnInit {
 
 
   horseToCompetiton: Horse[] = [new Horse(1, "Osvald", "svk557", "2008", true, 0, 0)]
-  ridersToCompetition: Rider[] = [
-    new Rider(0, "SVK557", "Janoslav", "Malý", "17.11.2000", "Junior", this.horseToCompetiton),
-    new Rider(1, "SVK557", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton),
-    new Rider(2, "SVK558", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton)
+  ridersToCompetition: RidersCompetetion[] = [
+    new RidersCompetetion(0, "SVK557", "Janoslav", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, new Result(1, 2, "", 5, "", 5)),
+    new RidersCompetetion(1, "SVK557", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, new Result()),
+    new RidersCompetetion(2, "SVK558", "Janko", "Malý", "17.11.2000", "Senior", this.horseToCompetiton, new Result())
   ]
+
 
   constructor(private competitionService: AdminCompetitionsService, private rider: AdminRidersService) { }
 

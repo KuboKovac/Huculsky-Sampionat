@@ -66,13 +66,16 @@ tr.example-element-row:not(.example-expanded-row):active {
             font-weight: 500;
         }
 
+
         .rider_horse {
             display: flex;
             gap: 5px;
+
         }
 
         input[type="text"] {
             width: 1%;
+            border-radius: 5px;
         }
     }
 }

@@ -1,7 +1,7 @@
 export class Competition {
 
     public static clone(c: Competition): Competition {
-        return new Competition(c.id, c.name, c.description, c.date)
+        return new Competition(c.id, c.name, c.description, c.date, c.ridersIds,)
     }
 
     constructor(
@@ -9,7 +9,7 @@ export class Competition {
         public name: string,
         public description: string,
         public date: any,
-        public ridersIds?: number[],
-        public arbitersIds?: number[]
+        public ridersIds: number[] = [],
+        public arbitersIds: number[] = []
     ) { }
 }
