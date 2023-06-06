@@ -2,7 +2,15 @@
     <app-hero-header></app-hero-header>
     <main>
         <h1>Dôležite oznamy</h1>
-        <p>Oznamujeme návštevníkom, že od 10.7.2025 bude jazda počas víkendov, 0len v čase
-            od 14.00 do 17.00 hod.</p>
+        <div *ngIf="articles.length > 0; else elseBlock">
+            <div *ngFor="let article of articles" class="notification">
+                <p class="name">{{article.name}}</p>
+                <p class="context">{{article.content}}</p>
+            </div>
+        </div>
+        <ng-template #elseBlock>
+            <p>Zatiaľ nebol pridaný žiaden oznam</p>
+        </ng-template>
+
     </main>
 </body>

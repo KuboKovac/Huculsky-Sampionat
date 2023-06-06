@@ -15,6 +15,8 @@ import { NewArbiterComponent } from "./components_/arbiter/new-arbiter/new-arbit
 import { AddRiderToHorseComponent } from "./components_/horses/add-rider-to-horse/add-rider-to-horse.component";
 import { AddHorseToRiderComponent } from "./components_/data-table/add-horse-to-rider/add-horse-to-rider.component";
 import { RemoveHorseToRiderComponent } from "./components_/data-table/remove-horse-to-rider/remove-horse-to-rider.component";
+import { UsersComponent } from "./components_/users/users.component";
+import { NewUserComponent } from "./components_/users/new-user/new-user.component";
 
 
 const routes = [
@@ -39,6 +41,9 @@ const routes = [
 
                 { path: ':id/arbiter', component: ArbiterComponent },
                 { path: ':id/new/arbiter', component: NewArbiterComponent },
+
+                { path: ':id/user', component: UsersComponent },
+                { path: ':id/new/user', component: NewUserComponent },
 
             ]
     }
