@@ -28,9 +28,9 @@ export class CompetitionsComponent implements OnInit {
 
   horseToCompetiton: Horse[] = [new Horse(1, "Osvald", "svk557", "2008", true, 0, 0)]
   ridersToCompetition: RidersCompetetion[] = [
-    new RidersCompetetion(0, "SVK557", "Janoslav", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, new Result(1, 2, "", 5, "", 5)),
-    new RidersCompetetion(1, "SVK557", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, new Result()),
-    new RidersCompetetion(2, "SVK558", "Janko", "Malý", "17.11.2000", "Senior", this.horseToCompetiton, new Result())
+    new RidersCompetetion(0, "SVK557", "Janoslav", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, [new Result(1, 2, "", 5, "", 5)]),
+    new RidersCompetetion(1, "SVK557", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, [new Result()]),
+    new RidersCompetetion(2, "SVK558", "Janko", "Malý", "17.11.2000", "Senior", this.horseToCompetiton, [new Result()])
   ]
 
 

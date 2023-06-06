@@ -1,7 +1,12 @@
+import { Arbiter } from "./Arbiter";
+import { RidersCompetetion } from "./RidersCompetition";
+
 export class Competition {
 
     public static clone(c: Competition): Competition {
-        return new Competition(c.id, c.name, c.description, c.date, c.ridersIds,)
+        return new Competition(c.id, c.name, c.description, c.date,
+            c.riders.map(rider => RidersCompetetion.cloneFromRider(rider)),
+            c.arbiters.map(arbiters => Arbiter.clone(arbiters)))
     }
 
     constructor(
@@ -9,7 +14,9 @@ export class Competition {
         public name: string,
         public description: string,
         public date: any,
-        public ridersIds: number[] = [],
-        public arbitersIds: number[] = []
+        public riders: RidersCompetetion[] = [],
+        public arbiters: Arbiter[] = [],
+        public ridersIds?: number[],
+        public arbitersIds?: number[]
     ) { }
 }

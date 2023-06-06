@@ -7,6 +7,10 @@ export class RidersCompetetion {
         return new RidersCompetetion(r.id, r.riderNumber, r.firstName, r.lastName, r.dateOfbirth, r.category, r.horses.map(h => Horse.clone(h), r.result))
     }
 
+    public static cloneFromRider(r: Rider): RidersCompetetion {
+        return new RidersCompetetion(r.id, r.riderNumber, r.firstName, r.lastName, r.dateOfbirth, r.category, r.horses.map(h => Horse.clone(h)))
+    }
+
     constructor(
         public id: number = 0,
         public riderNumber: string = "",
@@ -15,7 +19,7 @@ export class RidersCompetetion {
         public dateOfbirth: string = "",
         public category: string = "",
         public horses: Horse[] = [],
-        public result: Result = new Result
+        public result: Result[] = []
     ) {
     }
 }
