@@ -1,5 +1,28 @@
 body {
     main {
         text-align: center;
+
+        .notification {
+            text-align: justify;
+            width: 50%;
+            margin: 10px auto;
+            background-color: #B75060;
+            border-radius: 5px;
+            padding: 10px 10px;
+
+            .name {
+                margin: 25px 0 0 0;
+                text-align: left;
+                font-size: 25px;
+                border-bottom: #7b3741 1px solid;
+                color: white;
+            }
+
+            .context {
+                padding: 0 10px;
+                color: white;
+                font-size: 17px;
+            }
+        }
     }
 }

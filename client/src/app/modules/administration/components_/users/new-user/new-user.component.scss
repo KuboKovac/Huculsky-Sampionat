@@ -1,0 +1,84 @@
+form {
+    text-align: center;
+
+    .main-container {
+        margin: 20px auto;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: rgb(222, 222, 222);
+        border-radius: 5px;
+        border: 1px solid black;
+
+        input,
+        select {
+            margin: 5px;
+            height: 25px;
+            min-width: 30%;
+        }
+
+        input[type="text"] {
+            border-radius: 5px;
+        }
+
+        input[type="password"] {
+            border-radius: 5px;
+        }
+
+        input[type="date"] {
+            border-radius: 5px;
+        }
+
+        select {
+            border-radius: 5px;
+        }
+
+        .inline {
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            height: 19px;
+            width: 19px;
+            border-radius: 5px;
+            accent-color: #b75060;
+            content: '\f0aa';
+        }
+
+        input[type="submit"] {
+            width: 25%;
+            height: 32px;
+            border-radius: 5px;
+            color: white;
+            background-color: #b75060;
+            cursor: pointer;
+            transition: linear .2s;
+        }
+
+        input[type="submit"]:hover {
+            background-color:
+                #7b3741;
+        }
+
+        label {
+            color: #b75060;
+            font-size: 17px;
+        }
+    }
+}
+
+@media (max-width: 475px) {
+
+    input,
+    select,
+    input[type="submit"] {
+        width: 90% !important;
+    }
+
+
+    .main-container {
+        width: 80% !important;
+    }
+}
