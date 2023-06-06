@@ -21,17 +21,50 @@ public class CompetitionsController : ControllerBase
     [HttpGet("GetAllCompetitions"), Authorize]
     public async Task<ActionResult<CompetitionDTO>> GetAllCompetitions()
     {
-        var competitions = await _dbContext.Competitions.Select(competition => new CompetitionDTO
+        var competitions = await _dbContext.Competitions.Select(competition => new 
         {
-            Id = competition.Id,
-            Name = competition.Name,
-            Description = competition.Description,
-            Date = competition.Date
+            competition.Id,
+            competition.Name,
+            competition.Description,
+            competition.Date,
+            IsLocked = competition.isLocked,
+            Arbiters = competition.Arbiters.Select(a => new
+            {
+                a.Id,
+                a.FirstName,
+                a.LastName
+            }),
+            Riders = competition.Riders.Select(r => new
+            {
+                r.Id,
+                r.FirstName,
+                r.LastName,
+                r.RiderNumber,
+                r.Category,
+                r.DateOfBirth,
+                Horses = r.Horses.Select(h => new
+                {
+                    h.Id,
+                    h.Name,
+                    h.Number,
+                    h.Male,
+                    h.DateOfBirth
+                }),
+                Results = r.Results.Select(rslt => new
+                {
+                    rslt.Id,
+                    rslt.Time,
+                    rslt.TimeLimit,
+                    rslt.TotalPoints,
+                    rslt.PointsAtObstacles
+                })
+                
+            })
         }).ToListAsync();
         
         return Ok(competitions);
     }
-
+    
     [HttpPost("CreateCompetition"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateCompetition(CompetitionDTO competitionDto)
     {
@@ -66,6 +99,23 @@ public class CompetitionsController : ControllerBase
         
         return Ok("Súťaž bola úspešne vytvorená!");
     }
+
+    [HttpPut("LockCompetition/{id:int}"), Authorize(Roles = "Admin")]
+    public async Task<ActionResult> LockCompetition(int id)
+    {
+        var competitionToLock = await _dbContext.Competitions.FindAsync(id);
+
+        if (competitionToLock == null)
+            return BadRequest("Súťaž so zadaním id sa nenašla!");
+
+        competitionToLock.isLocked = true;
+        _dbContext.Competitions.Update(competitionToLock);
+
+        await _dbContext.SaveChangesAsync();
+
+        return Ok("Súťaž " + competitionToLock.Name + " bola úspešne uzatvorená!");
+    }
+
 
     [HttpDelete("DeleteCompetition/{id:int}")]
     public async Task<ActionResult> DeleteCompetition(int id)
