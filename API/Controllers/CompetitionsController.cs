@@ -1,4 +1,5 @@
 using API.Database.DbModels;
+using API.DTOs.Arbiter;
 using API.DTOs.Competition;
 using API.DTOs.Riders;
 using Microsoft.AspNetCore.Authorization;
@@ -42,6 +43,26 @@ public class CompetitionsController : ControllerBase
 
         _dbContext.Competitions.Add(newCompetition);
         await _dbContext.SaveChangesAsync();
+
+        var savedCompetition =
+            await _dbContext.Competitions
+                .Where(comp => comp.Name == newCompetition.Name && comp.Date == newCompetition.Date)
+                .FirstOrDefaultAsync();
+        if (savedCompetition == null)
+            return BadRequest("Interná chyba serveru! Súťaž sa pravdepodobne neuložila správne!");
+        
+        
+        RidersListDTO ridersToAssign = new RidersListDTO
+        {
+            RidersIds = competitionDto.RidersIds
+        };
+        ArbitersListDTO arbitersToAssign = new ArbitersListDTO
+        {
+            ArbitersIds = competitionDto.ArbitersIds
+        };
+
+        await AssignRidersToCompetition(savedCompetition.Id, ridersToAssign);
+        await AssignArbitersToCompetition(savedCompetition.Id, arbitersToAssign);
         
         return Ok("Súťaž bola úspešne vytvorená!");
     }
@@ -60,7 +81,7 @@ public class CompetitionsController : ControllerBase
         return Ok("Súťaž bola úspešne vymazána!");
     }
 
-    [HttpPut("AssignRidersToCompetiton/{id:int}"), Authorize(Roles = "Admin,Arbiter")]
+    [HttpPut("AssignRidersToCompetition/{id:int}"), Authorize(Roles = "Admin,Arbiter")]
     public async Task<ActionResult> AssignRidersToCompetition(int id, RidersListDTO ridersListDto)
     {
         var competition = await _dbContext.Competitions.Where(comp => comp.Id == id)
@@ -114,42 +135,58 @@ public class CompetitionsController : ControllerBase
         return Ok("Jazdci boli úspešne odhlásený zo súťaže " + competition.Name + "!");
     }
 
-    [HttpPut("AddArbiterToCompetition/{arbiterId:int}/{competitionId:int}"), Authorize("Admin,Arbiter")]
-    public async Task<ActionResult> AddArbiterToCompetition(int arbiterId, int competitionId)
+    [HttpPut("AssingArbitersToCompetition/{id:int}"), Authorize(Roles = "Admin,Arbiter")]
+    public async Task<ActionResult> AssignArbitersToCompetition(int id, ArbitersListDTO arbitersListDto)
     {
-        var arbiterToAssign = await _dbContext.Arbiter.FindAsync(arbiterId);
-        var competition = await _dbContext.Competitions.Where(c => c.Id == competitionId)
+        var competition = await _dbContext.Competitions.Where(c => c.Id == id)
             .Include(a => a.Arbiters)
             .FirstOrDefaultAsync();
-
-        if (arbiterToAssign == null)
-            return BadRequest("Rozhodca nebol nájdený!");
+        
         if (competition == null)
             return BadRequest("sútaž nebola nájdena!");
         
-        competition.Arbiters.Add(arbiterToAssign);
-        await _dbContext.SaveChangesAsync();
+        foreach (var arbiterId in arbitersListDto.ArbitersIds)
+        {
+            var arbiter = await _dbContext.Arbiter.Where(arbiter => arbiter.Id == arbiterId)
+                .Include(c => c.Competitions)
+                .FirstOrDefaultAsync();
 
-        return Ok("Rozhodca bol úspešne prihlásený na súťaž!");
+            if (arbiter == null)
+                return BadRequest("Rozhodca s id " + arbiterId + " nebol nájdeny!");
+            
+            competition.Arbiters.Add(arbiter);
+        }
+
+        await _dbContext.SaveChangesAsync();
+        
+        return Ok("Rozhodci boli úspešne zaregistrovaný do súťaže " + competition.Name + "!");
     }
 
-    [HttpPut("RemoveArbiterFromCompetition/{arbiterId:int}/{competitionId:int}"), Authorize(Roles = "Admin,Arbiter")]
-    public async Task<ActionResult> RemoveArbiterFromCompetition(int arbiterId, int competitionId)
+    [HttpPut("RemoveArbitersFromCompetition/{competitionId:int}"), Authorize(Roles = "Admin,Arbiter")]
+    public async Task<ActionResult> RemoveArbitersFromCompetition(int id, ArbitersListDTO arbitersListDto)
     {
-        var arbiterToRemove = await _dbContext.Arbiter.FindAsync(arbiterId);
-        var competition = await _dbContext.Competitions.Where(c => c.Id == competitionId)
+        var competition = await _dbContext.Competitions.Where(c => c.Id == id)
             .Include(a => a.Arbiters)
             .FirstOrDefaultAsync();
         
-        if (arbiterToRemove == null)
-            return BadRequest("Rozhodca nebol nájdený!");
         if (competition == null)
             return BadRequest("sútaž nebola nájdena!");
         
-        competition.Arbiters.Remove(arbiterToRemove);
-        await _dbContext.SaveChangesAsync();
+        foreach (var arbiterId in arbitersListDto.ArbitersIds)
+        {
+            var arbiter = await _dbContext.Arbiter.Where(arbiter => arbiter.Id == arbiterId)
+                .Include(c => c.Competitions)
+                .FirstOrDefaultAsync();
 
-        return Ok("Rozhodca bol úspešne odstránený zo súťaže!");
+            if (arbiter == null)
+                return BadRequest("Rozhodca s id " + arbiterId + " nebol nájdeny!");
+            
+            competition.Arbiters.Remove(arbiter);
+        }
+
+        await _dbContext.SaveChangesAsync();
+        
+        return Ok("Rozhodci boli úspešne odstránený zo súťaže " + competition.Name + "!");
     }
     
 }

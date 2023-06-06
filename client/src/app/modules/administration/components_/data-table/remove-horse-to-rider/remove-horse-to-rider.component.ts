@@ -39,7 +39,6 @@ export class RemoveHorseToRiderComponent implements OnInit {
   }
 
   onSelectHorse(selected: Horse) {
-    console.log(selected)
     this.selectedHorse = selected
   }
 
