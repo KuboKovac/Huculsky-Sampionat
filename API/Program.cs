@@ -1,6 +1,7 @@
 global using API;
 global using Microsoft.EntityFrameworkCore;
 using System.Text;
+using API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -80,6 +81,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+
+// Adds default user with default password from DbInitializer
+DbInitializer.DbSeed(app);
 
 app.UseHttpsRedirection();
 
