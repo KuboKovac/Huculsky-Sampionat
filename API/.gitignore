@@ -14,7 +14,8 @@
 *database.db
 *database.db-shm
 *database.db-wal
-
+*aws
+*/aws
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
