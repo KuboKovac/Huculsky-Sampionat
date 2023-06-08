@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using API.Database.DbModels;
 using API.DTOs.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -46,7 +47,7 @@ public class AuthController : ControllerBase
 
     
     
-    [HttpPost("Register")]
+    [HttpPost("Register"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> Register(RegisterDTO registerDto)
     {
         //Creates hash and salt from given password

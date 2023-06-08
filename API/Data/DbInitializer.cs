@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using API.Database.DbModels;
 
 namespace API.Data;
@@ -15,7 +14,7 @@ public class DbInitializer
             if (!context.Users.Any())
             {
                 context.Users.Add(
-                    new User("3xa9a4Sf85g")
+                    new User("")
                     {
                         Username = "Administrator",
                         Role = "Admin"
