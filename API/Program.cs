@@ -59,9 +59,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddCors(corsOptions =>
     corsOptions.AddPolicy("CorsPolicy",
-        policy => { policy.WithOrigins("http://localhost:4200",
+        policy => { policy.WithOrigins(//"http://localhost:4200",
                                                     "http://huculskysampionat.sk",
-                                                    "https://huculskysampionat.sk").AllowAnyMethod().AllowAnyHeader(); }));
+                                                    "https://huculskysampionat.sk")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()
+            ; }));
 
 
 // Adds SQLite database service
@@ -105,13 +109,13 @@ DbInitializer.DbSeed(app);
 
 app.UseHttpsRedirection();
 
+app.UseCors("CorsPolicy");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseCors("CorsPolicy");
 
 app.UseStaticFiles();
 
