@@ -25,4 +25,12 @@
       <Folder Include="Migrations" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="aws\web.config" />
+      <_ContentIncludedByDefault Remove="aws\API.deps.json" />
+      <_ContentIncludedByDefault Remove="aws\API.runtimeconfig.json" />
+      <_ContentIncludedByDefault Remove="aws\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="aws\appsettings.json" />
+    </ItemGroup>
+
 </Project>
