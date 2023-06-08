@@ -4,13 +4,14 @@ import { MessageService } from 'src/shared/message.service';
 import { Rider } from '../models/Rider';
 import { Observable, catchError, map } from 'rxjs';
 import { errorHandler } from 'src/shared/functions';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminRidersService {
 
-  private serverUrl: string = "https://localhost:7282/";
+  private serverUrl: string = environment.baseUrl;
 
   constructor(
     private http: HttpClient,

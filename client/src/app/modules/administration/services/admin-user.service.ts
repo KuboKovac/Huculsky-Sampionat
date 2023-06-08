@@ -4,13 +4,14 @@ import { Observable, catchError, map } from 'rxjs';
 import { MessageService } from 'src/shared/message.service';
 import { User } from '../models/User';
 import { errorHandler } from 'src/shared/functions';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminUserService {
 
-  private serverUrl: string = "https://localhost:7282/";
+  private serverUrl: string = environment.baseUrl;
 
 
   constructor(
