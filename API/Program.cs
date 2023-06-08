@@ -59,9 +59,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 builder.Services.AddCors(corsOptions =>
     corsOptions.AddPolicy("CorsPolicy",
-        policy => { policy.WithOrigins(//"http://localhost:4200",
-                                                    "http://huculskysampionat.sk",
-                                                    "https://huculskysampionat.sk")
+        policy => { policy
+            .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()
