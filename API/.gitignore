@@ -16,6 +16,7 @@
 *database.db-wal
 *aws
 */aws
+*/Data
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
