@@ -14,7 +14,7 @@ public class DbInitializer
             if (!context.Users.Any())
             {
                 context.Users.Add(
-                    new User("")
+                    new User("string")
                     {
                         Username = "Administrator",
                         Role = "Admin"

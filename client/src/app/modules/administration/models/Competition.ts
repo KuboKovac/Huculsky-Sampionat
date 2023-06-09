@@ -6,7 +6,8 @@ export class Competition {
     public static clone(c: Competition): Competition {
         return new Competition(c.id, c.name, c.description, c.date,
             c.riders.map(rider => RidersCompetetion.cloneFromRider(rider)),
-            c.arbiters.map(arbiters => Arbiter.clone(arbiters)))
+            c.arbiters.map(arbiters => Arbiter.clone(arbiters)),
+            c.isLocked)
     }
 
     constructor(
@@ -16,6 +17,7 @@ export class Competition {
         public date: any,
         public riders: RidersCompetetion[] = [],
         public arbiters: Arbiter[] = [],
+        public isLocked?: boolean,
         public ridersIds?: number[],
         public arbitersIds?: number[]
     ) { }
