@@ -55,6 +55,7 @@ public class CompetitionsController : ControllerBase
                 Results = r.Results.Select(rslt => new
                 {
                     rslt.Id,
+                    rslt.CompetitionID,
                     rslt.Time,
                     rslt.TimeLimit,
                     rslt.TotalPoints,

@@ -34,7 +34,6 @@ export class CompetitionsComponent implements OnInit {
     this.competitionService.getAllCompetitions().subscribe({
       next: value => {
         this.competitions = value
-        console.log(this.competitions[3].riders[0])
       }
 
     }
