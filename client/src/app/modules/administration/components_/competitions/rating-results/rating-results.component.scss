@@ -1,0 +1,54 @@
+h2{
+    text-align: center;
+    font-size: 2rem;
+}
+.container, .container-bottom{
+    max-width: 55vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top:1px solid rgb(185, 185, 185) ;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+.container-bottom{
+    border-top:none ;
+    justify-content: space-around;
+    padding-bottom: 15px;
+}
+.record{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin: 10px;
+    width: min-content;
+
+    p{
+        font-size: 1rem;
+        text-align: center;
+    }
+    input{
+        width: 5vw;
+        text-align: center;
+    }
+}
+.time{
+    margin: 0 auto 0;
+}
+.btn-wrapper{
+    display: flex;
+    justify-content: center;
+}
+button {
+    width: 6vw;
+    margin: 25px auto 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B75060;
+    color: white;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}button:hover {
+    background-color: #ef697e;
+    cursor: pointer;
+}

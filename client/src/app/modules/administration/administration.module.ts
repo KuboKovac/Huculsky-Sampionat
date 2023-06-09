@@ -30,6 +30,9 @@ import { RemoveHorseToRiderComponent } from './components_/data-table/remove-hor
 import { UsersComponent } from './components_/users/users.component';
 import { NewUserComponent } from './components_/users/new-user/new-user.component';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import { RatingResultsComponent } from './components_/competitions/rating-results/rating-results.component'; 
 @NgModule({
     declarations: [
         AdminPanelComponent,
@@ -54,6 +57,7 @@ import {MatStepperModule} from '@angular/material/stepper';
         RemoveHorseToRiderComponent,
         UsersComponent,
         NewUserComponent,
+        RatingResultsComponent,
     ],
     exports: [
         AdminPanelComponent
@@ -68,8 +72,10 @@ import {MatStepperModule} from '@angular/material/stepper';
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
+        MatExpansionModule,
         MatTableModule,
         MatStepperModule,
+        MatDialogModule,
 
         AdministrationRoutingModule
     ]

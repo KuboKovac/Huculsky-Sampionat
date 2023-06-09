@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AdminCompetitionsService } from '../../services/admin-competitions.service';
 import { Competition } from '../../models/Competition';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Result } from '../../models/Result';
-import { AdminRidersService } from '../../services/admin-riders.service';
-import { Horse } from '../../models/Horse';
-import { RidersCompetetion } from '../../models/RidersCompetition';
+import { MatDialog } from '@angular/material/dialog';
+import { RatingResultsComponent } from './rating-results/rating-results.component';
 
 @Component({
   selector: 'app-competitions',
@@ -20,32 +18,42 @@ import { RidersCompetetion } from '../../models/RidersCompetition';
   ],
 })
 export class CompetitionsComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'description', 'date'];
-  expandedElement: Competition | null = null
-  columnsToDisplayWithExpand = [...this.displayedColumns, 'expand'];
+
   competitions: Competition[] = []
+  panelOpenState = true
 
-
-  horseToCompetiton: Horse[] = [new Horse(1, "Osvald", "svk557", "2008", true, 0, 0)]
-  ridersToCompetition: RidersCompetetion[] = [
-    new RidersCompetetion(0, "SVK557", "Janoslav", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, [new Result(1, 2, "", 5, "", 5)]),
-    new RidersCompetetion(1, "SVK557", "Janko", "Malý", "17.11.2000", "Junior", this.horseToCompetiton, [new Result()]),
-    new RidersCompetetion(2, "SVK558", "Janko", "Malý", "17.11.2000", "Senior", this.horseToCompetiton, [new Result()])
-  ]
-
-
-  constructor(private competitionService: AdminCompetitionsService, private rider: AdminRidersService) { }
+  constructor(
+    private competitionService: AdminCompetitionsService,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.GetAllCompetions()
   }
 
-  GetAllCompetions() {
+  private GetAllCompetions() {
     this.competitionService.getAllCompetitions().subscribe({
-      next: value => this.competitions = value
+      next: value => {
+        this.competitions = value
+        console.log(this.competitions[3].riders[0])
+      }
+
     }
     )
   }
 
-  //testujem commit
+  public lockCompetition(id: number){
+    if(confirm("Naozaj chcete uzatvoriť tieto preteky? Uzatvorenie je pernamentné a nedá sa zmeniť!"))
+      this.competitionService.lockCompetiton(id).subscribe(() => this.GetAllCompetions())
+  }
+
+  public openDialogOnClick(competitionId:number,
+                          riderId: number,
+                          horseId: number | undefined){
+    this.dialog.open(RatingResultsComponent,{data:{
+          competitionId:competitionId,
+          riderId: riderId,
+          horseId: horseId
+        }});
+  }
+
 }

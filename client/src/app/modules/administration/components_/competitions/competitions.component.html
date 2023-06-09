@@ -1,26 +1,131 @@
 <app-admin-headers-competion></app-admin-headers-competion>
 
+<h1 class="h1-header">Súťaže</h1>
+
+<div class="table">
+
+    
+    <div>
+        <mat-accordion *ngFor="let competition of competitions.reverse()">
+
+            <ng-template #elseIsUnlocked>
+                <mat-icon class="unlocked">lock_open</mat-icon>
+            </ng-template>
+
+            <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <mat-icon *ngIf="competition.isLocked, else elseIsUnlocked" class="locked">lock</mat-icon>
+                        <h5 class="panel-name">{{competition.name}}</h5>
+                    </mat-panel-title>
+                    
+                    <mat-panel-description>
+                       <p class="panel-description">{{competition.description}}</p>
+                       <p class="panel-date">Dátum: {{competition.date}}</p>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+               
+                
+                
+                <div class="riders-header">
+                    <div class="riders-col"><p>Meno</p></div>
+                    <div class="riders-col"><p>Priezvisko</p></div>
+                    <div class="riders-col"><p>Číslo</p></div>
+                    <div class="riders-col"><p>Kategoria</p></div>
+                    <div class="riders-col"><p>Kôň</p></div>
+                    <div class="riders-col"><p>Bodovanie</p></div>
+                </div>
+                <div class="riders" *ngFor="let rider of competition.riders">
+                    <div class="riders-col"><h3 class="prop">{{rider.firstName}}</h3></div>
+                    <div class="riders-col"><h3 class="prop">{{rider.lastName}}</h3></div>
+                    <div class="riders-col"><p class="prop">{{rider.riderNumber}}</p></div>
+                    <div class="riders-col"><p class="prop">{{rider.category}}</p></div>
+                    <div class="riders-col"><p class="prop">{{rider.horses[0]?.name}}</p></div>
+
+                    <div class="riders-col"><div *ngIf="!competition.isLocked, else elseTimes"><button (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id)">Bodovať</button></div></div>
+
+                    <ng-template #elseTimes>
+                        <button class="btn-green" (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id)">Zobraziť časy</button>
+
+                    </ng-template>
+                </div>
+
+                <div class="arbiters">
+                    <p>Rozhodci:</p>
+                </div>
+
+                <div *ngFor="let arbiter of competition.arbiters">
+                    <div class="arbiter-row">
+                        <h2>{{arbiter.firstName}}</h2>
+                        <h2>{{arbiter.lastName}}</h2>
+                    </div>
+                </div>
+
+                <div class="riders">
+                    <button *ngIf="!competition.isLocked, else elseClosed"
+                     class="submit-btn btn-green" (click)="lockCompetition(competition.id)">Uzavrieť preteky</button>
+                </div>
+                <ng-template #elseClosed>
+                    <button class="closed-btn btn-green" disabled>Preteky uzatvorené</button>
+                </ng-template>
+                
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
 <table mat-table [dataSource]="competitions" multiTemplateDataRows class="mat-elevation-z8">
 
-    <!-- Position Column -->
+
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef> id </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
 
-    <!-- Name Column -->
+
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Meno </th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
 
-    <!-- Weight Column -->
+
     <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef> Popis </th>
         <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef> Dátum </th>
         <td mat-cell *matCellDef="let element"> {{element.date}} </td>
@@ -42,7 +147,7 @@
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
                 <div class="example-element-diagram">
                     <div class="example-element-symbol"> {{element.name}} </div>
-                    <div class="riders" *ngFor="let item of ridersToCompetition">
+                    <div class="riders" *ngFor="let item of competition">
                         <div class="collumn">
                             <p class="label">Jazdec :</p>
                             <p>{{item.riderNumber}}</p>
@@ -99,3 +204,4 @@
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 </table>
+-->

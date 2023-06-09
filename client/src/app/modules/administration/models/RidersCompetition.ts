@@ -1,10 +1,13 @@
+import { GResult } from "./GetResult";
 import { Horse } from "./Horse";
-import { Result } from "./Result";
 import { Rider } from "./Rider";
+
+
+
 
 export class RidersCompetetion {
     public static clone(r: RidersCompetetion): RidersCompetetion {
-        return new RidersCompetetion(r.id, r.riderNumber, r.firstName, r.lastName, r.dateOfbirth, r.category, r.horses.map(h => Horse.clone(h), r.result))
+        return new RidersCompetetion(r.id, r.riderNumber, r.firstName, r.lastName, r.dateOfbirth, r.category, r.horses.map(h => Horse.clone(h), r.results))
     }
 
     public static cloneFromRider(r: Rider): RidersCompetetion {
@@ -19,7 +22,7 @@ export class RidersCompetetion {
         public dateOfbirth: string = "",
         public category: string = "",
         public horses: Horse[] = [],
-        public result: Result[] = []
+        public results: GResult[] = []
     ) {
     }
 }
