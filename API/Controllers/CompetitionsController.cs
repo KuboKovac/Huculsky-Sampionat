@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using API.Database.DbModels;
 using API.DTOs.Arbiter;
 using API.DTOs.Competition;
@@ -19,6 +20,7 @@ public class CompetitionsController : ControllerBase
     }
     
     [HttpGet("GetAllCompetitions"), Authorize]
+    [SuppressMessage("ReSharper.DPA", "DPA0006: Large number of DB commands", MessageId = "count: 342")]
     public async Task<ActionResult<CompetitionDTO>> GetAllCompetitions()
     {
         var competitions = await _dbContext.Competitions.Select(competition => new 

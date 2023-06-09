@@ -1,3 +1,122 @@
+mat-expansion-panel{
+    margin: 0.3rem;
+}
+mat-panel-description, mat-panel-title{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+mat-panel-title{
+    width: 20%;
+}
+mat-panel-description{
+    width: 80%;
+    justify-content: space-between;
+}
+mat-icon{
+    scale: 80%;
+    margin-right: 25px;
+}
+
+.panel-name{
+    font-size: 1rem;
+}
+.panel-description{
+    color: black;
+}
+.panel-date{
+    font-style: italic;
+}
+
+
+.h1-header{
+    text-align: center;
+    font-size: 2.5rem;
+}
+.table{
+    background-color: rgb(250, 250, 250);
+    border-radius: 3px;
+    box-shadow: rgb(116, 116, 116) 0 0.1rem 0.1rem 0;
+    width: 95%;
+    height: 65vh;
+    padding: 0.4rem;
+    overflow-y: scroll;
+    margin: 0 auto 0;
+}
+.riders-header, .riders{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.riders-header{
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+.riders-col{
+    width: 100%;
+    justify-content: center;
+}
+.prop{
+    margin: 0 10px 0;
+}
+
+.arbiters{
+    padding-left: 15px;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+.arbiter-row{
+    margin-top: 10px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    h2{
+        font-size: 1.2rem;
+        margin: 0;
+        margin-right: 5px;
+    }
+}
+
+
+
+
+button {
+    width: 6vw;
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B75060;
+    color: white;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}
+.btn-green{
+    background-color: green;
+}
+.submit-btn, .closed-btn{
+    margin: 0 auto 0;
+}
+.closed-btn{
+    background-color: gray;
+}
+.closed-btn:hover{
+    cursor: default;
+    background-color: gray;
+}
+button:hover {
+    background-color: #ef697e;
+    cursor: pointer;
+}
+.unlocked{
+    color: green;
+}
+.locked{
+    color: rgb(158, 0, 0);
+}
+
+
+
+/*
 table {
     width: 100%;
 }
@@ -50,7 +169,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .riders {
-    border: 1px black solid;
+    border: 1px rgb(48, 48, 48) solid;
+    border-radius: 5px;
     margin: 5px 0px;
     padding: 5px;
 
@@ -79,3 +199,4 @@ tr.example-element-row:not(.example-expanded-row):active {
         }
     }
 }
+*/

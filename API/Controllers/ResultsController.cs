@@ -49,26 +49,26 @@ public class ResultsController : ControllerBase
         newObstacles.Z = resultsDto.Z;
         newObstacles.Koliska = resultsDto.Koliska;
         newObstacles.Plachta = resultsDto.Plachta;
-        newObstacles.Štvorec = resultsDto.Štvorec;
+        newObstacles.Stvorec = resultsDto.Stvorec;
         newObstacles.Cuvanie_Medzi_Kavaletami = resultsDto.Cuvanie_Medzi_Kavaletami;
-        newObstacles.Lavička_Vyššia = resultsDto.Lavička_Vyššia;
-        newObstacles.Mostík_Najazdova_Rampa = resultsDto.Mostík_Najazdova_Rampa;
+        newObstacles.Lavicka_Vyssia = resultsDto.Lavicka_Vyssia;
+        newObstacles.Mostik_Najazdova_Rampa = resultsDto.Mostik_Najazdova_Rampa;
         newObstacles.Slalom = resultsDto.Slalom;
-        newObstacles.Stužky = resultsDto.Stužky;
-        newObstacles.Nízky_Podjazd = resultsDto.Nízky_Podjazd;
+        newObstacles.Stuzky = resultsDto.Stuzky;
+        newObstacles.Nizky_Podjazd = resultsDto.Nizky_Podjazd;
         newObstacles.Skok = resultsDto.Skok;
-        newObstacles.Lano_Bránička = resultsDto.Lano_Bránička;
-        newObstacles.Uzka_Ulička_Zvonec = resultsDto.Uzka_Ulička_Zvonec;
-        newObstacles.Košík_Preniesť_Krčah = resultsDto.Košík_Preniesť_Krčah;
+        newObstacles.Lano_Branicka = resultsDto.Lano_Branicka;
+        newObstacles.Uzka_Ulicka_Zvonec = resultsDto.Uzka_Ulicka_Zvonec;
+        newObstacles.Kosik_Preniest_Krcah = resultsDto.Kosik_Preniest_Krcah;
         newObstacles.Kavalety_4_ks = resultsDto.Kavalety_4_ks;
-        newObstacles.Technický_Prekrok = resultsDto.Technický_Prekrok;
+        newObstacles.Technicky_Prekrok = resultsDto.Technicky_Prekrok;
         newObstacles.Labyrint = resultsDto.Labyrint;
-        newObstacles.Zastavenie_Cúvanie_Pri_Kužeľke = resultsDto.Zastavenie_Cúvanie_Pri_Kužeľke;
+        newObstacles.Zastavenie_Cuvanie_Pri_Kuzelke = resultsDto.Zastavenie_Cuvanie_Pri_Kuzelke;
         newObstacles.Skok_50cm = resultsDto.Skok_50cm;
         newObstacles.Sud_Kavaleta = resultsDto.Sud_Kavaleta;
-        newObstacles.Ťah_Vreca = resultsDto.Ťah_Vreca;
+        newObstacles.Tah_Vreca = resultsDto.Tah_Vreca;
         newObstacles.Fit_Lopta = resultsDto.Fit_Lopta;
-        newObstacles.Paleta_Státie = resultsDto.Paleta_Státie;
+        newObstacles.Paleta_Statie = resultsDto.Paleta_Statie;
 
         _dbContext.Obstacles.Add(newObstacles);
 
