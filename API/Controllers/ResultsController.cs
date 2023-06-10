@@ -40,7 +40,16 @@ public class ResultsController : ControllerBase
 
         if (competition == null)
             return BadRequest("Súťaž sa v databáze nenašla!");
+
+        var rslt = await _dbContext.Results.Where(r => r.RiderId == raiderId && r.CompetitionID == competition.Id)
+            .FirstOrDefaultAsync();
         
+        Console.WriteLine(rslt);
+        
+        if (rslt != null)
+        {
+            return BadRequest("Výsledok už pre kombináciu Jazdec/Súťaž bol vytvorený!");
+        }
         
         Result newResult = new Result();
         Obstacles newObstacles = new Obstacles();
