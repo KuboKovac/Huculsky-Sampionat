@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://localhost:7282/'
+  baseUrl: 'https://localhost:7282/',
+  version: '1.0.1',
+  buildTime: '10.6.2023 - 03:47'
 };
 
 /*

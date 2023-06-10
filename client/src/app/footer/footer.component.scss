@@ -1,0 +1,20 @@
+.footer {
+    width: 100%;
+    background: #B75060;
+    text-align: center;
+
+    p {
+        margin: 0;
+        padding: 0;
+        color: white;
+    }
+
+    .build_time,
+    .version {
+        font-size: 10px;
+
+        .grayed {
+            color: rgb(195, 195, 195);
+        }
+    }
+}

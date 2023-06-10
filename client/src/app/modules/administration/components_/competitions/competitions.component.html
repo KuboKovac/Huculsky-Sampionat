@@ -4,7 +4,7 @@
 
 <div class="table">
 
-    
+
     <div>
         <mat-accordion *ngFor="let competition of competitions.reverse()">
 
@@ -18,35 +18,63 @@
                         <mat-icon *ngIf="competition.isLocked, else elseIsUnlocked" class="locked">lock</mat-icon>
                         <h5 class="panel-name">{{competition.name}}</h5>
                     </mat-panel-title>
-                    
+
                     <mat-panel-description>
-                       <p class="panel-description">{{competition.description}}</p>
-                       <p class="panel-date">Dátum: {{competition.date}}</p>
+                        <p class="panel-description">{{competition.description}}</p>
+                        <p class="panel-date">Dátum: {{competition.date}}</p>
                     </mat-panel-description>
                 </mat-expansion-panel-header>
 
-               
-                
-                
+
+
+
                 <div class="riders-header">
-                    <div class="riders-col"><p>Meno</p></div>
-                    <div class="riders-col"><p>Priezvisko</p></div>
-                    <div class="riders-col"><p>Číslo</p></div>
-                    <div class="riders-col"><p>Kategoria</p></div>
-                    <div class="riders-col"><p>Kôň</p></div>
-                    <div class="riders-col"><p>Bodovanie</p></div>
+                    <div class="riders-col">
+                        <p>Meno</p>
+                    </div>
+                    <div class="riders-col">
+                        <p>Priezvisko</p>
+                    </div>
+                    <div class="riders-col">
+                        <p>Číslo</p>
+                    </div>
+                    <div class="riders-col">
+                        <p>Kategoria</p>
+                    </div>
+                    <div class="riders-col">
+                        <p>Kôň</p>
+                    </div>
+                    <div class="riders-col">
+                        <p>Bodovanie</p>
+                    </div>
                 </div>
                 <div class="riders" *ngFor="let rider of competition.riders">
-                    <div class="riders-col"><h3 class="prop">{{rider.firstName}}</h3></div>
-                    <div class="riders-col"><h3 class="prop">{{rider.lastName}}</h3></div>
-                    <div class="riders-col"><p class="prop">{{rider.riderNumber}}</p></div>
-                    <div class="riders-col"><p class="prop">{{rider.category}}</p></div>
-                    <div class="riders-col"><p class="prop">{{rider.horses[0]?.name}}</p></div>
+                    <div class="riders-col">
+                        <h3 class="prop">{{rider.firstName}}</h3>
+                    </div>
+                    <div class="riders-col">
+                        <h3 class="prop">{{rider.lastName}}</h3>
+                    </div>
+                    <div class="riders-col">
+                        <p class="prop">{{rider.riderNumber}}</p>
+                    </div>
+                    <div class="riders-col">
+                        <p class="prop">{{rider.category}}</p>
+                    </div>
+                    <div class="riders-col">
+                        <p class="prop">{{rider.horses[0]?.name}}</p>
+                    </div>
 
-                    <div class="riders-col"><div *ngIf="!competition.isLocked, else elseTimes"><button (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id)">Bodovať</button></div></div>
+                    <div class="riders-col">
+                        <div *ngIf="!competition.isLocked, else elseTimes"><button
+                                (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id,competition.isLocked)">Bodovať</button>
+                        </div>
+                    </div>
 
                     <ng-template #elseTimes>
-                        <button class="btn-green" (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id)">Zobraziť časy</button>
+                        <button class="btn-green"
+                            (click)="openDialogOnClick(competition.id,rider.id,rider.horses[0]?.id,competition.isLocked)">Zobraziť
+                            časy</button>
 
                     </ng-template>
                 </div>
@@ -63,13 +91,13 @@
                 </div>
 
                 <div class="riders">
-                    <button *ngIf="!competition.isLocked, else elseClosed"
-                     class="submit-btn btn-green" (click)="lockCompetition(competition.id)">Uzavrieť preteky</button>
+                    <button *ngIf="!competition.isLocked, else elseClosed" class="submit-btn btn-green"
+                        (click)="lockCompetition(competition.id)">Uzavrieť preteky</button>
                 </div>
                 <ng-template #elseClosed>
                     <button class="closed-btn btn-green" disabled>Preteky uzatvorené</button>
                 </ng-template>
-                
+
             </mat-expansion-panel>
         </mat-accordion>
     </div>

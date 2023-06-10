@@ -2,141 +2,308 @@
 
 <div [formGroup]="results">
 
+    <div *ngIf="isLocked !=true, else renderAgain">
 
+
+        <div class="container">
+
+            <div class="record">
+                <p>L</p>
+                <input type="number" min=0 max=5 name="l" formControlName="l">
+            </div>
+
+            <div class="record">
+                <p>Z</p>
+                <input type="number" min=0 max=5 name="z" formControlName="z">
+            </div>
+
+            <div class="record">
+                <p>Kolíska</p>
+                <input type="number" min=0 max=5 name="koliska" formControlName="koliska">
+            </div>
+
+            <div class="record">
+                <p>Plachta</p>
+                <input type="number" min=0 max=5 name="plachta" formControlName="plachta">
+            </div>
+
+            <div class="record">
+                <p>Štvorec</p>
+                <input type="number" min=0 max=5 name="stvorec" formControlName="stvorec">
+            </div>
+
+            <div class="record">
+                <p>Cúvanie medzi kavaletami</p>
+                <input type="number" min=0 max=5 name="cuvanie_Medzi_Kavaletami"
+                    formControlName="cuvanie_Medzi_Kavaletami">
+            </div>
+
+            <div class="record">
+                <p>Lavička vyššia</p>
+                <input type="number" min=0 max=5 name="lavicka_Vyssia" formControlName="lavicka_Vyssia">
+            </div>
+
+            <div class="record">
+                <p>Mostík - Nájazdová rampa</p>
+                <input type="number" min=0 max=5 name="mostik_Najazdova_Rampa" formControlName="mostik_Najazdova_Rampa">
+            </div>
+
+            <div class="record">
+                <p>Slalom</p>
+                <input type="number" min=0 max=5 name="slalom" formControlName="slalom">
+            </div>
+
+            <div class="record">
+                <p>Stužky</p>
+                <input type="number" min=0 max=5 name="stuzky" formControlName="stuzky">
+            </div>
+
+            <div class="record">
+                <p>Nízky Podjazd</p>
+                <input type="number" min=0 max=5 name="nizky_Podjazd" formControlName="nizky_Podjazd">
+            </div>
+
+            <div class="record">
+                <p>Skok</p>
+                <input type="number" min=0 max=5 name="skok" formControlName="skok">
+            </div>
+
+            <div class="record">
+                <p>Lano - Bránička</p>
+                <input type="number" min=0 max=5 name="lano_Branicka" formControlName="lano_Branicka">
+            </div>
+
+            <div class="record">
+                <p>Úzka ulička - Zvonec</p>
+                <input type="number" min=0 max=5 name="uzka_Ulicka_Zvonec" formControlName="uzka_Ulicka_Zvonec">
+            </div>
+
+            <div class="record">
+                <p>Košík - Prenos Krčahu</p>
+                <input type="number" min=0 max=5 name="kosik_Preniest_Krcah" formControlName="kosik_Preniest_Krcah">
+            </div>
+
+            <div class="record">
+                <p>Kavalety - 4 kusy</p>
+                <input type="number" min=0 max=5 name="kavalety_4_ks" formControlName="kavalety_4_ks">
+            </div>
+
+            <div class="record">
+                <p>Technický prekrok</p>
+                <input type="number" min=0 max=5 name="technicky_Prekrok" formControlName="technicky_Prekrok">
+            </div>
+
+            <div class="record">
+                <p>Labyrint</p>
+                <input type="number" min=0 max=5 name="labyrint" formControlName="labyrint">
+            </div>
+
+            <div class="record">
+                <p>Zastavenie - Cúvanie pri kužeľke</p>
+                <input type="number" min=0 max=5 name="zastavenie_Cuvanie_Pri_Kuzelke"
+                    formControlName="zastavenie_Cuvanie_Pri_Kuzelke">
+            </div>
+
+            <div class="record">
+                <p>Skok - 50cm</p>
+                <input type="number" min=0 max=5 name="skok_50cm" formControlName="skok_50cm">
+            </div>
+
+            <div class="record">
+                <p>Sud - Kavaleta</p>
+                <input type="number" min=0 max=5 name="sud_Kavaleta" formControlName="sud_Kavaleta">
+            </div>
+
+            <div class="record">
+                <p>Ťahanie vreca</p>
+                <input type="number" min=0 max=5 name="tah_Vreca" formControlName="tah_Vreca">
+            </div>
+
+            <div class="record">
+                <p>Fit Lopta</p>
+                <input type="number" min=0 max=5 name="fit_Lopta" formControlName="fit_Lopta">
+            </div>
+
+            <div class="record">
+                <p>Paleta - Státie</p>
+                <input type="number" min=0 max=5 name="paleta_Statie" formControlName="paleta_Statie">
+            </div>
+
+        </div>
+        <div class="container-bottom">
+            <div class="record time">
+                <p>Celkový čas</p>
+                <input type="text" name="time" formControlName="time">
+            </div>
+            <div class="record time">
+                <p>Časový limit</p>
+                <input type="text" name="timelimit" formControlName="timeLimit">
+            </div>
+        </div>
+        <div class="btn-wrapper">
+            <button [disabled]="!results.valid" (click)="createResult()">Uložiť výsledky</button>
+        </div>
+
+    </div>
+
+</div>
+<ng-template #renderAgain>
     <div class="container">
 
         <div class="record">
             <p>L</p>
-            <input type="number" min = 0 max = 5 name="l" formControlName="l">
+            <input type="number" min=0 max=5 name="l" [value]="currentResults.pointsAtObstacles.l" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Z</p>
-            <input type="number" min = 0 max = 5 name="z" formControlName="z">
+            <input type="number" min=0 max=5 name="z" [value]="currentResults.pointsAtObstacles.z" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Kolíska</p>
-            <input type="number" min = 0 max = 5 name="koliska" formControlName="koliska">
+            <input type="number" min=0 max=5 name="koliska" [value]="currentResults.pointsAtObstacles.koliska"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Plachta</p>
-            <input type="number" min = 0 max = 5 name="plachta" formControlName="plachta">
+            <input type="number" min=0 max=5 name="plachta" [value]="currentResults.pointsAtObstacles.plachta"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Štvorec</p>
-            <input type="number" min = 0 max = 5 name="stvorec" formControlName="stvorec">
+            <input type="number" min=0 max=5 name="stvorec" [value]="currentResults.pointsAtObstacles.stvorec"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Cúvanie medzi kavaletami</p>
-            <input type="number" min = 0 max = 5 name="cuvanie_Medzi_Kavaletami" formControlName="cuvanie_Medzi_Kavaletami">
+            <input type="number" min=0 max=5 name="cuvanie_Medzi_Kavaletami"
+                [value]="currentResults.pointsAtObstacles.cuvanie_Medzi_Kavaletami" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Lavička vyššia</p>
-            <input type="number" min = 0 max = 5 name="lavicka_Vyssia" formControlName="lavicka_Vyssia">
+            <input type="number" min=0 max=5 name="lavicka_Vyssia"
+                [value]="currentResults.pointsAtObstacles.lavicka_Vyssia" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Mostík - Nájazdová rampa</p>
-            <input type="number" min = 0 max = 5 name="mostik_Najazdova_Rampa" formControlName="mostik_Najazdova_Rampa">
+            <input type="number" min=0 max=5 name="mostik_Najazdova_Rampa"
+                [value]="currentResults.pointsAtObstacles.mostik_Najazdova_Rampa" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Slalom</p>
-            <input type="number" min = 0 max = 5 name="slalom" formControlName="slalom">
+            <input type="number" min=0 max=5 name="slalom" [value]="currentResults.pointsAtObstacles.slalom"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Stužky</p>
-            <input type="number" min = 0 max = 5 name="stuzky" formControlName="stuzky">
+            <input type="number" min=0 max=5 name="stuzky" [value]="currentResults.pointsAtObstacles.stuzky"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Nízky Podjazd</p>
-            <input type="number" min = 0 max = 5 name="nizky_Podjazd" formControlName="nizky_Podjazd">
+            <input type="number" min=0 max=5 name="nizky_Podjazd"
+                [value]="currentResults.pointsAtObstacles.nizky_Podjazd" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Skok</p>
-            <input type="number" min = 0 max = 5 name="skok" formControlName="skok">
+            <input type="number" min=0 max=5 name="skok" [value]="currentResults.pointsAtObstacles.skok"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Lano - Bránička</p>
-            <input type="number" min = 0 max = 5 name="lano_Branicka" formControlName="lano_Branicka">
+            <input type="number" min=0 max=5 name="lano_Branicka"
+                [value]="currentResults.pointsAtObstacles.lano_Branicka" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Úzka ulička - Zvonec</p>
-            <input type="number" min = 0 max = 5 name="uzka_Ulicka_Zvonec" formControlName="uzka_Ulicka_Zvonec">
+            <input type="number" min=0 max=5 name="uzka_Ulicka_Zvonec"
+                [value]="currentResults.pointsAtObstacles.uzka_Ulicka_Zvonec" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Košík - Prenos Krčahu</p>
-            <input type="number" min = 0 max = 5 name="kosik_Preniest_Krcah" formControlName="kosik_Preniest_Krcah">
+            <input type="number" min=0 max=5 name="kosik_Preniest_Krcah"
+                [value]="currentResults.pointsAtObstacles.kosik_Preniest_Krcah" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Kavalety - 4 kusy</p>
-            <input type="number" min = 0 max = 5 name="kavalety_4_ks" formControlName="kavalety_4_ks">
+            <input type="number" min=0 max=5 name="kavalety_4_ks"
+                [value]="currentResults.pointsAtObstacles.kavalety_4_ks" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Technický prekrok</p>
-            <input type="number" min = 0 max = 5 name="technicky_Prekrok" formControlName="technicky_Prekrok">
+            <input type="number" min=0 max=5 name="technicky_Prekrok"
+                [value]="currentResults.pointsAtObstacles.technicky_Prekrok" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Labyrint</p>
-            <input type="number" min = 0 max = 5 name="labyrint" formControlName="labyrint">
+            <input type="number" min=0 max=5 name="labyrint" [value]="currentResults.pointsAtObstacles.labyrint"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Zastavenie - Cúvanie pri kužeľke</p>
-            <input type="number" min = 0 max = 5 name="zastavenie_Cuvanie_Pri_Kuzelke" formControlName="zastavenie_Cuvanie_Pri_Kuzelke">
+            <input type="number" min=0 max=5 name="zastavenie_Cuvanie_Pri_Kuzelke"
+                [value]="currentResults.pointsAtObstacles.zastavenie_Cuvanie_Pri_Kuzelke" [disabled]="true">
         </div>
 
         <div class="record">
             <p>Skok - 50cm</p>
-            <input type="number" min = 0 max = 5 name="skok_50cm" formControlName="skok_50cm">
+            <input type="number" min=0 max=5 name="skok_50cm" [value]="currentResults.pointsAtObstacles.skok_50cm"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Sud - Kavaleta</p>
-            <input type="number" min = 0 max = 5 name="sud_Kavaleta" formControlName="sud_Kavaleta">
+            <input type="number" min=0 max=5 name="sud_Kavaleta" [value]="currentResults.pointsAtObstacles.sud_Kavaleta"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Ťahanie vreca</p>
-            <input type="number" min = 0 max = 5 name="tah_Vreca" formControlName="tah_Vreca">
+            <input type="number" min=0 max=5 name="tah_Vreca" [value]="currentResults.pointsAtObstacles.tah_Vreca"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Fit Lopta</p>
-            <input type="number" min = 0 max = 5 name="fit_Lopta" formControlName="fit_Lopta">
+            <input type="number" min=0 max=5 name="fit_Lopta" [value]="currentResults.pointsAtObstacles.fit_Lopta"
+                [disabled]="true">
         </div>
 
         <div class="record">
             <p>Paleta - Státie</p>
-            <input type="number" min = 0 max = 5 name="paleta_Statie" formControlName="paleta_Statie">
+            <input type="number" min=0 max=5 name="paleta_Statie"
+                [value]="currentResults.pointsAtObstacles.paleta_Statie" [disabled]="true">
         </div>
 
     </div>
     <div class="container-bottom">
         <div class="record time">
             <p>Celkový čas</p>
-            <input type="text" name="time" formControlName="time">
+            <input type="text" name="time" [value]="currentResults.time" [disabled]="true">
         </div>
         <div class="record time">
             <p>Časový limit</p>
-            <input type="text" name="timelimit" formControlName="timeLimit">
+            <input type="text" name="timelimit" [value]="currentResults.timeLimit" [disabled]="true">
         </div>
     </div>
     <div class="btn-wrapper">
-        <button [disabled]="!results.valid" (click)="createResult()">Uložiť výsledky</button>
+        <button *ngIf="!isLocked" [disabled]="!results.valid" (click)="createResult()">Uložiť výsledky</button>
     </div>
-</div>
+</ng-template>

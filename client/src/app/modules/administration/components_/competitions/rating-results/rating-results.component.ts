@@ -3,6 +3,7 @@ import { Result } from '../../../models/Result';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminCompetitionsService } from '../../../services/admin-competitions.service';
+import { GResult } from '../../../models/GetResult';
 
 @Component({
   selector: 'app-rating-results',
@@ -11,50 +12,61 @@ import { AdminCompetitionsService } from '../../../services/admin-competitions.s
 })
 export class RatingResultsComponent implements OnInit {
 
+  isLocked: boolean | undefined = false
+  currentResults: GResult = new GResult()
+
   // JEBU SA VALIDATORY, NEMAM NA TO NERVY, FIXNUT LATER
 
   public results = new FormGroup({
-    time:  new FormControl("00:00", [Validators.required]),
-    timeLimit:  new FormControl("00:00", [Validators.required]),
-    l:  new FormControl(0, [Validators.pattern(new RegExp('^[0-5]?$'))]),
-    z:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    koliska:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    plachta:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    stvorec:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    cuvanie_Medzi_Kavaletami:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    lavicka_Vyssia:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    mostik_Najazdova_Rampa:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    slalom:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    stuzky:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    nizky_Podjazd:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    skok:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    lano_Branicka:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    uzka_Ulicka_Zvonec:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    kosik_Preniest_Krcah:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    kavalety_4_ks:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    technicky_Prekrok:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    labyrint:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    zastavenie_Cuvanie_Pri_Kuzelke:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    skok_50cm:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    sud_Kavaleta:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    tah_Vreca:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    fit_Lopta:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),
-    paleta_Statie:  new FormControl(0, [Validators.maxLength(1),Validators.pattern(new RegExp('^[0-5]?$'))]),  
+    time: new FormControl("00:00", [Validators.required]),
+    timeLimit: new FormControl("00:00", [Validators.required]),
+    l: new FormControl(0, [Validators.pattern(new RegExp('^[0-5]?$'))]),
+    z: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    koliska: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    plachta: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    stvorec: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    cuvanie_Medzi_Kavaletami: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    lavicka_Vyssia: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    mostik_Najazdova_Rampa: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    slalom: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    stuzky: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    nizky_Podjazd: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    skok: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    lano_Branicka: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    uzka_Ulicka_Zvonec: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    kosik_Preniest_Krcah: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    kavalety_4_ks: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    technicky_Prekrok: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    labyrint: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    zastavenie_Cuvanie_Pri_Kuzelke: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    skok_50cm: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    sud_Kavaleta: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    tah_Vreca: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    fit_Lopta: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
+    paleta_Statie: new FormControl(0, [Validators.maxLength(1), Validators.pattern(new RegExp('^[0-5]?$'))]),
   })
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: {
-      competitionId:number,
+      competitionId: number,
       riderId: number,
-      horseId: number | undefined
+      horseId: number | undefined,
+      isLocked: boolean | undefined
     },
     private competitionService: AdminCompetitionsService
   ) { }
 
   ngOnInit(): void {
-
+    this.competitionService.getUserResult(this.data.riderId, this.data.competitionId).subscribe({
+      next: response => {
+        this.currentResults = response
+      }, complete: () => {
+        this.isLocked = this.data.isLocked
+      }
+    }
+    )
   }
 
-  public createResult(){
+  public createResult() {
     let result = new Result()
 
     result.time = this.results.get("time")?.value as string
@@ -87,13 +99,13 @@ export class RatingResultsComponent implements OnInit {
 
 
     result.competitionId = this.data.competitionId
-    if(this.data.horseId === undefined)
+    if (this.data.horseId === undefined)
       result.horseId = 0
     else
       result.horseId = this.data.horseId as number
 
-      console.log(result)
-    this.competitionService.createResult(this.data.riderId,result).subscribe(
+    console.log(result)
+    this.competitionService.createResult(this.data.riderId, result).subscribe(
       {
         error: err => console.error(err)
       }
