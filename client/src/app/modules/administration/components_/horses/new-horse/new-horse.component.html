@@ -13,9 +13,15 @@
             <input [(ngModel)]='newHorse.male' name="gender" type="checkbox" placeholder="Datum Narodenia">
         </div>
         <label for="mother">Matka koňa: </label>
-        <input [(ngModel)]='newHorse.motherId' name="mother" type="text" placeholder="Matka">
+        <select [(ngModel)]='newHorse.motherId' name="mother">
+            <option [ngValue]="0">Neznáma</option>
+            <option [ngValue]="item.id" *ngFor="let item of HorsesFemale">{{item.name}}</option>
+        </select>
         <label for="father">Otec koňa: </label>
-        <input [(ngModel)]='newHorse.fatherId' name="father" type="text" placeholder="Otec">
+        <select [(ngModel)]='newHorse.fatherId' name="father" (ngModelChange)="onSelect()">
+            <option [ngValue]="0">Neznámy</option>
+            <option [ngValue]="item.id" *ngFor="let item of HorsesMale">{{item.name}}</option>
+        </select>
         <input type="submit" name="submit">
     </div>
 </form>
