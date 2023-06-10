@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError(error => {
         console.log(error)
-        if (error.status === 0) { //fix that later for 401 when we repair CORS 
+        if (error.status === 401) { //fix that later for 401 when we repair CORS 
           localStorage.removeItem("Jwt")
           this.router.navigateByUrl('/login')
         }

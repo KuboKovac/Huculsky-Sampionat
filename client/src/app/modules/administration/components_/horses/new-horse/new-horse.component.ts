@@ -12,9 +12,33 @@ export class NewHorseComponent implements OnInit {
 
   newHorse: Horse = new Horse()
 
+  allHorses: Horse[] = []
+  HorsesMale: Horse[] = []
+  HorsesFemale: Horse[] = []
+
+
   constructor(private horsesService: AdminHorsesService, private router: Router) { }
 
   ngOnInit(): void {
+    this.horsesService.getAllHorses().subscribe(
+      {
+        next: response => this.allHorses = response,
+        complete: () => {
+          this.allHorses.forEach(horse => {
+            if (horse.male == true) {
+              this.HorsesMale.push(horse)
+            } else {
+              this.HorsesFemale.push(horse)
+            }
+          }
+          )
+        }
+      }
+    )
+  }
+
+  onSelect() {
+    console.log(this.newHorse)
   }
 
   onSubmit() {
