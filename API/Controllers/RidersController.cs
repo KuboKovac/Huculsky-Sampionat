@@ -83,7 +83,8 @@ public class RidersController : ControllerBase
         _dbContext.Riders.Add(newRider);
         await _dbContext.SaveChangesAsync();
         
-        return Ok("");
+        return Ok("Nový jazdec" +newRider.FirstName +" " +newRider.LastName + " s číslom " 
+                  + newRider.RiderNumber + " bol úspešne vytvorený!");
     }
 
     [HttpDelete("DeleteRaider/{id:int}"), Authorize(Roles = "Admin")]
