@@ -10,6 +10,8 @@ public class Result
     public int Id { get; set; }
     [ForeignKey("Competitions")]
     public int CompetitionID { get; set; }
+    [ForeignKey("Riders")]
+    public int RiderId { get; set; }
     public string Time { get; set; }
     public string TimeLimit { get; set; }
     public Obstacles PointsAtObstacles { get; set; }

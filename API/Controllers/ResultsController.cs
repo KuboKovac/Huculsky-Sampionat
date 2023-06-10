@@ -90,10 +90,25 @@ public class ResultsController : ControllerBase
         return Ok("Nový výsledok bol vytvorený!");
     }
 
-    [HttpGet("GetResultByID/{resultId:int}"), Authorize]
-    public async Task<ActionResult<Result>> GetResultById(int resultId)
+    [HttpGet("GetResultByID/{riderId:int}/{competitionId:int}"), Authorize]
+    public async Task<ActionResult<Result>> GetResultById(int riderId,int competitionId)
     {
-        return Ok();
+        var rider = await _dbContext.Riders.FindAsync(riderId);
+        var competition = await _dbContext.Competitions.FindAsync(competitionId);
+
+        if (rider == null || competition == null)
+        {
+            return BadRequest("Jazdec alebo súžaž neexistuje!");
+        }
+        var result = await _dbContext.Results.Where(r => r.CompetitionID == competitionId && r.RiderId == riderId)
+            .Include(p => p.PointsAtObstacles)
+            .FirstOrDefaultAsync();
+        if (result == null)
+        {
+            return BadRequest("Výsledok neexistuje!");
+        }
+        
+        return Ok(result);
     }
 
     [HttpGet("GetResultsByRider/{riderID:int}"), Authorize]
