@@ -19,6 +19,7 @@ import { RatingResultsComponent } from './rating-results/rating-results.componen
 })
 export class CompetitionsComponent implements OnInit {
 
+
   competitions: Competition[] = []
   panelOpenState = true
 
@@ -40,19 +41,22 @@ export class CompetitionsComponent implements OnInit {
     )
   }
 
-  public lockCompetition(id: number){
-    if(confirm("Naozaj chcete uzatvoriť tieto preteky? Uzatvorenie je pernamentné a nedá sa zmeniť!"))
+  public lockCompetition(id: number) {
+    if (confirm("Naozaj chcete uzatvoriť tieto preteky? Uzatvorenie je pernamentné a nedá sa zmeniť!"))
       this.competitionService.lockCompetiton(id).subscribe(() => this.GetAllCompetions())
   }
 
-  public openDialogOnClick(competitionId:number,
-                          riderId: number,
-                          horseId: number | undefined){
-    this.dialog.open(RatingResultsComponent,{data:{
-          competitionId:competitionId,
-          riderId: riderId,
-          horseId: horseId
-        }});
+  public openDialogOnClick(competitionId: number,
+    riderId: number,
+    horseId: number | undefined, isLocked: boolean | undefined) {
+    this.dialog.open(RatingResultsComponent, {
+      data: {
+        competitionId: competitionId,
+        riderId: riderId,
+        horseId: horseId,
+        isLocked: isLocked,
+      }
+    });
   }
 
 }

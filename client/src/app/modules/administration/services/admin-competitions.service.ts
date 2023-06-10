@@ -52,10 +52,10 @@ export class AdminCompetitionsService {
     )
   }
 
-  public getUserResult(riderId: number, resultsId: number): Observable<GResult[]> {
+  public getUserResult(riderId: number, resultsId: number): Observable<GResult> {
     //Matej je top G
-    return this.http.get<GResult[]>(this.serverUrl + "" + riderId + "/" + resultsId).pipe(
-      map(resulsFromServer => resulsFromServer.map(result => new GResult(result)))
+    return this.http.get<GResult>(this.serverUrl + "Results/GetResultByID/" + riderId + "/" + resultsId).pipe(
+      map(result => GResult.clone(result))
       , catchError(err => errorHandler(err, 5000, this.messageService))
     )
   }
