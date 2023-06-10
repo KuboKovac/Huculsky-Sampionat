@@ -6,6 +6,7 @@ import { errorHandler } from 'src/shared/functions';
 import { Competition } from '../models/Competition';
 import { environment } from 'src/environments/environment';
 import { Result } from '../models/Result';
+import { GResult } from '../models/GetResult';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class AdminCompetitionsService {
       )
   }
 
-  lockCompetiton(id: number): Observable<void>{
-    return this.http.put(this.serverUrl + "Competitions/LockCompetition/" + id, null, {responseType: "text"}).pipe(
+  lockCompetiton(id: number): Observable<void> {
+    return this.http.put(this.serverUrl + "Competitions/LockCompetition/" + id, null, { responseType: "text" }).pipe(
       map(response => {
         this.messageService.message(response)
       }), catchError(err => errorHandler(err, 5000, this.messageService))
@@ -43,11 +44,19 @@ export class AdminCompetitionsService {
   }
 
 
-  public createResult(riderId: number, result: Result): Observable<void>{
-    return this.http.post(this.serverUrl + 'Results/CreateResult/' + riderId, result, {responseType:'text'}).pipe(
+  public createResult(riderId: number, result: Result): Observable<void> {
+    return this.http.post(this.serverUrl + 'Results/CreateResult/' + riderId, result, { responseType: 'text' }).pipe(
       map(response => {
         this.messageService.message(response)
-      }),catchError(err => errorHandler(err,5000,this.messageService))
+      }), catchError(err => errorHandler(err, 5000, this.messageService))
+    )
+  }
+
+  public getUserResult(riderId: number, resultsId: number): Observable<GResult[]> {
+    //Matej je top G
+    return this.http.get<GResult[]>(this.serverUrl + "" + riderId + "/" + resultsId).pipe(
+      map(resulsFromServer => resulsFromServer.map(result => new GResult(result)))
+      , catchError(err => errorHandler(err, 5000, this.messageService))
     )
   }
 
