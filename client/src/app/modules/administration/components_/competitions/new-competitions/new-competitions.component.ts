@@ -8,6 +8,7 @@ import { Rider } from '../../../models/Rider';
 import { AdminRidersService } from '../../../services/admin-riders.service';
 import { AdminCompetitionsService } from '../../../services/admin-competitions.service';
 import { Router } from '@angular/router';
+import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-new-competitions',
@@ -70,8 +71,13 @@ export class NewCompetitionsComponent implements OnInit {
   }
 
   public addRiderToCompetition(rider: Rider) {
-    this.selectedRiders.push(rider)
-    console.log(this.selectedRiders)
+
+    if(rider.horses.length === 0)
+      this.msgService.message("Jazdec ktorý nema príradeného koňa nemôže byť priradený na súťaž!")
+    else{
+      this.selectedRiders.push(rider)
+      console.log(this.selectedRiders)
+    }
   }
 
   public removeRiderFromCompetition(rider: Rider) {
