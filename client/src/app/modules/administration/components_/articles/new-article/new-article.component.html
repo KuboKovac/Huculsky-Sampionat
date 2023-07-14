@@ -4,7 +4,7 @@
         <div class="new-article">
             <div class="article-section">
                 <div class="article-head">
-                    <p>Práve pridavate nový článok...</p>
+                    <h2>Pridať nový článok</h2>
                     <!--<input type="checkbox"><span> Chcem prídať fotku</span>--->
                 </div>
 
@@ -27,11 +27,11 @@
 
                 </div>
                 <div class="context">
-                    <label for="input">Zadajte nazov článku:</label>
-                    <input required type="text" [(ngModel)]='newArticle.name' name="name"
+                    <label for="input">Zadajte názov článku:</label>
+                    <input class="input" required type="text" [(ngModel)]='newArticle.name' name="name"
                         placeholder="Začnite pisať názov článku...">
                     <label for="textarea">Zadajte text:</label>
-                    <textarea required [(ngModel)]="newArticle.content" [ngModelOptions]="{standalone: true}"
+                    <textarea class="input" required [(ngModel)]="newArticle.content" [ngModelOptions]="{standalone: true}"
                         name="content" placeholder="Začnite pisať svoj článok..." name="" id="" cols=""
                         rows="10"></textarea>
                 </div>

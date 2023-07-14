@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-html,
-body {}
-
 body {
     margin: 0;
     /*font-family: Roboto, "Helvetica Neue", sans-serif; */
@@ -17,3 +14,81 @@ body {
     border-radius: 8px;
     box-shadow: 1px 1px 1px #cccccc;
 }
+/*
+__________________________________________________________
+        Global colors (buttons, panels etc...)
+*/
+
+$BG-PANEL: #eeeeee;
+$BG-CONTENT: rgb(255, 255, 255);
+$BOX-SHADOW: rgb(177, 177, 177) 1px 1px;
+$BORDER_RADIUS: 1px solid rgb(161, 161, 161);
+
+
+/*
+__________________________________________________________
+        Global styles (buttons, panels etc...)
+*/
+
+
+//   Buttons
+button {
+    margin: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #B75060;
+    color: white;
+    padding: 10px;
+    transition: ease-in-out 200ms;
+}
+button:hover {
+    background-color: #ef697e;
+    cursor: pointer;
+}
+.btn-green{
+    background-color: green;
+}
+.btn-green:hover{
+    background-color: rgb(0, 204, 0);
+}
+.btn-blue{
+    background-color: rgb(39, 133, 255);
+}
+.btn-blue:hover{
+    background-color: rgb(0, 60, 255);
+}
+.btn-red{
+    background-color: rgb(211, 0, 0);
+}
+.btn-red:hover{
+    background-color: rgb(255, 62, 62);
+}
+.closed-btn{/*
+    __________________________________________________________
+            Global colors (buttons, panels etc...)
+    */
+    
+    $BG-PANEL: #dddddd;
+    $BG-CONTENT: rgb(255, 255, 255);
+    $BOX-SHADOW: rgb(177, 177, 177) 1px 1px;
+    $BORDER_RADIUS: 1px solid rgb(161, 161, 161);
+}
+
+//  INPUT
+
+.input{
+    border-top: 1px solid rgb(211, 211, 211);
+    border-left: 1px solid rgb(211, 211, 211);
+    border-right: 1px solid rgb(211, 211, 211);
+    border-bottom: 2px solid #B75060;
+    box-shadow: rgb(177, 177, 177) 1px ;
+    border-radius: 1px;
+    transition: ease-out 800ms;
+}
+.input:focus{
+    outline: none;
+    border-bottom: 2px solid limegreen;
+    
+}
+
+

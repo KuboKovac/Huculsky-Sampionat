@@ -1,3 +1,5 @@
+@import "src/styles.scss";
+
 .main-container {
     display: flex;
     flex-direction: column;
@@ -27,7 +29,6 @@
             cursor: pointer;
         }
     }
-
 }
 
 
@@ -51,21 +52,29 @@
 
     .article {
         margin: 10px;
-        border: 1px solid black;
-        border-radius: 5px;
+        border: $BORDER_RADIUS;
+        border-radius: 4px;
+        box-shadow: $BOX-SHADOW;
         padding: 0px 20px;
         display: flex;
         justify-content: space-between;
-        background-color: rgb(222, 222, 222);
+        background-color: $BG-PANEL;
 
         .article-head {
             max-width: 98%;
             display: flex;
-            align-items: center;
+            justify-content: space-between;
             margin: 20px 0;
             border-bottom: 1px solid gray;
+            
 
-            p {
+            .flex-item{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            span {
                 margin: 0 5px 0 0;
 
                 .red {
@@ -78,21 +87,27 @@
             }
 
             .username {
-                font-size: 25px;
-                font-weight: 800;
+                margin-left: 15px;
+                font-size: 1.2rem;
+                font-style: italic;
             }
 
             .date {
                 font-style: italic;
                 font-size: 15px;
                 color: gray;
+                margin-right: 15px;
+            }
+            .checked{
+                justify-self: flex-end;
             }
         }
 
         .article-context {
             max-width: 97%;
-            background-color: white;
+            background-color: $BG-CONTENT;
             border-radius: 5px;
+            box-shadow: rgb(172, 172, 172) 1px 1px;
             padding: 10px;
             margin: 20px 0;
 
@@ -112,10 +127,10 @@
 
         .article-modify {
             display: flex;
-            flex-direction: column;
+            flex-direction: column-reverse;
             justify-content: center;
             height: 100%;
-            border-left: 1px solid gray;
+            background-color: $BG-PANEL;
 
             button {
                 margin: 5px;
