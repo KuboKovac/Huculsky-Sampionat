@@ -1,3 +1,4 @@
+@import "src/styles.scss";
 * {
 
     input,
@@ -11,12 +12,19 @@
     max-width: 85%;
     max-height: 100%;
 
+    button{
+        margin: 15px auto 20px;
+        min-width: 5vw;
+        box-shadow: $BOX-SHADOW;
+    }
+
     .new-article {
         height: 100%;
-        margin: 25px;
-        border: 1px solid gray;
+        margin: 70px auto 20px;
+        border: $BORDER_RADIUS;
         border-radius: 5px;
-        background-color: rgb(222, 222, 222);
+        box-shadow: $BOX-SHADOW;
+        background-color: $BG-PANEL;
 
         .article-section {
             height: 100%;
@@ -30,14 +38,15 @@
 
             .article-head {
                 display: flex;
+                justify-content: center;
                 padding: 25px;
                 grid-area: article-header;
-                color: #b75060;
+                color: black;
                 font-size: 25px;
 
-                p {
+                h2 {
                     margin: 0 15px 0 0;
-                    font-weight: bold;
+                    font-size: 1.8rem;
                 }
             }
 
@@ -102,8 +111,14 @@
                 grid-template-areas:
                     'article-name'
                     'article-context';
-                gap: 5px;
+
+                gap: 15px;
+                margin: 10px;
                 color: #b75060;
+                background-color: $BG-CONTENT;
+                border: $BORDER_RADIUS;
+                box-shadow: $BOX-SHADOW;
+                border-radius: 4px;
 
                 padding: 20px;
                 font-size: 25px;

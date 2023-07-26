@@ -23,18 +23,6 @@ export class ArticlesComponent implements OnInit {
   constructor(private articleService: AdminArticlesService,) { }
 
   ngOnInit(): void {
-
-    /*
-    const pipeEnd: Observable<Article[]> = this.articleService.getAdminArticle()
-
-    pipeEnd.subscribe(
-      {
-        next: ariclesArray => this.articles = ariclesArray,
-        error: error => error.message = "Nepodarilo sa načitať články.",
-        complete: () => this.articleSliced = this.articles.slice(0, 5),
-      }
-    )
-    */
     this.getArticleFromServer();
   }
 

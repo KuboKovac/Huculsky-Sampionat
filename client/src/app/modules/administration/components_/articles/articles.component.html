@@ -1,42 +1,19 @@
 <app-admin-header-articles></app-admin-header-articles>
 <div class="table">
     <p class="info">Prave sa zobrazuju všetky články</p>
-    <!--<button (click)="sortByApproved()">Sort</button>-->
 
-    <!--  <div class="article">
-        <div class="section">
-            <div class="article-head">
-                <p>USER</p>
-                <p>Date</p>
-                <p><mat-icon>remove_circle_outline</mat-icon></p>
-                <p><mat-icon>check_circle_outline</mat-icon></p>
-
-            </div>
-            <div class="article-context">
-                <p>article name</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sed provident eius suscipit,
-                    natus nihil consequatur harum obcaecati numquam enim et voluptate voluptates, debitis sapiente
-                    atque veniam odio illum aut.
-                </p>
-            </div>
-        </div>
-        <div class="section">
-
-            <div class="article-modify">
-                <Button>APPROVE</Button>
-                <Button>EDIT</Button>
-                <Button>DELETE</Button>
-            </div>
-        </div>
-
-    </div> -->
     <div class="article" *ngFor="let item of articleSliced">
         <div class="right">
             <div class="article-head">
-                <p class="username">{{item.createdBy}}</p>
-                <p class="date">{{item.date}}</p>
-                <p><mat-icon [ngClass]="item.isApproved == true ? 'green':'red'">{{item.isApproved == true ?
-                        "check_circle_outline":"remove_circle_outline" }}</mat-icon></p>
+                <div class="flex-item">
+                    <h3>Pridané používateľom:</h3>
+                    <p class="username">{{item.createdBy}}</p>    
+                </div>
+                <div class="flex-item">
+                    <p class="date">{{item.date}}</p>
+                    <span class="checked"><mat-icon [ngClass]="item.isApproved == true ? 'green':'red'">{{item.isApproved == true ?
+                            "check_circle_outline":"remove_circle_outline" }}</mat-icon></span>
+                </div>
             </div>
             <div class="article-context">
                 <p class="article-name">{{item.name}}</p> <!--El kiko-->
@@ -49,10 +26,10 @@
         <div class="left">
 
             <div class="article-modify">
-                <Button *ngIf="!item.isApproved; else elseBlock" (click)="approveArticle(item)">Schvaliť</Button>
-                <ng-template #elseBlock><Button (click)="dissApproveArticle(item)">Zrušiť</Button></ng-template>
+                <Button *ngIf="!item.isApproved; else elseBlock" (click)="approveArticle(item)" class="btn-green">Schvaliť</Button>
+                <ng-template #elseBlock><Button (click)="dissApproveArticle(item)" class="btn-blue">Skryť</Button></ng-template>
                 <Button>Upraviť</Button>
-                <Button (click)="deleteArticle(item)">Vymazať</Button>
+                <Button (click)="deleteArticle(item)" class="btn-red">Vymazať</Button>
             </div>
         </div>
 

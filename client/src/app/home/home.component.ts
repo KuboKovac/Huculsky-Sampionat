@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   getAllArticles() {
     this.newsService.getArticle().subscribe(
-      articlesFromServer => this.articles = articlesFromServer,
+      articlesFromServer => this.articles = articlesFromServer.reverse(),
 
     )
   }

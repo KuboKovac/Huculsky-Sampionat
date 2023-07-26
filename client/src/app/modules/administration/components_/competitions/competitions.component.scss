@@ -77,35 +77,11 @@ mat-icon{
     }
 }
 
-
-
-
 button {
     width: 6vw;
-    margin: 5px;
-    border: none;
-    border-radius: 3px;
-    background-color: #B75060;
-    color: white;
-    padding: 10px;
-    transition: ease-in-out 200ms;
-}
-.btn-green{
-    background-color: green;
 }
 .submit-btn, .closed-btn{
     margin: 0 auto 0;
-}
-.closed-btn{
-    background-color: gray;
-}
-.closed-btn:hover{
-    cursor: default;
-    background-color: gray;
-}
-button:hover {
-    background-color: #ef697e;
-    cursor: pointer;
 }
 .unlocked{
     color: green;
@@ -113,90 +89,3 @@ button:hover {
 .locked{
     color: rgb(158, 0, 0);
 }
-
-
-
-/*
-table {
-    width: 100%;
-}
-
-tr.example-detail-row {
-    height: 0;
-}
-
-tr.example-element-row:not(.example-expanded-row):hover {
-    background: whitesmoke;
-}
-
-tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-}
-
-
-
-.example-element-row td {
-    border-bottom-width: 0;
-}
-
-.example-element-detail {
-    overflow: hidden;
-    display: flex;
-}
-
-.example-element-diagram {
-    min-width: 80px;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 100%;
-    width: 100%;
-}
-
-.example-element-symbol {
-    text-align: center;
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-}
-
-.example-element-description {
-    padding: 16px;
-}
-
-.example-element-description-attribution {
-    opacity: 0.5;
-}
-
-.riders {
-    border: 1px rgb(48, 48, 48) solid;
-    border-radius: 5px;
-    margin: 5px 0px;
-    padding: 5px;
-
-    .collumn {
-        display: flex;
-        align-items: baseline;
-        gap: 5px;
-        font-size: 15px;
-        color: black;
-
-        .label {
-            font-size: 17px;
-            font-weight: 500;
-        }
-
-
-        .rider_horse {
-            display: flex;
-            gap: 5px;
-
-        }
-
-        input[type="text"] {
-            width: 1%;
-            border-radius: 5px;
-        }
-    }
-}
-*/
