@@ -1,27 +1,58 @@
+@import "src/styles.scss";
+
 body {
     main {
         text-align: center;
 
+        h1{
+            font-size: 2.4rem;
+        }
         .notification {
-            text-align: justify;
-            width: 50%;
-            margin: 10px auto;
-            background-color: #B75060;
-            border-radius: 5px;
-            padding: 10px 10px;
-
-            .name {
-                margin: 25px 0 0 0;
-                text-align: left;
-                font-size: 25px;
-                border-bottom: #7b3741 1px solid;
-                color: white;
+            
+            article{
+                width: 60vw;
+                margin: 30px auto 30px;
+                background-color: $BG-PANEL;
+                border: $BORDER_RADIUS;
+                border-radius: 4px;
+                display: flex;
+                flex-direction: column;
+                box-shadow: $BOX-SHADOW;
             }
-
+            .article-header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .author{
+                font-style: italic;
+                margin: 0 15px 0;
+                text-align: start;
+            }
+            .article-date, .name{
+                margin: 15px;
+            }
+            .article-date{
+                font-style: italic;
+            }
             .context {
-                padding: 0 10px;
-                color: white;
-                font-size: 17px;
+                
+                margin: 0;
+                align-self: center;
+                border-top: $BORDER_RADIUS;
+                background-color: $BG-CONTENT;
+                padding: 20px;
+            }
+            @media screen and (max-width: 970px){
+                .article-header{
+                    flex-direction: column;
+                }
+                .author{
+                    text-align: center;
+                }
+                .article-date{
+                    scale: 80%;
+                }
             }
         }
     }

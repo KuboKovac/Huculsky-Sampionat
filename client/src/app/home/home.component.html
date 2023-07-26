@@ -4,8 +4,16 @@
         <h1>Dôležite oznamy</h1>
         <div *ngIf="articles.length > 0; else elseBlock">
             <div *ngFor="let article of articles" class="notification">
-                <p class="name">{{article.name}}</p>
-                <p class="context">{{article.content}}</p>
+                <article>
+                    <div class="article-header">
+                        <h2 class="name">{{article.name}}</h2>
+                        <p class="article-date">{{article.date}}</p>
+                    </div>
+                    <p class="context">{{article.content}}</p>
+                    <div class="article-footer">
+                        <p class="author">Autor článku: {{article.createdBy}}</p>
+                    </div>
+                </article>
             </div>
         </div>
         <ng-template #elseBlock>

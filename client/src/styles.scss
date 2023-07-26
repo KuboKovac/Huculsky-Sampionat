@@ -63,8 +63,16 @@ button:hover {
 .btn-red:hover{
     background-color: rgb(255, 62, 62);
 }
-.closed-btn{/*
-    __________________________________________________________
+.closed-btn{
+    background-color: #7c7c7c;
+}
+.closed-btn:hover{
+    background-color: #7c7c7c;
+    cursor: default;
+}
+
+/*
+__________________________________________________________
             Global colors (buttons, panels etc...)
     */
     
@@ -72,8 +80,6 @@ button:hover {
     $BG-CONTENT: rgb(255, 255, 255);
     $BOX-SHADOW: rgb(177, 177, 177) 1px 1px;
     $BORDER_RADIUS: 1px solid rgb(161, 161, 161);
-}
-
 //  INPUT
 
 .input{
