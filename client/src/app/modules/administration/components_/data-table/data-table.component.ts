@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Rider } from "../../models/Rider";
-import { AdminRidersService } from '../../services/admin-riders.service';
+import {Component, OnInit} from '@angular/core';
+import {Rider} from "../../models/Rider";
+import {AdminRidersService} from '../../services/admin-riders.service';
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmationDialogComponent} from "../../../../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
     selector: 'app-data-table',
@@ -13,7 +15,8 @@ export class DataTableComponent implements OnInit {
         //new Rider("SVK1455", "Eva", "Turská", "14.2.1998", "Dospelý") <--- Template
     ]
 
-    constructor(private ridersService: AdminRidersService) {
+    constructor(private ridersService: AdminRidersService,
+                private dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -23,17 +26,25 @@ export class DataTableComponent implements OnInit {
 
     getAllRiders() {
         this.ridersService.getAllRiders().subscribe({
-            next: ridersFromServer => this.riders = ridersFromServer,
-        }
+                next: ridersFromServer => this.riders = ridersFromServer,
+            }
         )
     }
 
     removeRider(rider: Rider) {
-        if (confirm("Naozaj chceš zmazať jazdca " + rider.firstName + " " + rider.lastName + " ?")) {
-            this.ridersService.deleteRider(rider.id).subscribe(
-                () => this.getAllRiders()
-            )
-        }
+        const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+            data: {
+                header: 'Odstránenie jazdca',
+                text: `Naozaj chcete odstrániť jazdca ${rider.firstName} ${rider.lastName}?`
+            }
+        })
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                this.ridersService.deleteRider(rider.id).subscribe(
+                    () => this.getAllRiders()
+                )
+            }
+        })
 
     }
 
