@@ -21,6 +21,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
@@ -35,6 +37,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         NewsComponent,
         AboutusComponent,
         GalleryComponent,
+        ConfirmationDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -52,10 +55,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         MatSidenavModule,
 
 
-
-
-
         AppRoutingModule,
+        MatDialogModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
