@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,7 +23,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
+import { RouterModule } from '@angular/router';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
     declarations: [
@@ -40,11 +40,9 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         ConfirmationDialogComponent,
     ],
     imports: [
-        BrowserModule,
         NoopAnimationsModule,
         AdministrationModule,
         AuthModule,
-
         CKEditorModule,
         MatSnackBarModule,
         MatButtonModule,
@@ -54,10 +52,11 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
-
+        QuillModule.forRoot(),
 
         AppRoutingModule,
         MatDialogModule,
+        RouterModule
     ],
     providers: [],
     bootstrap: [AppComponent]

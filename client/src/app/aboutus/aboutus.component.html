@@ -1,10 +1,13 @@
 <body>
     <main>
+        <div class="functions">
+            <button (click)="edit()">Edit</button>
+        </div>
         <div>
-            <ckeditor [(ngModel)]="editorContent" [editor]="Editor"></ckeditor>
+            <quill-editor *ngIf="isEditing" [(ngModel)]="editorContent"></quill-editor>
 
             <button type="button">Uložiť</button>
         </div>
-
+        {{editorContent}}
     </main>
 </body>

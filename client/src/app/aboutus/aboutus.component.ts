@@ -10,8 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AboutusComponent implements OnInit {
 
-  public Editor: any = ClassicEditor;
-
+  isEditing: boolean = false;
   public editorContent: string = "";
 
   constructor(public articleService: ArticlesService, private route: ActivatedRoute) { }
@@ -26,6 +25,10 @@ export class AboutusComponent implements OnInit {
     /*let id = this.route.snapshot.paramMap.get("id");
     this.articleService.getSpecifiedArticle(id!).subscribe(response => this.value = response.text);
     console.log(id)*/
+  }
+
+  edit() {
+    this.isEditing = !this.isEditing;
   }
 
 
