@@ -1,13 +1,16 @@
 <body>
     <main>
         <div class="functions">
-            <button (click)="edit()">Edit</button>
-        </div>
-        <div>
-            <quill-editor *ngIf="isEditing" [(ngModel)]="editorContent"></quill-editor>
+            <button *ngIf="logged" (click)="edit()">Edit</button>
+            <button *ngIf="isEditing" (click)="postEdited()">Uložiť</button>
 
-            <button type="button">Uložiť</button>
         </div>
-        {{editorContent}}
+        <div *ngIf="isEditing">
+
+            <quill-editor format="html" [(ngModel)]="editorContent"></quill-editor>
+
+        </div>
+
+        <quill-view-html class="main" *ngIf="!isEditing" [content]="editorContent"></quill-view-html>
     </main>
 </body>

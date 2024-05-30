@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, filter, find, map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticlesService {
+
+  private serverUrl: string = environment.baseUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -13,17 +16,15 @@ export class ArticlesService {
     return this.http.get<article>('../../assets/navbarItems.json')
   }
 
-  getSpecifiedArticle(param: string): Observable<Context> {
-    return this.http.get<navbarItems>('../../assets/navbarItems.json').pipe(
-      map(data => {
-        const page = data.pages.find(result => result.param === param)
-        return page!.context
-      }),
-    )
+  getSpecifiedArticle(param: string): Observable<article> {
+    return this.http.get<article>(this.serverUrl + 'CustomContent/GetContentById/' + param).pipe()
   }
 
-  getData(): Observable<any> {
-    return this.http.get<any>('../../assets/navbarItems.json');
+  editSpecifiedArticle(param: string, editedContext: string): Observable<any> {
+    let customHtml = { "customHTML": editedContext }
+    return this.http.put<string>(this.serverUrl + 'CustomContent/UpdateCustomContent/' + param, customHtml).pipe(
+      map(response => console.log(response)),
+    )
   }
 
 }
@@ -31,13 +32,5 @@ export class ArticlesService {
 
 export interface article {
   param: string;
-  context: Context;
-}
-
-export interface Context {
-  title: string;
-  text: string;
-}
-interface navbarItems {
-  pages: article[]
+  customHTML: string;
 }
