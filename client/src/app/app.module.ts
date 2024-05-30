@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -42,6 +43,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
         AdministrationModule,
         AuthModule,
 
+        CKEditorModule,
         MatSnackBarModule,
         MatButtonModule,
         MatIconModule,

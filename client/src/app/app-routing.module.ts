@@ -10,7 +10,7 @@ import { RoleGuard } from './modules/auth/guards/role.guard';
 const routes: Routes = [
   { path: "", pathMatch: "full", redirectTo: "/home" },
   { path: "home", component: HomeComponent },
-  { path: "aboutus", component: AboutusComponent },
+  { path: "component/:id", component: AboutusComponent },
   { path: "news", component: NewsComponent },
   { path: "gallery", component: GalleryComponent },
   { path: "login", component: LoginComponent },
