@@ -21,8 +21,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from "@angular/material/dialog";
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         NewsComponent,
         AboutusComponent,
         GalleryComponent,
+        ConfirmationDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,10 +56,8 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         MatSidenavModule,
 
 
-
-
-
         AppRoutingModule,
+        MatDialogModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
