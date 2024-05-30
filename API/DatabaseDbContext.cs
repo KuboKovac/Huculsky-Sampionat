@@ -20,4 +20,6 @@ public class DatabaseDbContext : DbContext
     public DbSet<Image> Images => Set<Image>();
     public DbSet<Comment> Comments => Set<Comment>();
     public DbSet<Article> Articles => Set<Article>();
+    public DbSet<CustomContent> CustomContents => Set<CustomContent>();
+
 }
