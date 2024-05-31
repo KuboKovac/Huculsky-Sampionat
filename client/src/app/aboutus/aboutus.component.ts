@@ -61,7 +61,5 @@ export class AboutusComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
-  sanitizeStyle(content: string) {
-    return this.sanitizer.bypassSecurityTrustStyle(content);
-  }
+
 }

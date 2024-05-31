@@ -10,6 +10,6 @@
 
             <ckeditor [editor]="editor" [(ngModel)]="editorContent"></ckeditor>
         </div>
-        <div *ngIf="!isEditing" class="output" [innerHTML]="sanitizeHtml(editorContent)"></div>
+        <div *ngIf="!isEditing" class="ck-content output" [innerHTML]="sanitizeHtml(editorContent)"></div>
     </main>
 </body>
