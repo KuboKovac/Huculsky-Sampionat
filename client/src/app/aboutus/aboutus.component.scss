@@ -1,20 +1,20 @@
 body {
     main {
-        max-width: 70%;
-        margin: auto;
+        width: 70%;
+        margin: 1rem auto;
+        padding: 1rem;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-        .article {
-            text-align: justify;
-            background-color: #eff3ed;
-            margin: 50px 0;
-            box-shadow: 3px 3px 5px gray;
-            padding: 20px;
+        .functions {
+            display: flex;
+            justify-content: right;
 
-            h1 {
-                text-align: center;
-            }
+
         }
 
-
+        td {
+            border: solid;
+        }
     }
 }

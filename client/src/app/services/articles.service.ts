@@ -23,7 +23,6 @@ export class ArticlesService {
   editSpecifiedArticle(param: string, editedContext: string): Observable<any> {
     let customHtml = { "customHTML": editedContext }
     return this.http.put<string>(this.serverUrl + 'CustomContent/UpdateCustomContent/' + param, customHtml).pipe(
-      map(response => console.log(response)),
     )
   }
 
