@@ -7,10 +7,8 @@
         </div>
         <div *ngIf="isEditing">
 
-            <quill-editor format="html" [(ngModel)]="editorContent"></quill-editor>
 
         </div>
-
-        <quill-view-html class="main" *ngIf="!isEditing" [content]="editorContent"></quill-view-html>
+        <ckeditor [editor]="editor" data="<p>Hello, world!</p>"></ckeditor>
     </main>
 </body>

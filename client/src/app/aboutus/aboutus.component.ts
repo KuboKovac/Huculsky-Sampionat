@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ArticlesService } from '../services/articles.service';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import Editor from 'ckeditor5-custom/build/ckeditor.js';
 
 @Component({
   selector: 'app-aboutus',
@@ -15,6 +15,7 @@ export class AboutusComponent implements OnInit {
   isEditing: boolean = false;
   editorContent: string = "";
   parameterIds: string = "";
+  editor: any = Editor;
   form: FormGroup = new FormGroup({
     html: new FormControl("<p>kokot<p>")
   })

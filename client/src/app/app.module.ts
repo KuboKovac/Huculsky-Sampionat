@@ -22,9 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule } from "@angular/material/dialog";
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { RouterModule } from '@angular/router';
-import { QuillModule } from 'ngx-quill';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
     declarations: [
@@ -43,7 +42,6 @@ import { QuillModule } from 'ngx-quill';
         NoopAnimationsModule,
         AdministrationModule,
         AuthModule,
-        CKEditorModule,
         MatSnackBarModule,
         MatButtonModule,
         MatIconModule,
@@ -52,7 +50,7 @@ import { QuillModule } from 'ngx-quill';
         MatTabsModule,
         FormsModule,
         MatSidenavModule,
-        QuillModule.forRoot(),
+        CKEditorModule,
 
         AppRoutingModule,
         MatDialogModule,
