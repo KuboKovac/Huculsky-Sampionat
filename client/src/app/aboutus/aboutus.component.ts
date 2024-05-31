@@ -1,34 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ArticlesService } from '../services/articles.service';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import Editor from 'ckeditor5-custom/build/ckeditor.js';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.component.html',
-  styleUrls: ['./aboutus.component.scss']
+  styleUrls: ['./aboutus.component.scss'],
+  //encapsulation: ViewEncapsulation.None,
 })
 export class AboutusComponent implements OnInit {
+  parameterIds: string = "";
+  isEditing: boolean = false;
+  editorContent: any = "";
+  editor: any = Editor;
 
-  public Editor: any = ClassicEditor;
+  logged: string | null = localStorage.getItem("Jwt");
 
-  public editorContent: string = "";
-
-  constructor(public articleService: ArticlesService, private route: ActivatedRoute) { }
-
-
+  constructor(private articleService: ArticlesService, private route: ActivatedRoute, private sanitizer: DomSanitizer,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(param =>
-      this.articleService.getSpecifiedArticle(param.get("id")!).subscribe(response => this.editorContent = response.text)
+    this.route.paramMap.subscribe(param => {
+      this.parameterIds = param.get("id")!;
+      this.articleService.getSpecifiedArticle(this.parameterIds).subscribe(response => this.editorContent = response.customHTML)
+    }
     )
 
-    /*let id = this.route.snapshot.paramMap.get("id");
-    this.articleService.getSpecifiedArticle(id!).subscribe(response => this.value = response.text);
-    console.log(id)*/
+  }
+
+  edit() {
+    this.isEditing = !this.isEditing;
   }
 
 
+  postEdited() {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        header: 'Potvrdenie zmeny',
+        text: `Naozaj chcete urobiť túto zmenu ?`
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.articleService.editSpecifiedArticle(this.parameterIds, this.editorContent)
+          .subscribe()
+        this.isEditing = false
+      }
+    })
+
+  }
+
+  sanitizeHtml(content: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
 
 
 }

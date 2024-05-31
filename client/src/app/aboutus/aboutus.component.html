@@ -1,10 +1,15 @@
 <body>
     <main>
-        <div>
-            <ckeditor [(ngModel)]="editorContent" [editor]="Editor"></ckeditor>
+        <div class="functions">
+            <button *ngIf="logged" (click)="edit()"><mat-icon inline>{{isEditing ? "close" :
+                    "edit"}}</mat-icon></button>
+            <button *ngIf="isEditing" (click)="postEdited()"><mat-icon inline>save</mat-icon></button>
 
-            <button type="button">Uložiť</button>
         </div>
+        <div *ngIf="isEditing">
 
+            <ckeditor [editor]="editor" [(ngModel)]="editorContent"></ckeditor>
+        </div>
+        <div *ngIf="!isEditing" class="ck-content output" [innerHTML]="sanitizeHtml(editorContent)"></div>
     </main>
 </body>
