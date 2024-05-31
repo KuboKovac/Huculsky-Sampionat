@@ -4,7 +4,7 @@
         <div class="login-container">
             <div *ngIf="loggedIn" class="login-container">
                 <h3>{{username}}</h3>
-                <button mat-button><mat-icon>account_circle</mat-icon></button>
+                <button style="display: none;" mat-button><mat-icon>account_circle</mat-icon></button>
             </div>
             <div *ngIf="userRole == 'Admin' || userRole == 'Arbiter'">
                 <button class="button" routerLink='administration/riders/table'>Spravovať Web</button>

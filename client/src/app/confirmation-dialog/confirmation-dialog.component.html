@@ -1,7 +1,10 @@
-<h2>{{data.header}}</h2>
-<p>{{data.text}}</p>
+<div class="window">
 
-<div class="buttons">
-    <button class="btn-grey" (click)="onNoClick()">Zrušiť</button>
-    <button class="btn-red" [mat-dialog-close]="true">Potvrdiť</button>
+    <h2>{{data.header}}</h2>
+    <p>{{data.text}}</p>
+
+    <div class="buttons">
+        <button class="btn-cancel" (click)="onNoClick()">Zrušiť</button>
+        <button class="btn-accept" [mat-dialog-close]="true">Potvrdiť</button>
+    </div>
 </div>
