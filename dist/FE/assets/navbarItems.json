@@ -1,0 +1,25 @@
+{
+    "pages": [
+        {
+            "param": "competions",
+            "context": {
+                "title": "sutaže",
+                "text": "tu budu stuaže"
+            }
+        },
+        {
+            "param": "aboutus",
+            "context": {
+                "title": "o nas bez nas",
+                "text": "toto sme my :)"
+            }
+        },
+        {
+            "param": "actions",
+            "context": {
+                "title": "akcie",
+                "text": "tu sa konaju akcie"
+            }
+        }
+    ]
+}
