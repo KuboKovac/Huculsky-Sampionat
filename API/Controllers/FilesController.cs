@@ -1,12 +1,13 @@
 using API.Database.DbModels;
 using API.DTOs.Image;
 using API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
-[Microsoft.AspNetCore.Components.Route("[controller]")]
+[Route("[controller]")]
 public class FilesController: ControllerBase
 {
     private readonly WebRootService _webRootService;
@@ -28,7 +29,7 @@ public class FilesController: ControllerBase
         return Ok(images);
     }
     
-    [HttpPost("CreateImages")]
+    [HttpPost("CreateImages/{category}"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> CreateImage([FromForm] IEnumerable<IFormFile> files, string category)
     {
         if (files == null || !files.Any())
@@ -66,7 +67,7 @@ public class FilesController: ControllerBase
         }
     }
     
-    [HttpPut("ChangeVisibilityOfImage")]
+    [HttpPut("ChangeVisibilityOfImage"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> ChangeVisibilityOfImage(ChangeVisibilityDTO visibilityDto)
     {
         var imageToModify = await _dbContext.Images.FindAsync(visibilityDto.Id);
@@ -83,7 +84,7 @@ public class FilesController: ControllerBase
         
     }
     
-    [HttpDelete("DeleteImage/{id:int}")]
+    [HttpDelete("DeleteImage/{id:int}"), Authorize(Roles = "Admin")]
     public async Task<ActionResult> DeleteImage(int id)
     {
         var imageToDelete = await _dbContext.Images.FindAsync(id);
