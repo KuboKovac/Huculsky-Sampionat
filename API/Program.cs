@@ -5,6 +5,7 @@ using API.Data;
 using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -16,6 +17,10 @@ builder.Services.AddControllers();
 
 
 builder.Services.AddScoped<CustomContentService>();
+builder.Services.AddScoped<FilesService>();
+builder.Services.AddScoped<WebRootService>();
+
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -121,6 +126,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseStaticFiles();
+app.UseStaticFiles(new StaticFileOptions{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+    RequestPath = "/static",
+    OnPrepareResponse = ctx =>
+    {
+        // Disable caching for static files
+        ctx.Context.Response.Headers["Cache-Control"] = "no-cache, no-store";
+        ctx.Context.Response.Headers["Pragma"] = "no-cache";
+        ctx.Context.Response.Headers["Expires"] = "-1";
+    }});
 
 app.Run();
