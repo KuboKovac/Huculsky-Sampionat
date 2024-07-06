@@ -20,6 +20,7 @@ li:hover {
   display: flex;
   flex-direction: row;
   min-height: calc(100% - 131px);
+
 }
 
 .main-container {
@@ -34,6 +35,10 @@ li:hover {
   background-color: #b75060;
   border-right: 1px solid #a04956;
   height: 40rem;
+
+  -webkit-box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 3px 3px 0px rgba(0, 0, 0, 0.75);
 }
 
 .admin-top-nav {

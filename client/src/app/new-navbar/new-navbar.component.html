@@ -1,0 +1,146 @@
+<nav>
+    <button class="burger" (click)="navbarToggle()">
+        <mat-icon>{{!navbarOpened ? 'menu': 'close'}}</mat-icon>
+    </button>
+    <ul class="nav-list" [class.show-navlist]="navbarOpened">
+        <li class=" nav-dropdown-item" (click)="setActive(0)" [class.show]="activeIndex === 0">
+            <span>O nás</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/aboutus">Aktivity</li>
+                    <li class=" dropdown-content-item" routerLink="component/organization"> Organizačný výbor
+                    </li>
+                    <li class="dropdown-content-item" routerLink="component/membership">Členstvo </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-dropdown-item" (click)="setActive(1)" [class.show]="activeIndex === 1">
+            <span>Naše kluby</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item">Královská Lúka</li>
+                    <li class="dropdown-content-item">Jazdecke centrum Ribana</li>
+                    <li class="dropdown-content-item">Skalica</li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-dropdown-item" (click)="setActive(2)" [class.show]="activeIndex === 2">
+            <span>Huculská stezka</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/stezkahistoria">Historia</li>
+                    <li class=" dropdown-content-item" routerLink="component/stezkaterminy"> Termíny pretekov
+                    </li>
+                    <li class="dropdown-content-item" routerLink="component/stezkavysledky">Výsledky </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-dropdown-item" (click)="setActive(3)" [class.show]="activeIndex === 3">
+            <span>Huculský šampionat</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/huculhistoria">Historia</li>
+                    <li class=" dropdown-content-item" routerLink="component/huculterminy"> Termíny pretekov
+                    </li>
+                    <li class="dropdown-content-item" routerLink="component/huculvysledky">Výsledky </li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-dropdown-item" (click)="setActive(4)" [class.show]="activeIndex === 4">
+            <span>Klinika</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/cojeto">Čo je to ?</li>
+                    <li class=" dropdown-content-item" routerLink="component/klinikaterminy"> Termíny</li>
+                </ul>
+            </div>
+        </li>
+
+        <li class="nav-dropdown-item" (click)="setActive(5)" [class.show]="activeIndex === 5">
+            <span>Kurzy jazdenia</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/technickytrening">Technický tréning</li>
+                    <li class=" dropdown-content-item" routerLink="component/vychadzka"> Vychádzky</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item" (click)="setActive(6)" [class.show]="activeIndex === 6">
+            <span>Preukaz jazdca</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/kredityjazdcov">Kredity jazdcov</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item" (click)="setActive(7)" [class.show]="activeIndex === 7">
+            <span>Licencia jazdca</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/licenciajazdcaakojuziskat"> Ako ju ziskať
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item" (click)="setActive(8)" [class.show]="activeIndex === 8">
+            <span>Licencia trenéra</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/licenciatreneraakojuziskat"> Ako ju ziskať
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item" (click)="setActive(9)" [class.show]="activeIndex === 9">
+            <span>Fotogaléria</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="gallery"> Sútaže</li>
+                </ul>
+                <ul>
+                    <li class="dropdown-content-item" routerLink="gallery"> Tréningy</li>
+                </ul>
+                <ul>
+                    <li class="dropdown-content-item" routerLink="gallery"> Akcie</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item" (click)="setActive(10)" [class.show]="activeIndex === 10">
+            <span>Odborná zóna</span>
+            <div class="dropdown-content">
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/vzdelavanie"> Vzdelávanie</li>
+                </ul>
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/odborneclanky"> Odborné články</li>
+                </ul>
+                <ul>
+                    <li class="dropdown-content-item" routerLink="component/odbornepublikacie"> Odborné publikacie</li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-dropdown-item">
+            <span>Kontakty</span>
+        <li>
+        <li class="nav-dropdown-item">
+            <span>Novinky</span>
+        <li>
+
+
+    </ul>
+</nav>
+
+<!--
+<div class="dropdown">
+    <button mat-button [matMenuTriggerFor]="menu">O nás</button>
+    <mat-menu #menu="matMenu" class="dropdown-menu">
+        <button mat-menu-item routerLink="component/aboutus">Aktivity</button>
+        <button mat-menu-item routerLink="component/organization">Organizačný výbor</button>
+        <button mat-menu-item routerLink="component/membership">Členstvo</button>
+    </mat-menu>
+</div>
+-->

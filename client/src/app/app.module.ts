@@ -24,6 +24,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { MatDialogModule } from "@angular/material/dialog";
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { NewNavbarComponent } from './new-navbar/new-navbar.component';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
         AboutusComponent,
         GalleryComponent,
         ConfirmationDialogComponent,
+        NewNavbarComponent,
     ],
     imports: [
         NoopAnimationsModule,
