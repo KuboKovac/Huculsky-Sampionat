@@ -31,4 +31,24 @@ public class WebRootService
 
         return relativePaths;
     }
+    
+    public bool DeleteFile(string fileAddress)
+    {
+        var filePath = UrlToFilePath(fileAddress);
+        Console.WriteLine(filePath);
+        if (File.Exists(filePath))
+        {
+            File.Delete(filePath);
+            return true;
+        }
+        return false;
+    }
+
+    private string UrlToFilePath(string fileAddress)
+    {
+        var localPath = new Uri(fileAddress).LocalPath;
+        var trimmedPath = localPath.Replace("/static/images", string.Empty).TrimStart('/');
+        return Path.Combine(imagesWwwPath, trimmedPath);
+    }
+    
 }
