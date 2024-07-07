@@ -93,11 +93,43 @@ public class FilesController: ControllerBase
             return NotFound("Obrazok nebol nájdený!");
         }
         
+        bool isFileDeleted = _webRootService.DeleteFile(imageToDelete.Url); // Assuming ImagePath is the property that holds the URL
+
+        if (!isFileDeleted)
+        {
+            return StatusCode(500, "Nepodarilo sa odstrániť súbor z disku!");
+        }
         _dbContext.Images.Remove(imageToDelete);
         await _dbContext.SaveChangesAsync();
         
         return Ok("Obrazok bol odstránený!");
         
     }
+
+    [HttpGet("GetRandomizedImages")]
+    public async Task<ActionResult> GetRandomizedImages()
+    {
+        var images = await _dbContext.Images
+            .Where(i => i.Visible)
+            .ToListAsync();
+        Shuffle(images);
+
+        var randomizedImages = images.Take(9).ToList();
+        return Ok(randomizedImages);
+    }
     
+    // Fisher-Yates shuffle algorithm
+    private static Random rng = new Random();
+
+    private void Shuffle<T>(IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            (list[k], list[n]) = (list[n], list[k]);
+        }
+    }
+
 }
