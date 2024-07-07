@@ -1,59 +1,145 @@
 @import "src/styles.scss";
 
-body {
-    main {
-        text-align: center;
 
-        h1{
-            font-size: 2.4rem;
+
+.section {
+    background-color: $primary-color;
+    padding: 1rem;
+    color: white;
+    text-align: center;
+
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    .container {
+
+        .btn {
+            color: white;
+            padding: 0.5rem 1rem;
+            border: 0.1rem solid white;
+            display: block;
+            width: fit-content;
+            margin: auto;
+            text-decoration: none;
+            transition: background-color .2s ease-in-out;
+
+            &:hover {
+                background-color: $primary-color-darker;
+            }
+
         }
-        .notification {
-            
-            article{
-                width: 60vw;
-                margin: 30px auto 30px;
-                background-color: $BG-PANEL;
-                border: $BORDER_RADIUS;
-                border-radius: 4px;
-                display: flex;
-                flex-direction: column;
-                box-shadow: $BOX-SHADOW;
-            }
-            .article-header{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .author{
-                font-style: italic;
-                margin: 0 15px 0;
-                text-align: start;
-            }
-            .article-date, .name{
-                margin: 15px;
-            }
-            .article-date{
-                font-style: italic;
-            }
-            .context {
-                
-                margin: 0;
-                align-self: center;
-                border-top: $BORDER_RADIUS;
-                background-color: $BG-CONTENT;
-                padding: 20px;
-            }
-            @media screen and (max-width: 970px){
-                .article-header{
-                    flex-direction: column;
-                }
-                .author{
-                    text-align: center;
-                }
-                .article-date{
-                    scale: 80%;
+
+
+
+        .clubs {
+            display: flex;
+            margin: 1rem 0;
+            justify-content: center;
+
+            .club {
+                margin: 0 0.5rem;
+                padding: 0.5rem;
+                background-color: $primary-color-dark;
+                border-radius: 1rem;
+
+                .btn {
+                    border: 0;
+                    border-bottom: 0.2rem solid white;
                 }
             }
+        }
+
+        .icons {
+            margin: auto;
+
+            .icon {
+                color: white;
+                margin: 0 0.33rem;
+                padding: 1rem;
+                border-radius: 50%;
+                background-color: $primary-color;
+            }
+        }
+
+        .about-content {
+            max-width: 60%;
+            margin: auto;
+            font-size: 1.2rem;
+
+            p {
+                margin: 1rem 0;
+                text-align: justify;
+            }
+
+
+        }
+
+        .history-content {
+            max-width: 60%;
+            margin: auto;
+        }
+
+        .club-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            .club-contact {
+                max-width: 100%;
+                padding: 1rem;
+                background-color: $primary-color-dark;
+                border-radius: 1rem;
+            }
+        }
+    }
+
+
+
+}
+
+section:nth-child(even) {
+    background-color: white;
+    color: black;
+
+}
+
+
+@media (max-width: 600px) {
+    .section {
+        .container {
+            .clubs {
+                display: block !important;
+
+                .club {
+                    margin: 1rem;
+                }
+            }
+
+            .club-contacts {
+                display: block;
+
+                .club-contact {
+                    margin: 1rem;
+                }
+
+                .map {
+                    width: 100%;
+                }
+            }
+        }
+
+        .about-content {
+            max-width: 100%;
+        }
+
+        .history-content {
+            max-width: 100%;
+            margin: auto;
         }
     }
 }

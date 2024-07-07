@@ -1,7 +1,7 @@
 <body>
     <app-hero-header></app-hero-header>
     <main>
-        <h1>Dôležite oznamy</h1>
+        <!-- <h1>Dôležite oznamy</h1>
         <div *ngIf="articles.length > 0; else elseBlock">
             <div *ngFor="let article of articles" class="notification">
                 <article>
@@ -15,10 +15,132 @@
                     </div>
                 </article>
             </div>
-        </div>
-        <ng-template #elseBlock>
-            <p>Zatiaľ nebol pridaný žiaden oznam</p>
-        </ng-template>
+        </div> -->
+        <section class="section">
+            <div class="container">
+                <h1>Vitajte na webe Huculský šampionát</h1>
+                <p>Preskúmajte naše kluby a aktivity spojené s huculskými koňmi.</p>
+                <!--<a routerLink="/component/aboutus" class="btn">Dozvedieť sa viac</a>-->
+
+                <div class="clubs">
+                    <div class="club">
+                        <h2>Královská Lúka</h2>
+                        <p>Preskúmajte krásne lúky a lesy v Královskej Lúke. Ideálne miesto pre jazdu na koni.</p>
+                        <a routerLink="/component/kralovska-luka" class="btn">Dozvedieť sa viac</a>
+                    </div>
+                    <div class="club">
+                        <h2>Jazdecké Centrum Ribana</h2>
+                        <!-- <img src="../../assets/resources/ribana.jpg" alt=""> -->
+                        <p>Navštívte naše moderné jazdecké centrum Ribana s vynikajúcimi zariadeniami a trénermi.</p>
+                        <a routerLink="/component/ribana" class="btn">Dozvedieť sa viac</a>
+                    </div>
+                    <div class="club">
+                        <h2>Skalica</h2>
+                        <p>Užite si jazdu na koni v malebnej oblasti Skalice. Skvelé trasy pre každého.</p>
+                        <a routerLink="/component/skalica" class="btn">Dozvedieť sa viac</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>O nás</h2>
+                <div class="icons">
+                    <mat-icon class="icon">group</mat-icon>
+                    <mat-icon class="icon">event</mat-icon>
+                    <mat-icon class="icon">place</mat-icon>
+                    <mat-icon class="icon">emoji_events</mat-icon>
+                    <mat-icon class="icon">nature</mat-icon>
+                </div>
+                <div class="about-content">
+                    <p>Huculský šampionát je združenie troch klubov, ktoré sa venujú chovu a tréningu huculských koní.
+                        Naše kluby
+                        ponúkajú širokú škálu aktivít pre jazdcov všetkých vekových kategórií a úrovní. Organizujeme
+                        súťaže a podujatia,
+                        kde si môžu jazdci a kone zmerať sily v rôznych disciplínach.
+                        <br>
+                        Našou misiou je podporovať a šíriť lásku k huculským koňom a jazdectvu. Veríme, že každá jazda
+                        na
+                        koni prináša
+                        radosť a posilňuje spojenie medzi človekom a prírodou. Pridajte sa k nám a objavte čaro
+                        huculských koní.
+                        <br>
+                        Okrem súťaží ponúkame aj vzdelávacie programy a workshopy, kde sa môžete naučiť viac o
+                        starostlivosti o kone a
+                        jazdeckých technikách. Sme komunita nadšencov, ktorí veria v hodnoty spolupráce, rešpektu a
+                        vášne pre jazdectvo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Huculská stezka</h2>
+                <div class="history-content">
+                    <p>Huculská stezka je historická trasa v Karpatoch, pôvodne používaná huculskými pastiermi na
+                        preháňanie stád. Dnes
+                        slúži ako obľúbená destinácia pre jazdecké a turistické podujatia, udržiavajúc bohaté dedičstvo
+                        huculských koní.
+                    </p>
+                    <a routerLink="/component/stezkahistoria" class="btn">Dozvedieť sa viac</a>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Novinky</h2>
+                <p>Aktuálne správy a udalosti.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <p>Kontaktné údaje, mapa a formulár na kontaktovanie</p>
+                <div class="club-contacts">
+                    <div class="club-contact">
+                        <h2>Královská Lúka</h2>
+                        <p>Adresa: Královská Lúka 123, 12345 Mesto</p>
+                        <p>Telefón: +421 123 456 789</p>
+                        <p>Email: kralovskaluka@example.com</p>
+                        <div class="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.694685655245!2d-6.260296484152831!3d53.34980547997906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e9cb1a09107%3A0x9c4f8d7de7e85d4c!2sDublin!5e0!3m2!1sen!2sie!4v1616072679623!5m2!1sen!2sie"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                    </div>
+                    <div class="club-contact">
+                        <h2>Jazdecké Centrum Ribana</h2>
+                        <p>Adresa: Ribana 456, 67890 Mesto</p>
+                        <p>Telefón: +421 987 654 321</p>
+                        <p>Email: ribana@example.com</p>
+                        <div class="map">
+                            <iframe
+                                src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Jazdecke%20centrum%20ribana+(My%20Business%20Name)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                    </div>
+                    <div class="club-contact">
+                        <h2>Skalica</h2>
+                        <p>Adresa: Skalica 789, 11223 Mesto</p>
+                        <p>Telefón: +421 123 123 123</p>
+                        <p>Email: skalica@example.com</p>
+                        <div class="map">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.694685655245!2d-6.260296484152831!3d53.34980547997906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e9cb1a09107%3A0x9c4f8d7de7e85d4c!2sDublin!5e0!3m2!1sen!2sie!4v1616072679623!5m2!1sen!2sie"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 </body>

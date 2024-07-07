@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { GalleryService } from '../services/gallery.service';
 
 @Component({
   selector: 'app-hero-header',
@@ -7,25 +8,24 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class HeroHeaderComponent implements OnInit, OnDestroy {
 
-  imageUrls = [
-    '../../assets/resources/Hero-header/1.jpg',
-    '../../assets/resources/Hero-header/2.jpg',
-    '../../assets/resources/Hero-header/3.jpg',
-    '../../assets/resources/Hero-header/4.jpg',
-    '../../assets/resources/Hero-header/5.jpg',
-    '../../assets/resources/Hero-header/6.jpg',
-    '../../assets/resources/Hero-header/7.jpg',
-    '../../assets/resources/Hero-header/8.jpg',
-    '../../assets/resources/Hero-header/9.jpg',
+
+  imageUrls: string[] = [
+
   ];
 
   currentIndex = 0;
   interval: any;
 
-  constructor() { }
+  constructor(private galleryService: GalleryService) { }
 
   ngOnInit(): void {
-    this.startSlideShow();
+    this.galleryService.getImagesByCategory("sutaze").subscribe(result => {
+      console.log(result)
+      result.forEach(i => this.imageUrls.push(i.url))
+      this.startSlideShow();
+
+    })
+
   }
 
   ngOnDestroy(): void {

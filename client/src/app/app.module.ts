@@ -25,6 +25,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { NewNavbarComponent } from './new-navbar/new-navbar.component';
+import { GalleryAddImageModalComponent } from './gallery/galleryModal/gallery-add-image-modal/gallery-add-image-modal.component';
 
 @NgModule({
     declarations: [
@@ -39,6 +40,7 @@ import { NewNavbarComponent } from './new-navbar/new-navbar.component';
         GalleryComponent,
         ConfirmationDialogComponent,
         NewNavbarComponent,
+        GalleryAddImageModalComponent,
     ],
     imports: [
         NoopAnimationsModule,

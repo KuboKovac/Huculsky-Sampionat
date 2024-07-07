@@ -1,0 +1,13 @@
+<div class="modal-wrapper">
+    <p>Vyberte fotku ktorú chcete pridať</p>
+    <select [(ngModel)]="selectedCategory" name="category" (change)="showImages()">
+        <option value="" disabled selected>Vyberte z možnosti</option>
+        <option value="sutaze">Súťaže</option>
+        <option value="treningy">Tréningy</option>
+        <option value="akcie">Akcie</option>
+    </select>
+
+    <input type="file" name="images" id="" accept="image/*" (change)="onFileSelected($event)" multiple>
+
+    <button (click)="onSubmit()">Uložiť obrazok</button>
+</div>
