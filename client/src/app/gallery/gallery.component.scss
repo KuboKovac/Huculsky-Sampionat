@@ -1,9 +1,66 @@
-.container{
+@import "../../styles.scss";
+
+.active-link {
+    background-color: $primary-color-dark;
+}
+
+.control-panel {
     display: flex;
     align-items: center;
-    justify-content: center;
+    width: 80%;
+    margin: 1rem auto;
+    background-color: $primary-color;
+
+
+    .control-panel-item {
+        color: white;
+        text-decoration: none;
+        padding: 1rem;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: $primary-color-dark;
+        }
+    }
+
+    button {
+        margin: 0;
+    }
 }
-.img{
-    width: 35vw;
-    margin: 1rem;
+
+.photo-gallery-wrapper {
+    display: flex;
+    margin: auto;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 80%;
+    min-width: 20%;
+
+    .photo-gallery-item {
+        width: 20%;
+        margin: auto;
+
+        transition: transform .2s ease-in-out;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+}
+
+@media (max-width: 600px) {
+    .control-panel {
+        display: flex;
+        align-items: center;
+
+        .control-panel-item {}
+    }
 }

@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { GalleryService } from '../services/gallery.service';
+import { FileModel } from '../models/FileModel';
+import { MatDialog } from '@angular/material/dialog';
+import { GalleryAddImageModalComponent } from './galleryModal/gallery-add-image-modal/gallery-add-image-modal.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -7,44 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GalleryComponent implements OnInit {
 
-  public images = [
-    {
-      url: "../../assets/resources/Hero-header/1.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/2.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/3.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/4.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/5.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/6.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/7.jpg",
-      row: ""
-    },
-    {
-      url: "../../assets/resources/Hero-header/8.jpg",
-      row: ""
-    }
-  ]
+  public images: FileModel[] = []
+  private parameterIds: string = "";
+  logged: string | null = localStorage.getItem("Jwt");
 
-  constructor() { }
+  constructor(private galleryService: GalleryService, private dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe(param => {
+      this.parameterIds = param.get("id")!;
+      this.galleryService.getImagesByCategory(this.parameterIds).subscribe(i => this.images = i)
+    }
+    )
+  }
+
+  openModalWindow() {
+    const dialogRef = this.dialog.open(GalleryAddImageModalComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.galleryService.getImagesByCategory(this.parameterIds).subscribe(i => this.images = i)
+      }
+    });
   }
 
 }

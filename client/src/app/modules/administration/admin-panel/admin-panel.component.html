@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="admin-side-nav">
         <li routerLink="riders/table"><a>Jazdci</a></li>
         <li routerLink="rider/horses"><a>Kone</a></li>
@@ -13,4 +13,22 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-</div>
+</div> -->
+
+<mat-drawer-container class="example-container" hasBackdrop="true">
+    <mat-drawer #drawer mode="over">
+        <div class="admin-side-nav">
+            <li routerLink="riders/table" (click)="drawer.close()"><a>Jazdci</a></li>
+            <li routerLink="rider/horses" (click)="drawer.close()"><a>Kone</a></li>
+            <li routerLink="rider/arbiter" (click)="drawer.close()"><a>Rozhodcovia</a></li>
+            <li routerLink="rider/competitions" (click)="drawer.close()"><a>Súťaže</a></li>
+            <li routerLink="rider/article" (click)="drawer.close()"><a>Články</a></li>
+            <li routerLink="rider/new/user" (click)="drawer.close()"><a>Použivatelia</a></li>
+        </div>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <button mat-icon-button (click)="drawer.toggle()"><mat-icon>arrow_forward_ios</mat-icon></button>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

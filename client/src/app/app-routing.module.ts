@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "component/:id", component: AboutusComponent },
   { path: "news", component: NewsComponent },
-  { path: "gallery", component: GalleryComponent },
+  { path: "gallery/:id", component: GalleryComponent },
   { path: "login", component: LoginComponent },
   {
     path: "administration", loadChildren: () => import('src/app/modules/administration/administration.module')

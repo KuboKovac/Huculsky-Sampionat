@@ -1,3 +1,18 @@
+<!--
 <div class="container" *ngFor="let img of images">
     <img class="img" [src]="img.url">
+</div>
+-->
+
+<div class="control-panel">
+    <a class="control-panel-item" routerLink="/gallery/sutaze" routerLinkActive="active-link">Súťaže</a>
+    <a class="control-panel-item" routerLink="/gallery/treningy" routerLinkActive="active-link">Tréningy</a>
+    <a class="control-panel-item" routerLink="/gallery/akcie" routerLinkActive="active-link">Akcie</a>
+    <a class="control-panel-item" *ngIf="logged" (click)="openModalWindow()">Pridať fotku</a>
+</div>
+
+<div class="photo-gallery-wrapper">
+    <div class="photo-gallery-item" *ngFor="let item of images">
+        <img [src]="item.url" alt="">
+    </div>
 </div>
