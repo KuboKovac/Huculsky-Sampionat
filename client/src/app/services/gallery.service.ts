@@ -21,7 +21,7 @@ export class GalleryService {
     return this.http.post(this.serverUrl + "Files/CreateImages/" + param, file).pipe();
   }
 
-  deleteImageById() {
-
+  deleteImageById(fileId: number) {
+    return this.http.delete(this.serverUrl + "Files/DeleteImage/" + fileId).pipe()
   }
 }

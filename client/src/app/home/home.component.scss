@@ -4,19 +4,19 @@
 
 .section {
     background-color: $primary-color;
+    margin: 1rem 0;
     padding: 1rem;
     color: white;
     text-align: center;
-
-    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.75);
 
     h1 {
         font-size: 2.4rem;
     }
 
     .container {
+
+        p {}
+
 
         .btn {
             color: white;
@@ -27,6 +27,7 @@
             margin: auto;
             text-decoration: none;
             transition: background-color .2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
             &:hover {
                 background-color: $primary-color-darker;
@@ -40,16 +41,26 @@
             display: flex;
             margin: 1rem 0;
             justify-content: center;
+            max-width: 60%;
+            margin: auto;
 
             .club {
                 margin: 0 0.5rem;
                 padding: 0.5rem;
                 background-color: $primary-color-dark;
                 border-radius: 1rem;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    transform: translateY(-5px);
+                }
 
                 .btn {
+                    margin: 1rem auto;
                     border: 0;
-                    border-bottom: 0.2rem solid white;
+                    border: 0.1rem solid white;
                 }
             }
         }
@@ -63,7 +74,16 @@
                 padding: 1rem;
                 border-radius: 50%;
                 background-color: $primary-color;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+                &:hover {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    transform: translateY(-5px);
+                }
             }
+
+
         }
 
         .about-content {
@@ -113,7 +133,8 @@ section:nth-child(even) {
     .section {
         .container {
             .clubs {
-                display: block !important;
+                display: block;
+                max-width: 100%;
 
                 .club {
                     margin: 1rem;

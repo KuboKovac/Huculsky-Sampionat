@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
@@ -20,8 +20,15 @@ const routes: Routes = [
   },
 ];
 
+const routerOptions: ExtraOptions = {
+  enableTracing: false,
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64] // Optional, to adjust for a fixed header
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
