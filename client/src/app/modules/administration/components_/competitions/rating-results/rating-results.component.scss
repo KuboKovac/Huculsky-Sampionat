@@ -1,9 +1,13 @@
+.modal-wrapper{
+    overflow: auto;
+}
+
 h2{
     text-align: center;
     font-size: 2rem;
 }
 .container, .container-bottom{
-    max-width: 55vw;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;

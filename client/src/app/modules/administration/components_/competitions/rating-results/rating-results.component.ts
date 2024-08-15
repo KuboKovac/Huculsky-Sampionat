@@ -1,9 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Result } from '../../../models/Result';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { AdminCompetitionsService } from '../../../services/admin-competitions.service';
 import { GResult } from '../../../models/GetResult';
+import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
+import { MessageService } from 'src/shared/message.service';
 
 @Component({
   selector: 'app-rating-results',
@@ -52,18 +54,50 @@ export class RatingResultsComponent implements OnInit {
       horseId: number | undefined,
       isLocked: boolean | undefined
     },
-    private competitionService: AdminCompetitionsService
+    private competitionService: AdminCompetitionsService, private dialog : MatDialog, private messageService: MessageService,
   ) { }
 
   ngOnInit(): void {
     this.competitionService.getUserResult(this.data.riderId, this.data.competitionId).subscribe({
       next: response => {
+        console.log(response)
         this.currentResults = response
+        this.patchFormValues();
       }, complete: () => {
         this.isLocked = this.data.isLocked
       }
     }
     )
+  }
+  patchFormValues() {
+    this.results.patchValue({
+      time: this.currentResults.time,
+      timeLimit: this.currentResults.timeLimit,
+      l: this.currentResults.pointsAtObstacles.l,
+      z: this.currentResults.pointsAtObstacles.z,
+      koliska: this.currentResults.pointsAtObstacles.koliska,
+      plachta: this.currentResults.pointsAtObstacles.plachta,
+      stvorec: this.currentResults.pointsAtObstacles.stvorec,
+      cuvanie_Medzi_Kavaletami: this.currentResults.pointsAtObstacles.cuvanie_Medzi_Kavaletami,
+      lavicka_Vyssia: this.currentResults.pointsAtObstacles.lavicka_Vyssia,
+      mostik_Najazdova_Rampa: this.currentResults.pointsAtObstacles.mostik_Najazdova_Rampa,
+      slalom: this.currentResults.pointsAtObstacles.slalom,
+      stuzky: this.currentResults.pointsAtObstacles.stuzky,
+      nizky_Podjazd: this.currentResults.pointsAtObstacles.nizky_Podjazd,
+      skok: this.currentResults.pointsAtObstacles.skok,
+      lano_Branicka: this.currentResults.pointsAtObstacles.lano_Branicka,
+      uzka_Ulicka_Zvonec: this.currentResults.pointsAtObstacles.uzka_Ulicka_Zvonec,
+      kosik_Preniest_Krcah: this.currentResults.pointsAtObstacles.kosik_Preniest_Krcah,
+      kavalety_4_ks: this.currentResults.pointsAtObstacles.kavalety_4_ks,
+      technicky_Prekrok: this.currentResults.pointsAtObstacles.technicky_Prekrok,
+      labyrint: this.currentResults.pointsAtObstacles.labyrint,
+      zastavenie_Cuvanie_Pri_Kuzelke: this.currentResults.pointsAtObstacles.zastavenie_Cuvanie_Pri_Kuzelke,
+      skok_50cm: this.currentResults.pointsAtObstacles.skok_50cm,
+      sud_Kavaleta: this.currentResults.pointsAtObstacles.sud_Kavaleta,
+      tah_Vreca: this.currentResults.pointsAtObstacles.tah_Vreca,
+      fit_Lopta: this.currentResults.pointsAtObstacles.fit_Lopta,
+      paleta_Statie: this.currentResults.pointsAtObstacles.paleta_Statie,
+    })
   }
 
   public createResult() {
@@ -104,7 +138,6 @@ export class RatingResultsComponent implements OnInit {
     else
       result.horseId = this.data.horseId as number
 
-    console.log(result)
     this.competitionService.createResult(this.data.riderId, result).subscribe(
       {
         error: err => console.error(err)
@@ -112,4 +145,33 @@ export class RatingResultsComponent implements OnInit {
     )
   }
 
+  hasInvalidValues(form: FormGroup): boolean {
+    for (let control in form.controls) {
+      if (form.get(control)?.value > 5) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  Confirm(){
+     if (this.results.invalid) {
+      this.messageService.message('Niektoré hodnoty prekračujú limit 5. Prosím, opravte ich.');
+      return;
+     }
+
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      data: {
+        header: 'Potvrdenie zmeny',
+        text: `Naozaj chcete vykonať túto zmenu? Po uložení už nebude možné zmeniť bodovanie pre daneho jazdca.`
+      }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.createResult()
+      }
+    })
+  }
 }

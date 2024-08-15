@@ -4,6 +4,10 @@
 </div>
 -->
 
+<div class="back-to-home" routerLink="/">
+    <mat-icon class="icon">home</mat-icon>
+</div>
+
 <div class="control-panel">
     <a class="control-panel-item" routerLink="/gallery/sutaze" routerLinkActive="active-link">Súťaže</a>
     <a class="control-panel-item" routerLink="/gallery/treningy" routerLinkActive="active-link">Tréningy</a>
@@ -12,7 +16,24 @@
 </div>
 
 <div class="photo-gallery-wrapper">
-    <div class="photo-gallery-item" *ngFor="let item of images">
-        <img [src]="item.url" alt="">
+    <div class="photo-gallery-item" *ngFor="let item of images" (contextmenu)="onRightClick($event, item)">
+        <img [src]="item.url" alt="" (click)="openLightbox(item)">
     </div>
+</div>
+
+<div class="lightbox" *ngIf="lightboxOpen">
+    <button class="close-btn" (click)="closeLightbox()">X</button>
+    <button class="prev-btn" (click)="nextImage(-1)">‹</button>
+    <img [src]="selectedImage?.url" alt="Current Image">
+    <button class="next-btn" (click)="nextImage(+1)">›</button>
+</div>
+
+<div class="context-menu" *ngIf="contextMenuVisible" [style.top.px]="contextMenuPosition.y"
+    [style.left.px]="contextMenuPosition.x">
+
+    <p>Chcete Zmazať tento obrazok ?</p>
+
+    <img [src]="contextMenuUrlToDelete" alt="">
+
+    <button (click)="deletePhoto(contextMenuIndex)">Zmazať</button>
 </div>

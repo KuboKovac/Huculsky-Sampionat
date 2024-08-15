@@ -1,3 +1,4 @@
+<div class="modal-wrapper">
 <h2>Bodovanie prekážok</h2>
 
 <div [formGroup]="results">
@@ -141,7 +142,7 @@
             </div>
         </div>
         <div class="btn-wrapper">
-            <button [disabled]="!results.valid" (click)="createResult()">Uložiť výsledky</button>
+            <button (click)="Confirm()">Uložiť výsledky</button>
         </div>
 
     </div>
@@ -307,3 +308,4 @@
         <button *ngIf="!isLocked" [disabled]="!results.valid" (click)="createResult()">Uložiť výsledky</button>
     </div>
 </ng-template>
+</div>
