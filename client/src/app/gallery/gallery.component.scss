@@ -4,6 +4,27 @@
     background-color: $primary-color-dark;
 }
 
+.back-to-home {
+    position: fixed;
+    cursor: pointer;
+    bottom: 20px;
+    right: 20px;
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 50%;
+    background-color: $primary-color;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        background-color: $primary-color-dark;
+        transform: translateY(-5px);
+    }
+}
+
 .control-panel {
     display: flex;
     align-items: center;

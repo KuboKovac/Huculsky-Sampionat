@@ -1,5 +1,8 @@
 <body>
     <main>
+        <div class="back-to-home" routerLink="/">
+            <mat-icon class="icon">home</mat-icon>
+        </div>
         <div class="functions">
             <button *ngIf="logged" (click)="edit()"><mat-icon inline>{{isEditing ? "close" :
                     "edit"}}</mat-icon></button>

@@ -74,8 +74,8 @@ nav {
 for mobile
 */
 
-@media (max-width: 600px) {
-    nav {
+@media (hover: none) {
+    nav{
 
         .burger {
             text-align: center;

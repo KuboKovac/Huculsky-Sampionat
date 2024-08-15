@@ -1,3 +1,27 @@
+.mobile-warning {
+  display: none;
+  /* Skryté pre väčšie obrazovky */
+  background-color: #ffcc00;
+  /* Svetložltá farba pozadia pre upozornenie */
+  color: #333;
+  /* Tmavý text */
+  padding: 0.75rem;
+  border: 2px solid #ff9900;
+  /* Oranžový okraj */
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0.5rem 0.5rem;
+}
+
+/* Zobraziť varovanie len na obrazovkách menších ako 768px */
+@media (hover : none) {
+  .mobile-warning {
+    display: block;
+  }
+}
+
 .table {
   border: 1px solid #9d9d9d;
   border-radius: 4px;
